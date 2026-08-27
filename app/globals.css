@@ -1,0 +1,55 @@
+@import "tailwindcss";
+
+:root {
+  --saint-louis-navy: #081828;
+  --moulding-ivory: #fefaf1;
+  --antique-brass: #b4904e;
+  --blue-charcoal: #2e404e;
+  --warm-stone: #d6d2c6;
+  --font-heading: Georgia, "Times New Roman", serif;
+  --font-body: Rockwell, Georgia, serif;
+}
+
+html {
+  background: var(--moulding-ivory);
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--moulding-ivory);
+  color: var(--saint-louis-navy);
+  font-family: var(--font-body);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+::selection {
+  color: var(--moulding-ivory);
+  background: var(--antique-brass);
+}
+
+.coming-soon-page {
+  display: grid;
+  min-height: 100vh;
+  place-items: center;
+  padding: 2rem;
+  background:
+    linear-gradient(rgba(180, 144, 78, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(180, 144, 78, 0.08) 1px, transparent 1px),
+    var(--moulding-ivory);
+  background-size: 44px 44px;
+}
+
+.coming-soon-page h1 {
+  margin: 0;
+  color: var(--saint-louis-navy);
+  font-family: var(--font-heading);
+  font-size: clamp(3rem, 10vw, 7rem);
+  font-weight: 500;
+  letter-spacing: 0.025em;
+  line-height: 1;
+  text-align: center;
+}
