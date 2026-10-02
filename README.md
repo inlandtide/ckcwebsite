@@ -1,6 +1,6 @@
 # CKC Website
 
-Welcome to the repository for the CKC website. This project currently provides a temporary **Coming Soon!** page for `ckc.mouldingstl.com` while the full website is being developed.
+Welcome to the repository for the CKC website. This project provides a responsive coming-soon page for `ckcwoodworks.com` while the full website is being developed. The page introduces the upcoming online experience, keeps CKC's contact information available, and links to the new residential division, Moulding Saint Louis.
 
 ## Instructions for AI Agents & Developers
 
@@ -21,15 +21,16 @@ This project uses the same core stack and deployment conventions as the existing
 | Package manager | pnpm |
 | Hosting | [Vercel](https://vercel.com/) |
 | Deployment | Pushes to the `main` branch trigger Vercel deployment |
-| Production domain | `ckc.mouldingstl.com` |
+| Production domain | `ckcwoodworks.com` (`www.ckcwoodworks.com` redirects to the non-www domain) |
+| Additional domains | `ckc.mouldingstl.com`, `ckcwebsite.vercel.app` |
 
 ## Current Site State
 
-The current site intentionally renders only **Coming Soon!**. The temporary page uses the established Moulding Saint Louis visual palette and responsive presentation while avoiding premature brand, service, or contact content.
+The temporary page uses the established serif fonts with an ivory, navy, brass, and sage palette. It includes a decorative CSS moulding illustration, the upcoming website announcement, accessible phone and email links, a Google Maps address link, and a feature for [Moulding Saint Louis](https://mouldingstl.com/). All content renders as a static server component with no client-side interaction dependencies.
 
 ## Search Visibility Controls
 
-This is a private testing placeholder and must remain excluded from search indexing.
+This is a temporary coming-soon page and must remain excluded from search indexing until the full production CKC website is ready.
 
 | Control | Location | Purpose |
 | --- | --- | --- |
@@ -42,9 +43,9 @@ Do not remove or relax these protections until the production CKC site is ready 
 
 | Path | Purpose |
 | --- | --- |
-| `app/page.tsx` | Single-message Coming Soon page. |
+| `app/page.tsx` | Coming-soon announcement, contact details, decorative illustration, and residential division link. |
 | `app/layout.tsx` | Root document, shared fonts, metadata, and no-index directives. |
-| `app/globals.css` | Tailwind import, visual variables, and responsive placeholder styling. |
+| `app/globals.css` | Tailwind import, visual variables, responsive layout, CSS illustration, and accessibility styles. |
 | `app/robots.ts` | Generated robots policy that blocks crawling. |
 | `public/` | Version-controlled static assets for future use. |
 

@@ -17,9 +17,19 @@ const zilla = Zilla_Slab({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://ckc.mouldingstl.com"),
-  title: "Coming Soon",
-  description: "The CKC website is coming soon.",
+  metadataBase: new URL("https://ckcwoodworks.com"),
+  title: "CKC Woodworks | A New Website Is Coming Soon",
+  description:
+    "A new chapter. The same craft. A fresh CKC Woodworks website is on the way. Contact our St. Louis team at 314-383-8222 or explore Moulding Saint Louis.",
+  alternates: { canonical: "/" },
+  openGraph: {
+    title: "CKC Woodworks | A New Chapter. The Same Craft.",
+    description: "Our new website is coming soon. Our team is ready to help with your next project.",
+    url: "/",
+    siteName: "CKC Woodworks",
+    locale: "en_US",
+    type: "website",
+  },
   robots: {
     index: false,
     follow: false,
