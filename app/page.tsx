@@ -1,5 +1,8 @@
 import type { ReactNode } from "react";
+import Image from "next/image";
 import Link from "next/link";
+import shopPhoto from "../public/images/ckc-woodworks-shop-overview.jpg";
+import residentialLogo from "../public/images/moulding-saint-louis-logo.png";
 
 function Arrow({ diagonal = false }: { diagonal?: boolean }) {
   return (
@@ -18,20 +21,13 @@ function ContactIcon({ kind }: { kind: "phone" | "email" | "location" }) {
   return <svg aria-hidden="true" viewBox="0 0 24 24" fill="none">{paths[kind]}</svg>;
 }
 
-function CraftIllustration() {
+function ShopPhoto() {
   return (
-    <div className="craft-panel" aria-hidden="true">
+    <figure className="craft-panel">
       <div className="craft-panel-top"><span>A CLOSER LOOK</span><span>01 / CKC</span></div>
-      <div className="material-study">
-        <div className="moulding moulding-one"><span /><span /><span /></div>
-        <div className="moulding moulding-two"><span /><span /><span /></div>
-        <div className="moulding moulding-three"><span /><span /><span /></div>
-        <div className="study-line study-line-one" />
-        <div className="study-line study-line-two" />
-        <span className="study-note">IT&apos;S ALL IN THE DETAILS.</span>
-      </div>
-      <div className="craft-panel-bottom"><span>The same care.<br /><em>A fresh perspective.</em></span><span className="craft-cross">+</span></div>
-    </div>
+      <Image className="shop-photo" src={shopPhoto} alt="A view across the CKC Woodworks shop in St. Louis, with woodworking equipment, custom cabinetry, and workbenches." sizes="(max-width: 760px) 90vw, (max-width: 1600px) 38vw, 560px" placeholder="blur" preload />
+      <figcaption className="craft-panel-bottom"><span>The same care.<br /><em>A fresh perspective.</em></span><span className="craft-cross" aria-hidden="true">+</span></figcaption>
+    </figure>
   );
 }
 
@@ -55,7 +51,7 @@ export default function Home() {
               <a className="text-link" href="mailto:scromer@ckcwoodworks.com">Email our team <Arrow diagonal /></a>
             </div>
           </div>
-          <CraftIllustration />
+          <ShopPhoto />
         </section>
         <section className="contact-section" aria-labelledby="contact-heading">
           <div className="section-intro"><h2 id="contact-heading">Good work starts with a conversation.</h2><p>Let&apos;s make something great together.</p></div>
@@ -66,7 +62,7 @@ export default function Home() {
           </div>
         </section>
         <section className="residential-section" aria-labelledby="residential-heading">
-          <div className="residential-monogram" aria-hidden="true"><span>M</span><span>STL</span></div>
+          <Image className="residential-logo" src={residentialLogo} alt="Moulding Saint Louis — Made in Wood" sizes="150px" />
           <div className="residential-copy"><p className="eyebrow">MEET OUR NEW RESIDENTIAL DIVISION</p><h2 id="residential-heading">Moulding Saint Louis</h2><p>While you wait, explore the website for our new residential division, Moulding Saint Louis. Your next idea might start there.</p></div>
           <a className="button button-residential" href="https://mouldingstl.com/">Explore Moulding Saint Louis <Arrow diagonal /></a>
         </section>

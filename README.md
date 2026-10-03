@@ -26,7 +26,7 @@ This project uses the same core stack and deployment conventions as the existing
 
 ## Current Site State
 
-The temporary page uses the established serif fonts with an ivory, navy, brass, and sage palette. It includes a decorative CSS moulding illustration, the upcoming website announcement, accessible phone and email links, a Google Maps address link, and a feature for [Moulding Saint Louis](https://mouldingstl.com/). All content renders as a static server component with no client-side interaction dependencies.
+The temporary page uses the established serif fonts with an ivory, navy, brass, and sage palette. It includes a photograph of the CKC Woodworks shop, the upcoming website announcement, accessible phone and email links, a Google Maps address link, and a feature for [Moulding Saint Louis](https://mouldingstl.com/) using its official navy-and-gold logo. Both images are stored in `public/images/` and rendered with Next.js image optimization. The shop photograph comes from the [Moulding Saint Louis gallery](https://mouldingstl.com/gallery). All content renders as a static server component with no client-side interaction dependencies.
 
 ## Search Visibility Controls
 
@@ -43,11 +43,11 @@ Do not remove or relax these protections until the production CKC site is ready 
 
 | Path | Purpose |
 | --- | --- |
-| `app/page.tsx` | Coming-soon announcement, contact details, decorative illustration, and residential division link. |
+| `app/page.tsx` | Coming-soon announcement, contact details, shop photograph, and residential division feature. |
 | `app/layout.tsx` | Root document, shared fonts, metadata, and no-index directives. |
-| `app/globals.css` | Tailwind import, visual variables, responsive layout, CSS illustration, and accessibility styles. |
+| `app/globals.css` | Tailwind import, visual variables, responsive layout, image presentation, and accessibility styles. |
 | `app/robots.ts` | Generated robots policy that blocks crawling. |
-| `public/` | Version-controlled static assets for future use. |
+| `public/images/` | Version-controlled CKC shop photograph and official Moulding Saint Louis logo. |
 
 ## Environment Variables
 

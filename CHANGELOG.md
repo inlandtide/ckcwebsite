@@ -2,6 +2,12 @@
 
 All notable changes to this project are documented in this file.
 
+## 2026-10-03
+
+- Replaced the decorative moulding illustration with the CKC shop overview photograph selected from the Moulding Saint Louis gallery.
+- Replaced the residential division monogram with the official navy-and-gold Moulding Saint Louis logo and adjusted its layout for mobile readability.
+- Added both image assets to the repository with responsive Next.js image optimization and updated the README.
+
 ## 2026-10-02
 
 - Replaced the single-message placeholder with a responsive CKC Woodworks coming-soon page using the existing serif fonts and an ivory, navy, brass, and sage palette.
