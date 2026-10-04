@@ -64,7 +64,7 @@ export default function Home() {
         <section className="residential-section" aria-labelledby="residential-heading">
           <Image className="residential-logo" src={residentialLogo} alt="Moulding Saint Louis — Made in Wood" sizes="150px" />
           <div className="residential-copy"><p className="eyebrow">MEET OUR NEW RESIDENTIAL DIVISION</p><h2 id="residential-heading">Moulding Saint Louis</h2><p>While you wait, explore the website for our new residential division, Moulding Saint Louis. Your next idea might start there.</p></div>
-          <a className="button button-residential" href="https://mouldingstl.com/">Explore Moulding Saint Louis <Arrow diagonal /></a>
+          <a className="button button-residential" href="https://mouldingstl.com/" target="_blank" rel="noopener noreferrer">Explore Moulding Saint Louis <Arrow diagonal /><span className="sr-only"> (opens in a new tab)</span></a>
         </section>
       </main>
       <footer className="site-footer"><span>CKC Woodworks</span><span>Thoughtfully made. Right here in St. Louis.</span><a href="mailto:scromer@ckcwoodworks.com">Stay in touch <Arrow diagonal /></a></footer>

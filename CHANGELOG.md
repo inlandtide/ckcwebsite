@@ -4,6 +4,7 @@ All notable changes to this project are documented in this file.
 
 ## 2026-10-03
 
+- Updated the Moulding Saint Louis link to open in a new tab, with an accessible announcement and `noopener noreferrer` protection.
 - Replaced the decorative moulding illustration with the CKC shop overview photograph selected from the Moulding Saint Louis gallery.
 - Replaced the residential division monogram with the official navy-and-gold Moulding Saint Louis logo and adjusted its layout for mobile readability.
 - Added both image assets to the repository with responsive Next.js image optimization and updated the README.
