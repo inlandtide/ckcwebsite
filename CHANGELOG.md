@@ -4,6 +4,9 @@ All notable changes to this project are documented in this file.
 
 ## 2026-10-04
 
+- Enabled indexing of the existing CKC page at the owner's request; replaced the crawler block with crawl permission and a sitemap reference.
+- Added a canonical homepage sitemap, improved search and social metadata, and added LocalBusiness and WebSite JSON-LD with confirmed contact details and the residential division relationship.
+- Documented the SEO setup and full-site launch steps without changing the visible page content.
 - Added sitewide Google Analytics 4 tracking for measurement ID `G-WLYT8DJC9P` using the official Next.js Google Analytics integration.
 - Documented the analytics setup in the README.
 

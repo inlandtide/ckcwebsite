@@ -1,6 +1,14 @@
 import type { Metadata } from "next";
 import { Cormorant_Garamond, Zilla_Slab } from "next/font/google";
 import { GoogleAnalytics } from "@next/third-parties/google";
+import {
+  siteUrl,
+  siteName,
+  siteTitle,
+  siteDescription,
+  socialImage,
+  siteStructuredData,
+} from "./data/seo";
 import "./globals.css";
 
 const cormorant = Cormorant_Garamond({
@@ -18,25 +26,37 @@ const zilla = Zilla_Slab({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://ckcwoodworks.com"),
-  title: "CKC Woodworks | A New Website Is Coming Soon",
-  description:
-    "A new chapter. The same craft. A fresh CKC Woodworks website is on the way. Contact our St. Louis team at 314-383-8222 or explore Moulding Saint Louis.",
+  metadataBase: new URL(siteUrl),
+  title: { default: siteTitle, template: `%s | ${siteName}` },
+  description: siteDescription,
   alternates: { canonical: "/" },
   openGraph: {
-    title: "CKC Woodworks | A New Chapter. The Same Craft.",
-    description: "Our new website is coming soon. Our team is ready to help with your next project.",
+    title: siteTitle,
+    description: siteDescription,
     url: "/",
-    siteName: "CKC Woodworks",
+    siteName,
     locale: "en_US",
     type: "website",
+    images: [{
+      url: socialImage,
+      alt: "CKC Woodworks shop in St. Louis, Missouri",
+    }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: siteTitle,
+    description: siteDescription,
+    images: [{ url: socialImage, alt: "CKC Woodworks shop in St. Louis, Missouri" }],
   },
   robots: {
-    index: false,
-    follow: false,
+    index: true,
+    follow: true,
     googleBot: {
-      index: false,
-      follow: false,
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
     },
   },
 };
@@ -50,7 +70,16 @@ export default function RootLayout({
 
   return (
     <html lang="en" className={fontClassName}>
-      <body>{children}</body>
+      <body>
+        {children}
+        <script
+          id="ckc-structured-data"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(siteStructuredData).replace(/</g, "\\u003c"),
+          }}
+        />
+      </body>
       <GoogleAnalytics gaId="G-WLYT8DJC9P" />
     </html>
   );

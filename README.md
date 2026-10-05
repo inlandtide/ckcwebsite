@@ -28,25 +28,37 @@ This project uses the same core stack and deployment conventions as the existing
 
 The temporary page uses the established serif fonts with an ivory, navy, brass, and sage palette. It includes a photograph of the CKC Woodworks shop, the upcoming website announcement, accessible phone and email links, a Google Maps address link, and a feature for [Moulding Saint Louis](https://mouldingstl.com/) using its official navy-and-gold logo. Both images are stored in `public/images/` and rendered with Next.js image optimization. The shop photograph comes from the [Moulding Saint Louis gallery](https://mouldingstl.com/gallery). All page content renders as a static server component. Google Analytics loads after hydration through the shared root layout.
 
-## Search Visibility Controls
+## SEO & Search Visibility
 
-This is a temporary coming-soon page and must remain excluded from search indexing until the full production CKC website is ready.
+The owner requested indexing of the existing page on October 4, 2026, so CKC can remain discoverable while the full site is developed. The page is now crawlable and indexable. Its visible content is unchanged; the search description accurately notes that the new website is being built.
 
 | Control | Location | Purpose |
 | --- | --- | --- |
-| Page metadata | `app/layout.tsx` | Sends `noindex, nofollow` directives to standard crawlers and Googlebot. |
-| Robots endpoint | `app/robots.ts` | Serves a `robots.txt` policy that disallows all crawling. |
+| Search and social metadata | `app/layout.tsx` | Supplies a business-focused title and description, canonical URL, index/follow directives, and Open Graph and Twitter previews using the existing shop photo. |
+| Shared SEO data | `app/data/seo.ts` | Defines the production origin and confirmed LocalBusiness and WebSite JSON-LD, including contact details and the Moulding Saint Louis relationship. |
+| Robots endpoint | `app/robots.ts` | Allows crawling and points to the canonical sitemap. |
+| Sitemap | `app/sitemap.ts` | Includes only the published canonical homepage at `https://ckcwoodworks.com/`. |
 
-Do not remove or relax these protections until the production CKC site is ready for public search visibility.
+The `ckcwoodworks.com` Domain property is verified in Google Search Console. Use that property for sitemap submissions and URL inspection. DNS ownership verification is managed outside this repository.
+
+When the full site launches:
+
+- Add each published canonical page to `app/sitemap.ts`; keep preview, private, error, and noindex pages out of the sitemap.
+- Give each page its own title, description, canonical URL, and social metadata. Replace the temporary homepage description with the finished site's description.
+- Add service and project structured data only for information shown on the corresponding visible pages. Do not invent reviews, ratings, business hours, or contact details.
+- Add sitemap `lastModified` values only when accurate substantive content edit dates are available; a new build is not a content update.
+- Resubmit the sitemap and inspect the new priority URLs in Search Console. Keep staging and preview deployments out of search.
 
 ## Project Structure
 
 | Path | Purpose |
 | --- | --- |
 | `app/page.tsx` | Coming-soon announcement, contact details, shop photograph, and residential division feature. |
-| `app/layout.tsx` | Root document, shared fonts, metadata, and no-index directives. |
+| `app/layout.tsx` | Root document, shared fonts, search and social metadata, Analytics, and JSON-LD. |
+| `app/data/seo.ts` | Shared SEO configuration and structured data. |
 | `app/globals.css` | Tailwind import, visual variables, responsive layout, image presentation, and accessibility styles. |
-| `app/robots.ts` | Generated robots policy that blocks crawling. |
+| `app/robots.ts` | Generated crawler permissions and sitemap location. |
+| `app/sitemap.ts` | Canonical published-page sitemap. |
 | `public/images/` | Version-controlled CKC shop photograph and official Moulding Saint Louis logo. |
 
 ## Analytics
