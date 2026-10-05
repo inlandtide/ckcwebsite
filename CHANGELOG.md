@@ -2,6 +2,11 @@
 
 All notable changes to this project are documented in this file.
 
+## 2026-10-04
+
+- Added sitewide Google Analytics 4 tracking for measurement ID `G-WLYT8DJC9P` using the official Next.js Google Analytics integration.
+- Documented the analytics setup in the README.
+
 ## 2026-10-03
 
 - Updated the Moulding Saint Louis link to open in a new tab, with an accessible announcement and `noopener noreferrer` protection.

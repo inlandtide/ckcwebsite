@@ -26,7 +26,7 @@ This project uses the same core stack and deployment conventions as the existing
 
 ## Current Site State
 
-The temporary page uses the established serif fonts with an ivory, navy, brass, and sage palette. It includes a photograph of the CKC Woodworks shop, the upcoming website announcement, accessible phone and email links, a Google Maps address link, and a feature for [Moulding Saint Louis](https://mouldingstl.com/) using its official navy-and-gold logo. Both images are stored in `public/images/` and rendered with Next.js image optimization. The shop photograph comes from the [Moulding Saint Louis gallery](https://mouldingstl.com/gallery). All content renders as a static server component with no client-side interaction dependencies.
+The temporary page uses the established serif fonts with an ivory, navy, brass, and sage palette. It includes a photograph of the CKC Woodworks shop, the upcoming website announcement, accessible phone and email links, a Google Maps address link, and a feature for [Moulding Saint Louis](https://mouldingstl.com/) using its official navy-and-gold logo. Both images are stored in `public/images/` and rendered with Next.js image optimization. The shop photograph comes from the [Moulding Saint Louis gallery](https://mouldingstl.com/gallery). All page content renders as a static server component. Google Analytics loads after hydration through the shared root layout.
 
 ## Search Visibility Controls
 
@@ -48,6 +48,10 @@ Do not remove or relax these protections until the production CKC site is ready 
 | `app/globals.css` | Tailwind import, visual variables, responsive layout, image presentation, and accessibility styles. |
 | `app/robots.ts` | Generated robots policy that blocks crawling. |
 | `public/images/` | Version-controlled CKC shop photograph and official Moulding Saint Louis logo. |
+
+## Analytics
+
+Google Analytics 4 uses measurement ID `G-WLYT8DJC9P`. The shared root layout (`app/layout.tsx`) includes the official `GoogleAnalytics` component from `@next/third-parties/google`, which loads Google's tag after hydration and initializes page-view tracking across the site. The measurement ID is public configuration and requires no environment variable.
 
 ## Environment Variables
 

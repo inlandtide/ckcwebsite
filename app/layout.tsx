@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Cormorant_Garamond, Zilla_Slab } from "next/font/google";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import "./globals.css";
 
 const cormorant = Cormorant_Garamond({
@@ -50,6 +51,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={fontClassName}>
       <body>{children}</body>
+      <GoogleAnalytics gaId="G-WLYT8DJC9P" />
     </html>
   );
 }
