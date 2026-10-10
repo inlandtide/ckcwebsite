@@ -2,6 +2,11 @@
 
 All notable changes to this project are documented in this file.
 
+## 2026-10-09
+
+- Replace the contact email with `info@ckcwoodworks.com` in the hero action, contact card, footer link, and LocalBusiness structured data.
+- Change the search, Open Graph, and Twitter title to `CKC Woodworks | Custom Commercial Cabinetry & Millwork`.
+
 ## 2026-10-04
 
 - Enabled indexing of the existing CKC page at the owner's request; replaced the crawler block with crawl permission and a sitemap reference.

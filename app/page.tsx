@@ -48,7 +48,7 @@ export default function Home() {
             <p className="hero-reassurance">Our website is getting an update. Our team is ready to help.</p>
             <div className="hero-actions">
               <a className="button button-primary" href="tel:+13143838222">Let&apos;s talk about your project <Arrow /></a>
-              <a className="text-link" href="mailto:scromer@ckcwoodworks.com">Email our team <Arrow diagonal /></a>
+              <a className="text-link" href="mailto:info@ckcwoodworks.com">Email our team <Arrow diagonal /></a>
             </div>
           </div>
           <ShopPhoto />
@@ -57,7 +57,7 @@ export default function Home() {
           <div className="section-intro"><h2 id="contact-heading">Good work starts with a conversation.</h2><p>Let&apos;s make something great together.</p></div>
           <div className="contact-grid">
             <a className="contact-card" href="tel:+13143838222"><ContactIcon kind="phone" /><div><span className="contact-label">GIVE US A CALL</span><span className="contact-value">314-383-8222</span></div><Arrow diagonal /></a>
-            <a className="contact-card" href="mailto:scromer@ckcwoodworks.com"><ContactIcon kind="email" /><div><span className="contact-label">DROP US A NOTE</span><span className="contact-value contact-email">scromer@ckcwoodworks.com</span></div><Arrow diagonal /></a>
+            <a className="contact-card" href="mailto:info@ckcwoodworks.com"><ContactIcon kind="email" /><div><span className="contact-label">DROP US A NOTE</span><span className="contact-value contact-email">info@ckcwoodworks.com</span></div><Arrow diagonal /></a>
             <a className="contact-card" href="https://www.google.com/maps/search/?api=1&query=1750+Salzman+St.+Louis+MO" target="_blank" rel="noopener noreferrer"><ContactIcon kind="location" /><div><span className="contact-label">FIND US IN ST. LOUIS</span><address className="contact-value">1750 Salzman<br />St. Louis, MO</address></div><Arrow diagonal /><span className="sr-only"> (opens Google Maps in a new tab)</span></a>
           </div>
         </section>
@@ -67,7 +67,7 @@ export default function Home() {
           <a className="button button-residential" href="https://mouldingstl.com/" target="_blank" rel="noopener noreferrer">Explore Moulding Saint Louis <Arrow diagonal /><span className="sr-only"> (opens in a new tab)</span></a>
         </section>
       </main>
-      <footer className="site-footer"><span>CKC Woodworks</span><span>Thoughtfully made. Right here in St. Louis.</span><a href="mailto:scromer@ckcwoodworks.com">Stay in touch <Arrow diagonal /></a></footer>
+      <footer className="site-footer"><span>CKC Woodworks</span><span>Thoughtfully made. Right here in St. Louis.</span><a href="mailto:info@ckcwoodworks.com">Stay in touch <Arrow diagonal /></a></footer>
     </div>
   );
 }

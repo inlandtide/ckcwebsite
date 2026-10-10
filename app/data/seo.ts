@@ -1,6 +1,6 @@
 export const siteUrl = "https://ckcwoodworks.com";
 export const siteName = "CKC Woodworks";
-export const siteTitle = "CKC Woodworks | Custom Millwork in St. Louis";
+export const siteTitle = "CKC Woodworks | Custom Commercial Cabinetry & Millwork";
 export const siteDescription =
   "CKC Woodworks is a St. Louis custom woodwork and architectural millwork shop. Contact our team at 314-383-8222 while our new website is being built.";
 export const socialImage = `${siteUrl}/images/ckc-woodworks-shop-overview.jpg`;
@@ -16,7 +16,7 @@ export const siteStructuredData = {
       name: siteName,
       url: `${siteUrl}/`,
       telephone: "+1-314-383-8222",
-      email: "scromer@ckcwoodworks.com",
+      email: "info@ckcwoodworks.com",
       image: socialImage,
       description:
         "CKC Woodworks in St. Louis. Contact our shop while our new website is being built, or explore our residential division, Moulding Saint Louis.",
