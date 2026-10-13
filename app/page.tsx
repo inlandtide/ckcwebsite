@@ -2,7 +2,6 @@ import type { ReactNode } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import shopPhoto from "../public/images/ckc-woodworks-shop-overview.jpg";
-import residentialLogo from "../public/images/moulding-saint-louis-logo.png";
 
 function Arrow({ diagonal = false }: { diagonal?: boolean }) {
   return (
@@ -62,7 +61,7 @@ export default function Home() {
           </div>
         </section>
         <section className="residential-section" aria-labelledby="residential-heading">
-          <Image className="residential-logo" src={residentialLogo} alt="Moulding Saint Louis — Made in Wood" sizes="150px" />
+          <Image className="residential-logo" src="/images/moulding-saint-louis-logo.svg" alt="Moulding Saint Louis — Made in Wood" width={703} height={777} />
           <div className="residential-copy"><p className="eyebrow">MEET OUR NEW RESIDENTIAL DIVISION</p><h2 id="residential-heading">Moulding Saint Louis</h2><p>While you wait, explore the website for our new residential division, Moulding Saint Louis. Your next idea might start there.</p></div>
           <a className="button button-residential" href="https://mouldingstl.com/" target="_blank" rel="noopener noreferrer">Explore Moulding Saint Louis <Arrow diagonal /><span className="sr-only"> (opens in a new tab)</span></a>
         </section>

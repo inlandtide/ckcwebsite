@@ -4,6 +4,7 @@ All notable changes to this project are documented in this file.
 
 ## 2026-10-13
 
+- Restore the inner border around the fleur-de-lis in the Moulding Saint Louis logo and serve the corrected full-color artwork as an SVG.
 - Apply the final CKC Woodworks brand palette: Dark Olive, Bone, and Aged Copper.
 - Replace the text wordmark with the supplied unmodified horizontal logo SVG in the header and footer.
 - Pair Cormorant Garamond headlines with Source Sans 3 body and detail text.
