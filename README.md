@@ -17,7 +17,7 @@ This project uses the same core stack and deployment conventions as the existing
 | Framework | [Next.js 16](https://nextjs.org/) with the App Router |
 | Language | TypeScript |
 | Styling | Tailwind CSS v4 with global CSS variables in `app/globals.css` |
-| Fonts | Cormorant Garamond for headlines and Zilla Slab for supporting text |
+| Fonts | Cormorant Garamond for headlines and Source Sans 3 for supporting text |
 | Package manager | pnpm |
 | Hosting | [Vercel](https://vercel.com/) |
 | Deployment | Pushes to the `main` branch trigger Vercel deployment |
@@ -26,7 +26,7 @@ This project uses the same core stack and deployment conventions as the existing
 
 ## Current Site State
 
-The temporary page uses the established serif fonts with an ivory, navy, brass, and sage palette. It includes a photograph of the CKC Woodworks shop, the upcoming website announcement, accessible phone and email links, a Google Maps address link, and a feature for [Moulding Saint Louis](https://mouldingstl.com/) using its official navy-and-gold logo. Both images are stored in `public/images/` and rendered with Next.js image optimization. The shop photograph comes from the [Moulding Saint Louis gallery](https://mouldingstl.com/gallery). All page content renders as a static server component. Google Analytics loads after hydration through the shared root layout.
+The temporary page follows the final CKC brand guide: Dark Olive (`#3B3A22`), Bone (`#E3D6BD`), and Aged Copper (`#A65D46`), with Cormorant Garamond headlines and Source Sans 3 supporting text. The header and footer use the supplied horizontal primary transparent SVG without altering its artwork. It includes a photograph of the CKC Woodworks shop, the upcoming website announcement, accessible phone and email links, a Google Maps address link, and a feature for [Moulding Saint Louis](https://mouldingstl.com/) using its official navy-and-gold logo. All images are stored in `public/images/`; raster images use Next.js image optimization and the logo is served as an SVG. The shop photograph comes from the [Moulding Saint Louis gallery](https://mouldingstl.com/gallery). All page content renders as a static server component. Google Analytics loads after hydration through the shared root layout.
 
 ## SEO & Search Visibility
 
@@ -59,7 +59,7 @@ When the full site launches:
 | `app/globals.css` | Tailwind import, visual variables, responsive layout, image presentation, and accessibility styles. |
 | `app/robots.ts` | Generated crawler permissions and sitemap location. |
 | `app/sitemap.ts` | Canonical published-page sitemap. |
-| `public/images/` | Version-controlled CKC shop photograph and official Moulding Saint Louis logo. |
+| `public/images/` | Version-controlled CKC logo SVG, shop photograph, and official Moulding Saint Louis logo. |
 
 ## Analytics
 

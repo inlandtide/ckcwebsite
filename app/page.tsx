@@ -36,7 +36,7 @@ export default function Home() {
     <div className="site-shell">
       <a className="skip-link" href="#main-content">Skip to content</a>
       <header className="site-header">
-        <Link className="wordmark" href="/" aria-label="CKC Woodworks home"><span className="wordmark-ckc">CKC<span className="brand-dot">.</span></span><span className="wordmark-description">WOODWORKS<br /><span>ST. LOUIS, MISSOURI</span></span></Link>
+        <Link className="wordmark" href="/" aria-label="CKC Woodworks home"><Image className="brand-logo" src="/images/ckc-woodworks-horizontal-primary.svg" alt="CKC Woodworks" width={1883} height={395} preload /></Link>
         <a className="header-contact" href="tel:+13143838222"><span>Have a project in mind?</span> Let&apos;s talk <Arrow diagonal /></a>
       </header>
       <main id="main-content">
@@ -58,7 +58,7 @@ export default function Home() {
           <div className="contact-grid">
             <a className="contact-card" href="tel:+13143838222"><ContactIcon kind="phone" /><div><span className="contact-label">GIVE US A CALL</span><span className="contact-value">314-383-8222</span></div><Arrow diagonal /></a>
             <a className="contact-card" href="mailto:info@ckcwoodworks.com"><ContactIcon kind="email" /><div><span className="contact-label">DROP US A NOTE</span><span className="contact-value contact-email">info@ckcwoodworks.com</span></div><Arrow diagonal /></a>
-            <a className="contact-card" href="https://www.google.com/maps/search/?api=1&query=1750+Salzman+St.+Louis+MO" target="_blank" rel="noopener noreferrer"><ContactIcon kind="location" /><div><span className="contact-label">FIND US IN ST. LOUIS</span><address className="contact-value">1750 Salzman<br />St. Louis, MO</address></div><Arrow diagonal /><span className="sr-only"> (opens Google Maps in a new tab)</span></a>
+            <a className="contact-card" href="https://www.google.com/maps/search/?api=1&query=1750+Salzman+St.+Louis+MO+63133" target="_blank" rel="noopener noreferrer"><ContactIcon kind="location" /><div><span className="contact-label">FIND US IN ST. LOUIS</span><address className="contact-value">1750 Salzman<br />St. Louis, MO 63133</address></div><Arrow diagonal /><span className="sr-only"> (opens Google Maps in a new tab)</span></a>
           </div>
         </section>
         <section className="residential-section" aria-labelledby="residential-heading">
@@ -67,7 +67,7 @@ export default function Home() {
           <a className="button button-residential" href="https://mouldingstl.com/" target="_blank" rel="noopener noreferrer">Explore Moulding Saint Louis <Arrow diagonal /><span className="sr-only"> (opens in a new tab)</span></a>
         </section>
       </main>
-      <footer className="site-footer"><span>CKC Woodworks</span><span>Thoughtfully made. Right here in St. Louis.</span><a href="mailto:info@ckcwoodworks.com">Stay in touch <Arrow diagonal /></a></footer>
+      <footer className="site-footer"><Link className="footer-brand" href="/" aria-label="CKC Woodworks home"><Image className="brand-logo" src="/images/ckc-woodworks-horizontal-primary.svg" alt="CKC Woodworks" width={1883} height={395} /></Link><span>Thoughtfully made. Right here in St. Louis.</span><a href="mailto:info@ckcwoodworks.com">Stay in touch <Arrow diagonal /></a></footer>
     </div>
   );
 }

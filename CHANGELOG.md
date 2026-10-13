@@ -2,6 +2,13 @@
 
 All notable changes to this project are documented in this file.
 
+## 2026-10-13
+
+- Apply the final CKC Woodworks brand palette: Dark Olive, Bone, and Aged Copper.
+- Replace the text wordmark with the supplied unmodified horizontal logo SVG in the header and footer.
+- Pair Cormorant Garamond headlines with Source Sans 3 body and detail text.
+- Add ZIP code 63133 to the visible address, Google Maps link, and business structured data, and include the official logo in structured data.
+
 ## 2026-10-09
 
 - Replace the contact email with `info@ckcwoodworks.com` in the hero action, contact card, footer link, and LocalBusiness structured data.

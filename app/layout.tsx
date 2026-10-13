@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Cormorant_Garamond, Zilla_Slab } from "next/font/google";
+import { Cormorant_Garamond, Source_Sans_3 } from "next/font/google";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import {
   siteUrl,
@@ -18,11 +18,11 @@ const cormorant = Cormorant_Garamond({
   weight: ["400", "500", "600", "700"],
 });
 
-const zilla = Zilla_Slab({
+const sourceSans = Source_Sans_3({
   subsets: ["latin"],
-  variable: "--font-zilla",
+  variable: "--font-source-sans",
   display: "swap",
-  weight: ["300", "400", "500", "600", "700"],
+  weight: ["400", "600"],
 });
 
 export const metadata: Metadata = {
@@ -66,7 +66,7 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const fontClassName = [cormorant.variable, zilla.variable].join(" ");
+  const fontClassName = [cormorant.variable, sourceSans.variable].join(" ");
 
   return (
     <html lang="en" className={fontClassName}>

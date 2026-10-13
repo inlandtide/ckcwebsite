@@ -18,6 +18,7 @@ export const siteStructuredData = {
       telephone: "+1-314-383-8222",
       email: "info@ckcwoodworks.com",
       image: socialImage,
+      logo: `${siteUrl}/images/ckc-woodworks-horizontal-primary.svg`,
       description:
         "CKC Woodworks in St. Louis. Contact our shop while our new website is being built, or explore our residential division, Moulding Saint Louis.",
       address: {
@@ -25,6 +26,7 @@ export const siteStructuredData = {
         streetAddress: "1750 Salzman",
         addressLocality: "St. Louis",
         addressRegion: "MO",
+        postalCode: "63133",
         addressCountry: "US",
       },
       subOrganization: {
