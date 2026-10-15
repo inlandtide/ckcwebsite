@@ -825,13 +825,14 @@ export function GalleryPage() {
   const activeProject = galleryProjects[activeProjectIndex];
   function selectProject(index: number, returnToWork = false) {
     setActiveProjectIndex(index);
+    setActiveImage(null);
     if (returnToWork) {
       requestAnimationFrame(() => document.getElementById("gallery-work")?.scrollIntoView({ behavior: "smooth", block: "start" }));
     }
   }
   function moveImage(direction: -1 | 1) {
     if (!activeImage) return;
-    const activeImageIndex = galleryImages.findIndex((image) => image.label === activeImage.label);
+    const activeImageIndex = galleryImages.findIndex((image) => image.src === activeImage.src);
     setActiveImage(galleryImages[(activeImageIndex + direction + galleryImages.length) % galleryImages.length]);
   }
   return (
@@ -853,7 +854,7 @@ export function GalleryPage() {
       <section id="gallery-work" className="gallery-grid-section section-shell">
         <div className="gallery-grid-section__heading"><Eyebrow>{activeProject.title}</Eyebrow><span>Project gallery</span></div>
         <div className="gallery-grid">
-          {activeProject.images.map((image) => <button key={image.label} className={`gallery-item ${image.shape}`} type="button" onClick={() => setActiveImage(image)}><img src={image.src} alt={image.alt} /><span>{image.label}</span><Plus aria-hidden="true" /></button>)}
+          {activeProject.images.map((image) => <button key={image.src} className={`gallery-item ${image.shape}`} type="button" onClick={() => setActiveImage(image)}><img src={image.src} alt={image.alt} /><span>{image.label}</span><Plus aria-hidden="true" /></button>)}
         </div>
       </section>
       <section className="gallery-roll section-shell section-shell--olive" aria-labelledby="gallery-roll-title">
