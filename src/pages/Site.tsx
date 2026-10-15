@@ -837,8 +837,8 @@ export function GalleryPage() {
   }
   return (
     <Layout showSectionRules={false}>
-      <section className={`gallery-hero ${activeProject.title === "Cabinetry & Casework" ? "gallery-hero--cabinetry" : ""}`}>
-        {activeProject.title === "Cabinetry & Casework" && <img src={activeProject.cover} alt="" aria-hidden="true" className="gallery-hero__backdrop" />}
+      <section className={`gallery-hero ${activeProject.title === "Cabinetry & Casework" ? "gallery-hero--cabinetry" : ""} ${activeProject.title === "Retail Fixtures" ? "gallery-hero--retail" : ""}`}>
+        {["Cabinetry & Casework", "Retail Fixtures"].includes(activeProject.title) && <img src={activeProject.cover} alt="" aria-hidden="true" className="gallery-hero__backdrop" />}
         <img src={activeProject.cover} alt={activeProject.alt} className="gallery-hero__image" />
         <div className="gallery-hero__veil" />
         <div className="gallery-hero__content">
