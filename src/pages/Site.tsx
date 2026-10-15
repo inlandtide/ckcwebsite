@@ -155,13 +155,13 @@ const galleryProjects: GalleryProject[] = [
     cover: assets.healthcareReceptionOne,
     alt: "Healthcare reception desk with custom curved solid-surface top and light wood casework.",
     images: [
-      { src: assets.healthcareThree, alt: "DePaul hospital lobby with custom curved wood wall panels and architectural millwork.", label: "Healthcare / 01", shape: "gallery-item--wide" },
-      { src: assets.healthcareOne, alt: "Hospital skylight lobby with custom wall paneling and seating details.", label: "Healthcare / 02", shape: "" },
-      { src: assets.stLouisChildrensAquariumOne, alt: "St. Louis Children’s Hospital custom curved casework surrounding a pediatric aquarium feature.", label: "St. Louis Children’s / 01", shape: "" },
-      { src: assets.stLouisChildrensAquariumTwo, alt: "St. Louis Children’s Hospital curved reception casework framing a finished aquarium feature.", label: "St. Louis Children’s / 02", shape: "gallery-item--wide" },
-      { src: assets.stLouisChildrensAquariumThree, alt: "St. Louis Children’s Hospital custom aquarium casework in a pediatric outpatient environment.", label: "St. Louis Children’s / 03", shape: "" },
-      { src: assets.healthcareReceptionOne, alt: "Healthcare reception desk with custom curved white solid-surface top and light wood casework.", label: "Healthcare / 06", shape: "gallery-item--wide" },
-      { src: assets.healthcareReceptionTwo, alt: "Healthcare reception desk with custom curved white solid-surface top and light wood casework.", label: "Healthcare / 07", shape: "" },
+      { src: assets.healthcareThree, alt: "DePaul hospital lobby with custom curved wood wall panels and architectural millwork.", label: "Healthcare", shape: "gallery-item--wide" },
+      { src: assets.healthcareOne, alt: "Hospital skylight lobby with custom wall paneling and seating details.", label: "Healthcare", shape: "" },
+      { src: assets.stLouisChildrensAquariumOne, alt: "St. Louis Children’s Hospital custom curved casework surrounding a pediatric aquarium feature.", label: "St. Louis Children’s", shape: "" },
+      { src: assets.stLouisChildrensAquariumTwo, alt: "St. Louis Children’s Hospital curved reception casework framing a finished aquarium feature.", label: "St. Louis Children’s", shape: "gallery-item--wide" },
+      { src: assets.stLouisChildrensAquariumThree, alt: "St. Louis Children’s Hospital custom aquarium casework in a pediatric outpatient environment.", label: "St. Louis Children’s", shape: "" },
+      { src: assets.healthcareReceptionOne, alt: "Healthcare reception desk with custom curved white solid-surface top and light wood casework.", label: "Healthcare", shape: "gallery-item--wide" },
+      { src: assets.healthcareReceptionTwo, alt: "Healthcare reception desk with custom curved white solid-surface top and light wood casework.", label: "Healthcare", shape: "" },
     ],
   },
   {
@@ -169,14 +169,14 @@ const galleryProjects: GalleryProject[] = [
     cover: assets.retailFixturesHero,
     alt: "Kendra Scott retail fixture with custom dark wood display cabinetry and integrated glass shelving.",
     images: [
-      { src: assets.retailFixtureOne, alt: "CKC custom retail fixture with curved wood detail.", label: "Retail Fixtures / 01", shape: "gallery-item--wide" },
-      { src: assets.retailFixtureTwo, alt: "CKC commercial retail fixture with rounded wood paneling.", label: "Retail Fixtures / 02", shape: "" },
-      { src: assets.retailFixtureThree, alt: "CKC retail counter with curved millwork.", label: "Retail Fixtures / 03", shape: "gallery-item--wide" },
-      { src: assets.retailFixtureShop, alt: "CKC shop-built curved retail display fixture in progress.", label: "Retail Fixtures / 04", shape: "" },
-      { src: assets.retailFixtureComposite, alt: "Three finished views of a CKC retail eyewear display fixture.", label: "Retail Fixtures / 05", shape: "gallery-item--retail-composite" },
-      { src: assets.kendraScottHatBar, alt: "Kendra Scott retail fixture with stained wood shelving and display cabinetry.", label: "Kendra Scott / 01", shape: "gallery-item--wide" },
-      { src: assets.kendraScottFixtureOne, alt: "Kendra Scott retail fixture in progress with custom stained wood cabinetry and display shelving.", label: "Kendra Scott / 02", shape: "" },
-      { src: assets.kendraScottFixtureTwo, alt: "Kendra Scott stained wood retail display fixture with integrated glass shelving.", label: "Kendra Scott / 03", shape: "gallery-item--wide" },
+      { src: assets.retailFixtureOne, alt: "CKC custom retail fixture with curved wood detail.", label: "Retail Fixtures", shape: "gallery-item--wide" },
+      { src: assets.retailFixtureTwo, alt: "CKC commercial retail fixture with rounded wood paneling.", label: "Retail Fixtures", shape: "" },
+      { src: assets.retailFixtureThree, alt: "CKC retail counter with curved millwork.", label: "Retail Fixtures", shape: "gallery-item--wide" },
+      { src: assets.retailFixtureShop, alt: "CKC shop-built curved retail display fixture in progress.", label: "Retail Fixtures", shape: "" },
+      { src: assets.retailFixtureComposite, alt: "Three finished views of a CKC retail eyewear display fixture.", label: "Retail Fixtures", shape: "gallery-item--retail-composite" },
+      { src: assets.kendraScottHatBar, alt: "Kendra Scott retail fixture with stained wood shelving and display cabinetry.", label: "Kendra Scott", shape: "gallery-item--wide" },
+      { src: assets.kendraScottFixtureOne, alt: "Kendra Scott retail fixture in progress with custom stained wood cabinetry and display shelving.", label: "Kendra Scott", shape: "" },
+      { src: assets.kendraScottFixtureTwo, alt: "Kendra Scott stained wood retail display fixture with integrated glass shelving.", label: "Kendra Scott", shape: "gallery-item--wide" },
     ],
   },
   {
@@ -184,14 +184,14 @@ const galleryProjects: GalleryProject[] = [
     cover: assets.micdsCommons,
     alt: "CKC millwork across education spaces.",
     images: [
-      { src: assets.micdsCommons, alt: "Wood slat ceiling and custom millwork in an education commons.", label: "Education / 01", shape: "gallery-item--wide" },
-      { src: assets.micdsClassroom, alt: "Custom wood millwork in a learning space.", label: "Education / 02", shape: "" },
-      { src: assets.micdsLoungeWide, alt: "Custom wall panels and wood ceiling in a gathering space.", label: "Education / 03", shape: "gallery-item--wide" },
-      { src: assets.micdsReception, alt: "Custom wood ceiling and millwork in a commercial interior.", label: "Education / 04", shape: "gallery-item--tall" },
-      { src: assets.micdsCorridor, alt: "Custom millwork in an interior corridor.", label: "Education / 05", shape: "" },
-      { src: assets.micdsHallway, alt: "Wood wall panels and doors in an education hallway.", label: "Education / 06", shape: "gallery-item--wide" },
-      { src: assets.micdsLounge, alt: "Custom wall paneling and wood ceiling in an education lounge.", label: "Education / 07", shape: "" },
-      { src: assets.micdsBench, alt: "CKC detailed wood millwork in an interior corridor.", label: "Education / 08", shape: "gallery-item--wide" },
+      { src: assets.micdsCommons, alt: "Wood slat ceiling and custom millwork in an education commons.", label: "Education", shape: "gallery-item--wide" },
+      { src: assets.micdsClassroom, alt: "Custom wood millwork in a learning space.", label: "Education", shape: "" },
+      { src: assets.micdsLoungeWide, alt: "Custom wall panels and wood ceiling in a gathering space.", label: "Education", shape: "gallery-item--wide" },
+      { src: assets.micdsReception, alt: "Custom wood ceiling and millwork in a commercial interior.", label: "Education", shape: "gallery-item--tall" },
+      { src: assets.micdsCorridor, alt: "Custom millwork in an interior corridor.", label: "Education", shape: "" },
+      { src: assets.micdsHallway, alt: "Wood wall panels and doors in an education hallway.", label: "Education", shape: "gallery-item--wide" },
+      { src: assets.micdsLounge, alt: "Custom wall paneling and wood ceiling in an education lounge.", label: "Education", shape: "" },
+      { src: assets.micdsBench, alt: "CKC detailed wood millwork in an interior corridor.", label: "Education", shape: "gallery-item--wide" },
     ],
   },
   {
@@ -199,18 +199,18 @@ const galleryProjects: GalleryProject[] = [
     cover: assets.commercialEnvironmentHero,
     alt: "Commercial atrium with custom timber trusses, screens, and lounge millwork.",
     images: [
-      { src: assets.commercialEnvironmentOne, alt: "Custom branded reception feature in a commercial office environment.", label: "Architectural Woodwork / 01", shape: "gallery-item--wide" },
-      { src: assets.commercialEnvironmentTwo, alt: "Double-height commercial lobby with custom wood trusses and slatted screens.", label: "Architectural Woodwork / 02", shape: "" },
-      { src: assets.commercialEnvironmentThree, alt: "Commercial lobby with custom wood screens and built-in seating.", label: "Architectural Woodwork / 03", shape: "gallery-item--wide" },
-      { src: assets.commercialEnvironmentFour, alt: "Commercial hospitality bar with custom wood paneling and millwork.", label: "Architectural Woodwork / 04", shape: "" },
-      { src: assets.commercialEnvironmentFive, alt: "Commercial lounge and bar with a wood ceiling, millwork, and feature pendants.", label: "Architectural Woodwork / 05", shape: "gallery-item--wide" },
-      { src: assets.commercialEnvironmentSix, alt: "Levi's retail corridor with custom cedar wall panels.", label: "Architectural Woodwork / 06", shape: "" },
-      { src: assets.commercialEnvironmentSeven, alt: "Levi's retail store with custom wood checkout and display millwork.", label: "Architectural Woodwork / 07", shape: "gallery-item--wide" },
-      { src: assets.commercialEnvironmentEight, alt: "Retail service counter with custom textured cabinetry and display features.", label: "Architectural Woodwork / 08", shape: "" },
-      { src: assets.energizerInteriorOne, alt: "Commercial interior with custom wood ceiling framing and reception details.", label: "Architectural Woodwork / 09", shape: "gallery-item--wide" },
-      { src: assets.energizerInteriorTwo, alt: "Commercial collaborative space with a custom curved table and integrated millwork.", label: "Architectural Woodwork / 10", shape: "" },
-      { src: assets.energizerInteriorThree, alt: "Commercial interior stair with a custom curved wood platform and painted millwork.", label: "Architectural Woodwork / 11", shape: "gallery-item--wide" },
-      { src: assets.energizerInteriorFour, alt: "Commercial interior with custom wood stair, landing, and integrated guardrail detail.", label: "Architectural Woodwork / 12", shape: "" },
+      { src: assets.commercialEnvironmentOne, alt: "Custom branded reception feature in a commercial office environment.", label: "Architectural Woodwork", shape: "gallery-item--wide" },
+      { src: assets.commercialEnvironmentTwo, alt: "Double-height commercial lobby with custom wood trusses and slatted screens.", label: "Architectural Woodwork", shape: "" },
+      { src: assets.commercialEnvironmentThree, alt: "Commercial lobby with custom wood screens and built-in seating.", label: "Architectural Woodwork", shape: "gallery-item--wide" },
+      { src: assets.commercialEnvironmentFour, alt: "Commercial hospitality bar with custom wood paneling and millwork.", label: "Architectural Woodwork", shape: "" },
+      { src: assets.commercialEnvironmentFive, alt: "Commercial lounge and bar with a wood ceiling, millwork, and feature pendants.", label: "Architectural Woodwork", shape: "gallery-item--wide" },
+      { src: assets.commercialEnvironmentSix, alt: "Levi's retail corridor with custom cedar wall panels.", label: "Architectural Woodwork", shape: "" },
+      { src: assets.commercialEnvironmentSeven, alt: "Levi's retail store with custom wood checkout and display millwork.", label: "Architectural Woodwork", shape: "gallery-item--wide" },
+      { src: assets.commercialEnvironmentEight, alt: "Retail service counter with custom textured cabinetry and display features.", label: "Architectural Woodwork", shape: "" },
+      { src: assets.energizerInteriorOne, alt: "Commercial interior with custom wood ceiling framing and reception details.", label: "Architectural Woodwork", shape: "gallery-item--wide" },
+      { src: assets.energizerInteriorTwo, alt: "Commercial collaborative space with a custom curved table and integrated millwork.", label: "Architectural Woodwork", shape: "" },
+      { src: assets.energizerInteriorThree, alt: "Commercial interior stair with a custom curved wood platform and painted millwork.", label: "Architectural Woodwork", shape: "gallery-item--wide" },
+      { src: assets.energizerInteriorFour, alt: "Commercial interior with custom wood stair, landing, and integrated guardrail detail.", label: "Architectural Woodwork", shape: "" },
     ],
   },
   {
@@ -218,15 +218,15 @@ const galleryProjects: GalleryProject[] = [
     cover: assets.cabinetryCaseworkHero,
     alt: "Custom commercial casework and service counters in a finished retail interior.",
     images: [
-      { src: assets.cabinetryCaseworkGrayCabinets, alt: "Custom gray commercial cabinetry and casework with quartz countertops.", label: "Cabinetry & Casework / 01", shape: "gallery-item--wide" },
-      { src: assets.cabinetryCaseworkTwo, alt: "Integrated painted casework and built-ins in a hospitality interior.", label: "Cabinetry & Casework / 02", shape: "" },
-      { src: assets.cabinetryCaseworkThree, alt: "Architectural painted cabinetry and millwork in a lounge setting.", label: "Cabinetry & Casework / 03", shape: "gallery-item--wide" },
-      { src: assets.cabinetryCaseworkFour, alt: "Custom wood service counter and integrated cabinetry.", label: "Cabinetry & Casework / 04", shape: "" },
-      { src: assets.cabinetryCaseworkLobbyDisplay, alt: "Custom painted cabinetry and display casework in a finished hospitality interior.", label: "Cabinetry & Casework / 05", shape: "gallery-item--wide" },
-      { src: assets.enterpriseCenterSuiteOne, alt: "Hospitality suite with custom service counter millwork overlooking the arena.", label: "Cabinetry & Casework / 06", shape: "" },
-      { src: assets.enterpriseCenterSuiteTwo, alt: "Hospitality suite with custom cabinetry, bar counter, and service millwork.", label: "Cabinetry & Casework / 07", shape: "gallery-item--wide" },
-      { src: assets.enterpriseCenterSuiteThree, alt: "Hospitality suite with custom bar, wainscoting, and counter details.", label: "Cabinetry & Casework / 08", shape: "" },
-      { src: assets.weissmanBoardroom, alt: "Boardroom with a custom round conference table, wood base detail, and integrated shelving.", label: "Cabinetry & Casework / 09", shape: "gallery-item--wide" },
+      { src: assets.cabinetryCaseworkGrayCabinets, alt: "Custom gray commercial cabinetry and casework with quartz countertops.", label: "Cabinetry & Casework", shape: "gallery-item--wide" },
+      { src: assets.cabinetryCaseworkTwo, alt: "Integrated painted casework and built-ins in a hospitality interior.", label: "Cabinetry & Casework", shape: "" },
+      { src: assets.cabinetryCaseworkThree, alt: "Architectural painted cabinetry and millwork in a lounge setting.", label: "Cabinetry & Casework", shape: "gallery-item--wide" },
+      { src: assets.cabinetryCaseworkFour, alt: "Custom wood service counter and integrated cabinetry.", label: "Cabinetry & Casework", shape: "" },
+      { src: assets.cabinetryCaseworkLobbyDisplay, alt: "Custom painted cabinetry and display casework in a finished hospitality interior.", label: "Cabinetry & Casework", shape: "gallery-item--wide" },
+      { src: assets.enterpriseCenterSuiteOne, alt: "Hospitality suite with custom service counter millwork overlooking the arena.", label: "Cabinetry & Casework", shape: "" },
+      { src: assets.enterpriseCenterSuiteTwo, alt: "Hospitality suite with custom cabinetry, bar counter, and service millwork.", label: "Cabinetry & Casework", shape: "gallery-item--wide" },
+      { src: assets.enterpriseCenterSuiteThree, alt: "Hospitality suite with custom bar, wainscoting, and counter details.", label: "Cabinetry & Casework", shape: "" },
+      { src: assets.weissmanBoardroom, alt: "Boardroom with a custom round conference table, wood base detail, and integrated shelving.", label: "Cabinetry & Casework", shape: "gallery-item--wide" },
     ],
   },
   {
@@ -234,9 +234,9 @@ const galleryProjects: GalleryProject[] = [
     cover: assets.shopOverview,
     alt: "Overview of the CKC Woodworks shop floor in St. Louis.",
     images: [
-      { src: assets.shopOverview, alt: "Wide view of the CKC Woodworks production floor.", label: "CKC Shop / 01", shape: "gallery-item--wide" },
-      { src: assets.shopCnc, alt: "CKC CNC panel-processing equipment in the shop.", label: "CKC Shop / 02", shape: "" },
-      { src: assets.shopProduction, alt: "Custom commercial millwork and casework in production at CKC Woodworks.", label: "CKC Shop / 03", shape: "gallery-item--wide" },
+      { src: assets.shopOverview, alt: "Wide view of the CKC Woodworks production floor.", label: "CKC Shop", shape: "gallery-item--wide" },
+      { src: assets.shopCnc, alt: "CKC CNC panel-processing equipment in the shop.", label: "CKC Shop", shape: "" },
+      { src: assets.shopProduction, alt: "Custom commercial millwork and casework in production at CKC Woodworks.", label: "CKC Shop", shape: "gallery-item--wide" },
     ],
   },];
 
@@ -244,7 +244,6 @@ const galleryImages: GalleryImage[] = galleryProjects.flatMap((project) => proje
 
 type ServiceDefinition = {
   slug: string;
-  number: string;
   title: string;
   heroLine: string;
   heroAccent: string;
@@ -265,7 +264,6 @@ type TeamMember = {
 const serviceCatalog: ServiceDefinition[] = [
   {
     slug: "architectural-millwork",
-    number: "01",
     title: "Architectural millwork",
     heroLine: "Millwork that",
     heroAccent: "sets the room.",
@@ -277,7 +275,6 @@ const serviceCatalog: ServiceDefinition[] = [
   },
   {
     slug: "custom-cabinetry-casework",
-    number: "02",
     title: "Custom cabinetry & casework",
     heroLine: "Built around",
     heroAccent: "the workday.",
@@ -289,7 +286,6 @@ const serviceCatalog: ServiceDefinition[] = [
   },
   {
     slug: "commercial-fixtures",
-    number: "03",
     title: "Commercial fixtures",
     heroLine: "Fixtures with",
     heroAccent: "a point of view.",
@@ -301,7 +297,6 @@ const serviceCatalog: ServiceDefinition[] = [
   },
   {
     slug: "cnc-machining",
-    number: "04",
     title: "CNC machining",
     heroLine: "Precision at",
     heroAccent: "production scale.",
@@ -315,7 +310,6 @@ const serviceCatalog: ServiceDefinition[] = [
   },
   {
     slug: "countertops-specialty-shapes",
-    number: "05",
     title: "Countertops & specialty shapes",
     heroLine: "A custom surface,",
     heroAccent: "precisely made.",
@@ -327,7 +321,6 @@ const serviceCatalog: ServiceDefinition[] = [
   },
   {
     slug: "custom-finishes-veneer",
-    number: "06",
     title: "Custom finishes & veneer",
     heroLine: "The finish is",
     heroAccent: "part of the work.",
@@ -339,7 +332,6 @@ const serviceCatalog: ServiceDefinition[] = [
   },
   {
     slug: "shop-drawings-design-assist",
-    number: "07",
     title: "Shop drawings & design assist",
     heroLine: "Clarity before",
     heroAccent: "fabrication.",
@@ -424,7 +416,7 @@ function Header() {
                 <div className="services-nav__menu" aria-label="Services navigation">
                   <Link href="/services" className="services-nav__all">All services <ArrowUpRight aria-hidden="true" /></Link>
                   <div className="services-nav__list">
-                    {serviceCatalog.map((service) => <Link href={`/services/${service.slug}`} key={service.slug}><span>{service.number}</span>{service.title}</Link>)}
+                    {serviceCatalog.map((service) => <Link href={`/services/${service.slug}`} key={service.slug}>{service.title}</Link>)}
                   </div>
                 </div>
               )}
@@ -446,7 +438,7 @@ function Header() {
               <button type="button" className="mobile-services__toggle" aria-expanded={servicesMenuOpen} onClick={() => setServicesMenuOpen((open) => !open)}>Services <ChevronDown aria-hidden="true" /></button>
               {servicesMenuOpen && <div className="mobile-services__links">
                 <Link href="/services" className="mobile-services__all">All services <ArrowUpRight aria-hidden="true" /></Link>
-                {serviceCatalog.map((service) => <Link href={`/services/${service.slug}`} key={service.slug}><span>{service.number}</span>{service.title}</Link>)}
+                {serviceCatalog.map((service) => <Link href={`/services/${service.slug}`} key={service.slug}>{service.title}</Link>)}
               </div>}
             </div>
           ) : <Link key={href} href={href}>{label}</Link>)}
@@ -549,7 +541,7 @@ export function HomePage() {
       <section className="home-services section-shell section-shell--olive">
         <div className="home-services__intro"><Eyebrow>Capabilities</Eyebrow><h2>Built<br /><em>to last.</em></h2></div>
         <div className="home-services__list">
-          {serviceCatalog.slice(0, 4).map((service) => <Link href={`/services/${service.slug}`} key={service.slug} className="capability-row"><span>{service.number}</span><div><h3>{service.title}</h3></div><ArrowUpRight aria-hidden="true" /></Link>)}
+          {serviceCatalog.slice(0, 4).map((service) => <Link href={`/services/${service.slug}`} key={service.slug} className="capability-row"><div><h3>{service.title}</h3></div><ArrowUpRight aria-hidden="true" /></Link>)}
         </div>
       </section>
       <SectionRule />
@@ -602,9 +594,9 @@ export function AboutPage() {
       <section className="credentials-section section-shell">
         <Eyebrow>Credentials</Eyebrow>
         <div className="credentials-grid">
-          <article><span>01</span><h3>Union shop</h3><p>A skilled union team with the craft discipline and jobsite readiness commercial work requires.</p></article>
-          <article><span>02</span><h3>AWI certified</h3><p>Standards-led workmanship for architectural woodwork that has to meet demanding project expectations.</p></article>
-          <article><span>03</span><h3>QCP certified</h3><p>Quality control woven into the process, from shop drawings through fabrication and finish.</p></article>
+          <article><h3>Union shop</h3><p>A skilled union team with the craft discipline and jobsite readiness commercial work requires.</p></article>
+          <article><h3>AWI certified</h3><p>Standards-led workmanship for architectural woodwork that has to meet demanding project expectations.</p></article>
+          <article><h3>QCP certified</h3><p>Quality control woven into the process, from shop drawings through fabrication and finish.</p></article>
         </div>
       </section>
       <SectionRule />
@@ -696,8 +688,8 @@ export function ServicesPage() {
       <section className="services-ledger section-shell">
         <Eyebrow>What CKC makes</Eyebrow>
         <div className="services-ledger__grid">
-          {serviceCards.map((service) => <Link href={`/services/${service.slug}`} key={service.slug} className="service-card"><div className="service-card__meta"><span>{service.number}</span><ArrowUpRight aria-hidden="true" /></div><h2>{service.title}</h2><p>{service.cardCopy}</p><figure><img src={service.image} alt={service.alt} /></figure></Link>)}
-          <Link href="/contact" className="service-card service-card--cta"><div className="service-card__meta"><span>08</span><ArrowUpRight aria-hidden="true" /></div><h2>Contact<br /><em>us.</em></h2><p>Have a commercial woodwork scope in mind? Send CKC a note to begin the conversation.</p><span className="service-card__email">info@ckcwoodworks.com</span></Link>
+          {serviceCards.map((service) => <Link href={`/services/${service.slug}`} key={service.slug} className="service-card"><div className="service-card__meta service-card__meta--icon"><ArrowUpRight aria-hidden="true" /></div><h2>{service.title}</h2><p>{service.cardCopy}</p><figure><img src={service.image} alt={service.alt} /></figure></Link>)}
+          <Link href="/contact" className="service-card service-card--cta"><div className="service-card__meta service-card__meta--icon"><ArrowUpRight aria-hidden="true" /></div><h2>Contact<br /><em>us.</em></h2><p>Have a commercial woodwork scope in mind? Send CKC a note to begin the conversation.</p><span className="service-card__email">info@ckcwoodworks.com</span></Link>
         </div>
       </section>
       <SectionRule />
@@ -705,10 +697,10 @@ export function ServicesPage() {
       <section className="process-section section-shell section-shell--bone">
         <div><Eyebrow>How we work</Eyebrow><h2>Clarity at every<br /><em>critical point.</em></h2></div>
         <ol className="process-list">
-          <li><span>01</span><div><h3>Align</h3><p>Review the drawings, material intent, schedule, and conditions that shape the work.</p></div></li>
-          <li><span>02</span><div><h3>Coordinate</h3><p>Bring scope, field conditions, shop drawings, and finish expectations into focus.</p></div></li>
-          <li><span>03</span><div><h3>Fabricate</h3><p>Build with care for fit, finish, repetition, and the hard-working reality of the space.</p></div></li>
-          <li><span>04</span><div><h3>Finish</h3><p>Complete the final shop details with a clear focus on material quality and consistency.</p></div></li>
+          <li><div><h3>Align</h3><p>Review the drawings, material intent, schedule, and conditions that shape the work.</p></div></li>
+          <li><div><h3>Coordinate</h3><p>Bring scope, field conditions, shop drawings, and finish expectations into focus.</p></div></li>
+          <li><div><h3>Fabricate</h3><p>Build with care for fit, finish, repetition, and the hard-working reality of the space.</p></div></li>
+          <li><div><h3>Finish</h3><p>Complete the final shop details with a clear focus on material quality and consistency.</p></div></li>
         </ol>
       </section>
     </Layout>
@@ -725,7 +717,7 @@ function ServiceDetailPage({ slug }: { slug: string }) {
     <Layout>
       <section className="page-hero page-hero--services service-page-hero">
         <figure className="page-hero__image"><img src={service.heroImage ?? service.image} alt={service.heroAlt ?? service.alt} /><figcaption>{service.title}</figcaption></figure>
-        <div className="page-hero__copy"><Eyebrow>{service.number} · {service.title}</Eyebrow><h1>{service.heroLine}<br /><em>{service.heroAccent}</em></h1><p>{service.cardCopy}</p><Link href="/contact" className="text-link">Discuss this scope <ArrowUpRight aria-hidden="true" /></Link></div>
+        <div className="page-hero__copy"><Eyebrow>{service.title}</Eyebrow><h1>{service.heroLine}<br /><em>{service.heroAccent}</em></h1><p>{service.cardCopy}</p><Link href="/contact" className="text-link">Discuss this scope <ArrowUpRight aria-hidden="true" /></Link></div>
       </section>
       <SectionRule />
 
@@ -737,7 +729,7 @@ function ServiceDetailPage({ slug }: { slug: string }) {
 
       <section className="service-page-next section-shell section-shell--olive">
         <Eyebrow>Explore more</Eyebrow>
-        <div><p>Next service</p><Link href={`/services/${nextService.slug}`}><span>{nextService.number}</span>{nextService.title}<ArrowRight aria-hidden="true" /></Link><Link href="/services" className="text-link">All services <ArrowUpRight aria-hidden="true" /></Link></div>
+        <div><p>Next service</p><Link href={`/services/${nextService.slug}`}>{nextService.title}<ArrowRight aria-hidden="true" /></Link><Link href="/services" className="text-link">All services <ArrowUpRight aria-hidden="true" /></Link></div>
       </section>
     </Layout>
   );
@@ -758,7 +750,7 @@ function LogoWall({ logos, kind }: { logos: Array<LogoPlaceholder | ClientLogo>;
     const isEnterpriseCenter = isOfficialLogo && logo.name === "Enterprise Center";
     const isWashuMedicine = isOfficialLogo && logo.name === "Washington University School of Medicine";
     const retainsLightIconDetail = isOfficialLogo && ["Enterprise Center", "Mercy Hospital", "Washington University School of Medicine"].includes(logo.name);
-    return <article key={logo.name} className={`logo-card ${isOfficialLogo ? "logo-card--official" : `logo-card--${logo.treatment}`} ${isCkcSignoff ? "logo-card--more" : ""} ${isEnterpriseCenter ? "logo-card--enterprise" : ""} ${isWashuMedicine ? "logo-card--washu" : ""} ${retainsLightIconDetail ? "logo-card--detail" : ""}`}><span className="logo-card__index">{(index + 1).toString().padStart(2, "0")}</span>{isOfficialLogo ? <><img className="logo-card__image" src={logo.src} alt={isCkcSignoff ? "CKC Woodworks logo" : `${logo.name} logo`} />{isCkcSignoff && <h2>And many<br /><em>more!</em></h2>}</> : <><div className="logo-card__mark">{logo.monogram}</div><h2>{logo.name}</h2></>}</article>;
+    return <article key={logo.name} className={`logo-card ${isOfficialLogo ? "logo-card--official" : `logo-card--${logo.treatment}`} ${isCkcSignoff ? "logo-card--more" : ""} ${isEnterpriseCenter ? "logo-card--enterprise" : ""} ${isWashuMedicine ? "logo-card--washu" : ""} ${retainsLightIconDetail ? "logo-card--detail" : ""}`}>{isOfficialLogo ? <><img className="logo-card__image" src={logo.src} alt={isCkcSignoff ? "CKC Woodworks logo" : `${logo.name} logo`} />{isCkcSignoff && <h2>And many<br /><em>more!</em></h2>}</> : <><div className="logo-card__mark">{logo.monogram}</div><h2>{logo.name}</h2></>}</article>;
   })}</div>;
 }
 
@@ -852,7 +844,7 @@ export function GalleryPage() {
         <div className="gallery-hero__label">CKC portfolio photography</div>
       </section>
       <section className="gallery-project-nav section-shell" aria-label="Select gallery project">
-        {galleryProjects.map((project, index) => <button key={project.title} type="button" className={activeProjectIndex === index ? "is-active" : ""} onClick={() => selectProject(index)} aria-pressed={activeProjectIndex === index}><span>{`0${index + 1}`}</span><img src={project.cover} alt="" /><strong>{project.title}</strong><ArrowUpRight aria-hidden="true" /></button>)}
+        {galleryProjects.map((project, index) => <button key={project.title} type="button" className={activeProjectIndex === index ? "is-active" : ""} onClick={() => selectProject(index)} aria-pressed={activeProjectIndex === index}><img src={project.cover} alt="" /><strong>{project.title}</strong><ArrowUpRight aria-hidden="true" /></button>)}
       </section>
       <section id="gallery-work" className="gallery-grid-section section-shell">
         <div className="gallery-grid-section__heading"><Eyebrow>{activeProject.title}</Eyebrow><span>Project gallery</span></div>
