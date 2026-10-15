@@ -152,6 +152,21 @@ const partnerLogos: LogoPlaceholder[] = [
 
 const galleryProjects: GalleryProject[] = [
   {
+    title: "Education",
+    cover: assets.micdsCommons,
+    alt: "CKC millwork across education spaces.",
+    images: [
+      { src: assets.micdsCommons, alt: "Wood slat ceiling and custom millwork in an education commons.", label: "Education", shape: "gallery-item--wide" },
+      { src: assets.micdsClassroom, alt: "Custom wood millwork in a learning space.", label: "Education", shape: "" },
+      { src: assets.micdsLoungeWide, alt: "Custom wall panels and wood ceiling in a gathering space.", label: "Education", shape: "gallery-item--wide" },
+      { src: assets.micdsReception, alt: "Custom wood ceiling and millwork in a commercial interior.", label: "Education", shape: "gallery-item--tall" },
+      { src: assets.micdsCorridor, alt: "Custom millwork in an interior corridor.", label: "Education", shape: "" },
+      { src: assets.micdsHallway, alt: "Wood wall panels and doors in an education hallway.", label: "Education", shape: "gallery-item--wide" },
+      { src: assets.micdsLounge, alt: "Custom wall paneling and wood ceiling in an education lounge.", label: "Education", shape: "" },
+      { src: assets.micdsBench, alt: "CKC detailed wood millwork in an interior corridor.", label: "Education", shape: "gallery-item--wide" },
+    ],
+  },
+  {
     title: "Healthcare",
     cover: assets.healthcareReceptionOne,
     alt: "Healthcare reception desk with custom curved solid-surface top and light wood casework.",
@@ -178,21 +193,6 @@ const galleryProjects: GalleryProject[] = [
       { src: assets.kendraScottHatBar, alt: "Kendra Scott retail fixture with stained wood shelving and display cabinetry.", label: "Kendra Scott", shape: "gallery-item--wide" },
       { src: assets.kendraScottFixtureOne, alt: "Kendra Scott retail fixture in progress with custom stained wood cabinetry and display shelving.", label: "Kendra Scott", shape: "" },
       { src: assets.kendraScottFixtureTwo, alt: "Kendra Scott stained wood retail display fixture with integrated glass shelving.", label: "Kendra Scott", shape: "gallery-item--wide" },
-    ],
-  },
-  {
-    title: "Education",
-    cover: assets.micdsCommons,
-    alt: "CKC millwork across education spaces.",
-    images: [
-      { src: assets.micdsCommons, alt: "Wood slat ceiling and custom millwork in an education commons.", label: "Education", shape: "gallery-item--wide" },
-      { src: assets.micdsClassroom, alt: "Custom wood millwork in a learning space.", label: "Education", shape: "" },
-      { src: assets.micdsLoungeWide, alt: "Custom wall panels and wood ceiling in a gathering space.", label: "Education", shape: "gallery-item--wide" },
-      { src: assets.micdsReception, alt: "Custom wood ceiling and millwork in a commercial interior.", label: "Education", shape: "gallery-item--tall" },
-      { src: assets.micdsCorridor, alt: "Custom millwork in an interior corridor.", label: "Education", shape: "" },
-      { src: assets.micdsHallway, alt: "Wood wall panels and doors in an education hallway.", label: "Education", shape: "gallery-item--wide" },
-      { src: assets.micdsLounge, alt: "Custom wall paneling and wood ceiling in an education lounge.", label: "Education", shape: "" },
-      { src: assets.micdsBench, alt: "CKC detailed wood millwork in an interior corridor.", label: "Education", shape: "gallery-item--wide" },
     ],
   },
   {
