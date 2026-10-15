@@ -1,0 +1,13 @@
+{
+  "name": "CKC Woodworks",
+  "short_name": "CKC",
+  "start_url": "/",
+  "display": "browser",
+  "background_color": "#f4f0e7",
+  "theme_color": "#3b3a22",
+  "icons": [
+    { "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" },
+    { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" }
+  ]
+}

@@ -1,5 +1,6 @@
 import { type ReactNode, useEffect, useState } from "react";
 import { Link, useLocation } from "wouter";
+import ContactForm from "../components/ContactForm";
 import {
   ArrowDownRight,
   ArrowLeft,
@@ -113,19 +114,19 @@ type ClientLogo = {
 
 const portfolioLogos: ClientLogo[] = [
   { name: "Mercy Hospital", src: "/media/mercy-monochrome-detail_f8e352c8.svg" },
-  { name: "SSM Health Cardinal Glennon Children’s Hospital", src: "/media/cardinal-glennon_bd857765.png" },
-  { name: "St. Louis Children’s Hospital", src: "/media/st-louis-childrens-hospital-logo_5ac160be.png" },
+  { name: "SSM Health Cardinal Glennon Children’s Hospital", src: "/media/cardinal-glennon-official.svg" },
+  { name: "St. Louis Children’s Hospital", src: "/media/st-louis-childrens-hospital-official.svg" },
   { name: "CHANEL", src: "/media/chanel_7712e037.svg" },
   { name: "Kendra Scott", src: "/media/kendra-scott_b74a77cc.svg" },
   { name: "MICDS", src: "/media/micds_22f6d495.png" },
   { name: "Levi’s", src: "/media/levis_a17148d1.svg" },
   { name: "Missouri Botanical Garden", src: "/media/missouri-botanical-garden_e0b71354.svg" },
-  { name: "SSM Health", src: "/media/ssm-health_6f8e12b2.png" },
+  { name: "SSM Health", src: "/media/ssm-health-wordmark-official.svg" },
   { name: "BJC HealthCare", src: "/media/bjc-healthcare_6152c128.svg" },
   { name: "Neiman Marcus", src: "/media/neiman-marcus_e90b2fb8.svg" },
   { name: "St. Louis Cardinals", src: "/media/st-louis-cardinals-team-cap-on-light_6dd7b743.svg" },
   { name: "Enterprise Center", src: "/media/enterprise-center-logo-vertical-monochrome-white-e_4257861a.svg" },
-  { name: "Washington University School of Medicine", src: "/media/washu-medicine-monochrome-detail-cropped_0c2dc185.png" },
+  { name: "Washington University School of Medicine", src: "/media/washu-medicine-official.svg" },
   { name: "Ameren Missouri", src: "/media/ameren-missouri-monochrome-clean_8ea9c149.png" },
   { name: "FlightSafety International", src: "/media/flight-safety-international-black_cdde1cba.png" },
 ];
@@ -456,12 +457,13 @@ function InquiryBand() {
         <div className="inquiry-band__copy">
           <Eyebrow>Start a project</Eyebrow>
           <h2>The next build<br /><em>starts here.</em></h2>
+          <a className="inquiry-link" href="mailto:info@ckcwoodworks.com?subject=CKC%20Woodworks%20Project%20Inquiry">
+            <span>Start the conversation</span>
+            <strong>info@ckcwoodworks.com</strong>
+            <ArrowUpRight aria-hidden="true" />
+          </a>
         </div>
-        <a className="inquiry-link" href="mailto:info@ckcwoodworks.com?subject=CKC%20Woodworks%20Project%20Inquiry">
-          <span>Start the conversation</span>
-          <strong>info@ckcwoodworks.com</strong>
-          <ArrowUpRight aria-hidden="true" />
-        </a>
+        <ContactForm variant="dark" formLocation="footer" />
       </div>
     </section>
   );
@@ -515,7 +517,7 @@ export function HomePage() {
           <h1>Made for the rooms<br /><em>people remember.</em></h1>
           <p>Commercial woodwork, cabinetry, and interiors.</p>
           <div className="hero-actions">
-            <Link href="/portfolio" className="button button--bone">Selected work <ArrowDownRight aria-hidden="true" /></Link>
+            <Link href="/gallery" className="button button--bone">Selected work <ArrowDownRight aria-hidden="true" /></Link>
             <Link href="/services" className="text-link">Our capabilities <ArrowRight aria-hidden="true" /></Link>
           </div>
         </div>
@@ -749,8 +751,9 @@ function LogoWall({ logos, kind }: { logos: Array<LogoPlaceholder | ClientLogo>;
     const isCkcSignoff = isOfficialLogo && logo.featured;
     const isEnterpriseCenter = isOfficialLogo && logo.name === "Enterprise Center";
     const isWashuMedicine = isOfficialLogo && logo.name === "Washington University School of Medicine";
+    const isHospitalLogo = isOfficialLogo && ["SSM Health Cardinal Glennon Children’s Hospital", "St. Louis Children’s Hospital"].includes(logo.name);
     const retainsLightIconDetail = isOfficialLogo && ["Enterprise Center", "Mercy Hospital", "Washington University School of Medicine"].includes(logo.name);
-    return <article key={logo.name} className={`logo-card ${isOfficialLogo ? "logo-card--official" : `logo-card--${logo.treatment}`} ${isCkcSignoff ? "logo-card--more" : ""} ${isEnterpriseCenter ? "logo-card--enterprise" : ""} ${isWashuMedicine ? "logo-card--washu" : ""} ${retainsLightIconDetail ? "logo-card--detail" : ""}`}>{isOfficialLogo ? <><img className="logo-card__image" src={logo.src} alt={isCkcSignoff ? "CKC Woodworks logo" : `${logo.name} logo`} />{isCkcSignoff && <h2>And many<br /><em>more!</em></h2>}</> : <><div className="logo-card__mark">{logo.monogram}</div><h2>{logo.name}</h2></>}</article>;
+    return <article key={logo.name} className={`logo-card ${isOfficialLogo ? "logo-card--official" : `logo-card--${logo.treatment}`} ${isCkcSignoff ? "logo-card--more" : ""} ${isEnterpriseCenter ? "logo-card--enterprise" : ""} ${isWashuMedicine ? "logo-card--washu" : ""} ${isHospitalLogo ? "logo-card--hospital" : ""} ${retainsLightIconDetail ? "logo-card--detail" : ""}`}>{isOfficialLogo ? <><img className="logo-card__image" src={logo.src} alt={isCkcSignoff ? "CKC Woodworks logo" : `${logo.name} logo`} />{isCkcSignoff && <h2>And many<br /><em>more!</em></h2>}</> : <><div className="logo-card__mark">{logo.monogram}</div><h2>{logo.name}</h2></>}</article>;
   })}</div>;
 }
 
@@ -787,6 +790,7 @@ export function ContactPage() {
           <h1>Let’s make<br /><em>something lasting.</em></h1>
           <p>Send the project type, scope, and materials you have in mind. We will be in touch.</p>
           <a className="contact-hero__email" href="mailto:info@ckcwoodworks.com?subject=CKC%20Woodworks%20Project%20Inquiry">info@ckcwoodworks.com <ArrowUpRight aria-hidden="true" /></a>
+          <ContactForm variant="dark" formLocation="contact-page" />
         </div>
       </section>
       <SectionRule />
@@ -813,7 +817,7 @@ function galleryProjectIndexFromLocation(location: string) {
 
 export function GalleryPage() {
   const [location] = useLocation();
-  const [activeProjectIndex, setActiveProjectIndex] = useState(() => galleryProjectIndexFromLocation(location));
+  const [activeProjectIndex, setActiveProjectIndex] = useState(0);
   const [activeImage, setActiveImage] = useState<GalleryImage | null>(null);
   useEffect(() => {
     setActiveProjectIndex(galleryProjectIndexFromLocation(location));

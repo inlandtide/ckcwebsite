@@ -1,4 +1,6 @@
 import ErrorBoundary from "./components/ErrorBoundary";
+import Seo from "./components/Seo";
+import Analytics from "./components/Analytics";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import { Route, Switch } from "wouter";
 import {
@@ -23,6 +25,8 @@ export default function App() {
   return (
     <ErrorBoundary>
       <ThemeProvider defaultTheme="light">
+        <Seo />
+        <Analytics />
         <Switch>
             <Route path="/" component={HomePage} />
             <Route path="/about" component={AboutPage} />

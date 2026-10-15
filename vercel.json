@@ -4,13 +4,9 @@
   "installCommand": "pnpm install --frozen-lockfile",
   "buildCommand": "pnpm build",
   "outputDirectory": "dist",
-  "rewrites": [
-    { "source": "/about", "destination": "/index.html" },
-    { "source": "/careers", "destination": "/index.html" },
-    { "source": "/contact", "destination": "/index.html" },
-    { "source": "/services", "destination": "/index.html" },
-    { "source": "/services/:path*", "destination": "/index.html" },
-    { "source": "/portfolio", "destination": "/index.html" },
-    { "source": "/gallery", "destination": "/index.html" }
-  ]
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "functions": {
+    "api/contact.ts": { "maxDuration": 60 }
+  }
 }

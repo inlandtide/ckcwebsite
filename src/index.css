@@ -369,6 +369,8 @@ h1 em, h2 em { color: var(--copper); font-style: italic; font-weight: 500; }
 .logo-card--official:hover .logo-card__image { transform: scale(1.025); }
 .logo-page:not(.logo-page--partners) .logo-card--detail .logo-card__image { filter: none; }
 .logo-card--washu .logo-card__image { width: min(94%, 15rem); max-height: 6.25rem; }
+.logo-card--hospital .logo-card__image { width: min(100%, 20rem); max-height: 6.25rem; }
+.logo-page:not(.logo-page--partners) .logo-card--washu .logo-card__image { filter: grayscale(1); }
 .logo-card--enterprise .logo-card__image { width: min(62%, 8.5rem); max-height: 7.75rem; filter: none; }
 .logo-page:not(.logo-page--partners) .logo-card--enterprise .logo-card__image { filter: none; }
 .logo-card--official .logo-card__type { color: color-mix(in srgb, var(--olive) 58%, transparent); }
@@ -457,7 +459,7 @@ h1 em, h2 em { color: var(--copper); font-style: italic; font-weight: 500; }
 .gallery-roll__links button:hover svg, .gallery-roll__links button.is-active svg { color: var(--bone-light); transform: translate(2px, -2px); }
 
 .inquiry-band { padding: clamp(2.75rem, 5vw, 5.5rem) clamp(1.25rem, 7vw, 8rem); background: var(--olive); color: var(--bone); }
-.inquiry-band__body { display: grid; grid-template-columns: minmax(0, 1fr) minmax(18rem, .62fr); gap: clamp(2rem, 7vw, 7rem); align-items: end; }
+.inquiry-band__body { display: grid; grid-template-columns: minmax(0, 1fr) minmax(18rem, .85fr); gap: clamp(2rem, 7vw, 7rem); align-items: start; }
 .inquiry-band__copy { display: grid; gap: 1.35rem; }
 .inquiry-band h2 { color: var(--bone); font-size: clamp(3.5rem, 5.6vw, 6rem); }
 .inquiry-band h2 em { color: var(--copper); }

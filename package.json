@@ -5,11 +5,13 @@
   "type": "module",
   "scripts": {
     "dev": "vite --host",
-    "build": "vite build",
+    "build": "vite build && node scripts/prerender.mjs",
     "preview": "vite preview --host",
-    "check": "tsc --noEmit"
+    "check": "tsc --noEmit",
+    "test": "node --test scripts/test-contact-delivery.mjs"
   },
   "dependencies": {
+    "@vercel/functions": "^3.10.1",
     "clsx": "^2.1.1",
     "lucide-react": "^0.468.0",
     "react": "^19.2.1",

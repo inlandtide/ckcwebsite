@@ -1,0 +1,33 @@
+{
+  "retrieved": "2026-10-15",
+  "assets": [
+    {
+      "file": "cardinal-glennon-official.svg",
+      "brand": "SSM Health Cardinal Glennon Children's Hospital",
+      "sourcePage": "https://www.ssmhealth.com/cardinal-glennon",
+      "sourceAsset": "https://www.ssmhealth.com/getmedia/30464904-5dfe-4cc0-93f3-e6996f230165/cardinal-glennon.svg?ext=.svg",
+      "notes": "Official vector header logo with a close-fitting viewBox."
+    },
+    {
+      "file": "ssm-health-wordmark-official.svg",
+      "brand": "SSM Health",
+      "sourcePage": "https://www.ssmhealth.com/cardinal-glennon",
+      "sourceAsset": "https://www.ssmhealth.com/getmedia/30464904-5dfe-4cc0-93f3-e6996f230165/cardinal-glennon.svg?ext=.svg",
+      "notes": "SSM Health wordmark clipped from the official hospital lockup by changing only the viewBox to 117.99 5.85 133.54 22.14. All original paths are unchanged. This wordmark omits the separate infinity emblem present in the former raster logo."
+    },
+    {
+      "file": "washu-medicine-official.svg",
+      "brand": "WashU Medicine",
+      "sourcePage": "https://medicine.washu.edu/",
+      "sourceAsset": "https://medicine.washu.edu/app/themes/medicine/_/img/washu-medicine-1l-rgb.svg",
+      "notes": "Official vector header logo. Display in grayscale to retain contrast within the crest."
+    },
+    {
+      "file": "st-louis-childrens-hospital-official.svg",
+      "brand": "St. Louis Children's Hospital",
+      "sourcePage": "https://www.stlouischildrens.org/",
+      "sourceAsset": "https://www.stlouischildrens.org/themes/custom/ctek/slch/assets/img/SLCH_Logo.svg",
+      "notes": "Official vector header lockup. Removed Adobe editor metadata, DOCTYPE entities, and unsupported foreignObject; artwork is unchanged."
+    }
+  ]
+}
