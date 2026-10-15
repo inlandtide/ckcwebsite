@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://ckcwebsite.vercel.app/sitemap.xml
