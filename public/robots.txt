@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://ckcwebsite.vercel.app/sitemap.xml
+Sitemap: https://ckcwoodworks.com/sitemap.xml
