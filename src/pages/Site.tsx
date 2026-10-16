@@ -83,7 +83,7 @@ const assets = {
   serviceCountertops: "/media/project-p-105939_be470785.jpg",
   serviceCnc: "/media/img-1867_d4186b85.jpg",
   serviceCncHero: "/media/ckc-cnc-panel-processing-moulding-stl_28b513f9.jpg",
-  serviceFinishes: "/media/img-1912_ff0eed24.jpg",
+  serviceFinishes: "/media/finishing-craftsman-varnishing-wood_d0e8658e.webp",
   serviceCoordination: "/media/img-1872_b8f2b558.jpg",
 };
 
@@ -322,14 +322,14 @@ const serviceCatalog: ServiceDefinition[] = [
   },
   {
     slug: "custom-finishes-veneer",
-    title: "Custom finishes & veneer",
+    title: "Finishing",
     heroLine: "The finish is",
     heroAccent: "part of the work.",
-    cardCopy: "Finish development, veneer selection, and color matching with a close eye on material character.",
-    overview: "Thoughtful finish development, veneer selection, and color matching to give commercial woodwork a cohesive and enduring material character.",
-    scope: ["Custom finish development", "Veneer selection", "Color & sheen matching"],
-    image: assets.commercialEnvironmentSix,
-    alt: "CKC finished wood wall panels with visible grain and veneer character.",
+    cardCopy: "Stain development, color matching, and protective finishes with a close eye on wood character.",
+    overview: "Stain development, color matching, and protective finishes that bring out material character and stand up to use.",
+    scope: ["Stain & color development", "Color matching", "Protective finish systems"],
+    image: assets.serviceFinishes,
+    alt: "Craftsman applying a clear wood finish with a brush in a workshop.",
   },
   {
     slug: "shop-drawings-design-assist",
