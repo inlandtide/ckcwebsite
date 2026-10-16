@@ -80,6 +80,7 @@ const assets = {
   serviceMillwork: "/media/img-1913_a0d80be8.jpg",
   serviceCasework: "/media/img-1870_2e2a4583.jpg",
   serviceFixtures: "/media/project-p-105926_873b0560.jpg",
+  commercialFixturesServiceHero: "/media/kendra-scott-fixture-two-service-hero-wide_33e5ecab.webp",
   serviceCountertops: "/media/project-p-105939_be470785.jpg",
   serviceCnc: "/media/img-1867_d4186b85.jpg",
   serviceCncHero: "/media/ckc-cnc-panel-processing-moulding-stl_28b513f9.jpg",
@@ -295,6 +296,8 @@ const serviceCatalog: ServiceDefinition[] = [
     scope: ["Reception & service counters", "Retail displays", "Branded commercial fixtures"],
     image: assets.serviceFixtures,
     alt: "CKC custom commercial fixture with curved wood detailing.",
+    heroImage: assets.commercialFixturesServiceHero,
+    heroAlt: "Custom dark-wood retail display fixture with illuminated glass shelving and integrated cabinetry.",
   },
   {
     slug: "cnc-machining",
