@@ -64,7 +64,7 @@ const assets = {
   stLouisChildrensAquariumOne: "/media/st-louis-childrens-aquarium-01_ec89b304.webp",
   stLouisChildrensAquariumTwo: "/media/st-louis-childrens-aquarium-02_514fdafb.jpg",
   stLouisChildrensAquariumThree: "/media/st-louis-childrens-aquarium-03_0ab769ca.webp",
-  healthcareHero: "/media/st-louis-childrens-aquarium-hero-wide_7d820437.webp",
+  healthcareHero: "/media/st-louis-childrens-aquarium-hero-wide-people-removed_ab24df45.webp",
   healthcareReceptionOne: "/media/healthcare-reception-01_6123ae47.webp",
   healthcareReceptionTwo: "/media/healthcare-reception-02_aa8ea161.webp",
   energizerInteriorOne: "/media/energizer-interior-01_86e380b2.jpg",
