@@ -52,6 +52,7 @@ const assets = {
   commercialEnvironmentSeven: "/media/commercial-environments-07_5aef4b2d.jpg",
   commercialEnvironmentEight: "/media/commercial-environments-08_8d431197.jpg",
   commercialEnvironmentHero: "/media/commercial-environments-hero-original_086df75f.png",
+  architecturalWoodworkHero: "/media/energizer-interior-04-hero-wide_fcb40e7c.webp",
   cabinetryCaseworkTwo: "/media/cabinetry-casework-02_9709c7f4.jpg",
   cabinetryCaseworkThree: "/media/cabinetry-casework-03_924df605.jpg",
   cabinetryCaseworkFour: "/media/cabinetry-casework-04_875a6ee3.jpg",
@@ -198,8 +199,8 @@ const galleryProjects: GalleryProject[] = [
   },
   {
     title: "Architectural Woodwork",
-    cover: assets.commercialEnvironmentHero,
-    alt: "Commercial atrium with custom timber trusses, screens, and lounge millwork.",
+    cover: assets.architecturalWoodworkHero,
+    alt: "Custom light-oak stair, railings, wall panels, and curved platform in a commercial interior.",
     images: [
       { src: assets.commercialEnvironmentOne, alt: "Custom branded reception feature in a commercial office environment.", label: "Architectural Woodwork", shape: "gallery-item--wide" },
       { src: assets.commercialEnvironmentTwo, alt: "Double-height commercial lobby with custom wood trusses and slatted screens.", label: "Architectural Woodwork", shape: "" },
