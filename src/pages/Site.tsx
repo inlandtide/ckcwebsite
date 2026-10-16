@@ -42,7 +42,7 @@ const assets = {
   kendraScottHatBar: "/media/kendra-scott-hat-back-bar_16dab244.png",
   kendraScottFixtureOne: "/media/kendra-scott-fixture-one_8bc14b2a.webp",
   kendraScottFixtureTwo: "/media/kendra-scott-fixture-two_0f8ea988.webp",
-  retailFixturesHero: "/media/kendra-scott-retail-fixtures-hero-clean-final_eb0388de.webp",
+  retailFixturesHero: "/media/kendra-scott-retail-fixtures-hero-wide_f74192aa.webp",
   commercialEnvironmentOne: "/media/commercial-environments-01_99918991.jpg",
   commercialEnvironmentTwo: "/media/commercial-environments-02_2efefda5.webp",
   commercialEnvironmentThree: "/media/commercial-environments-03_8461ac5e.webp",
