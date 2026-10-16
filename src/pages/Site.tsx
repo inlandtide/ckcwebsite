@@ -42,7 +42,7 @@ const assets = {
   kendraScottHatBar: "/media/kendra-scott-hat-back-bar_16dab244.png",
   kendraScottFixtureOne: "/media/kendra-scott-fixture-one_8bc14b2a.webp",
   kendraScottFixtureTwo: "/media/kendra-scott-fixture-two_0f8ea988.webp",
-  retailFixturesHero: "/media/kendra-scott-retail-fixtures-hero_c38bf75f.webp",
+  retailFixturesHero: "/media/kendra-scott-retail-fixtures-hero-clean-final_eb0388de.webp",
   commercialEnvironmentOne: "/media/commercial-environments-01_99918991.jpg",
   commercialEnvironmentTwo: "/media/commercial-environments-02_2efefda5.webp",
   commercialEnvironmentThree: "/media/commercial-environments-03_8461ac5e.webp",
@@ -837,8 +837,8 @@ export function GalleryPage() {
   }
   return (
     <Layout showSectionRules={false}>
-      <section className={`gallery-hero ${activeProject.title === "Cabinetry & Casework" ? "gallery-hero--cabinetry" : ""} ${activeProject.title === "Retail Fixtures" ? "gallery-hero--retail" : ""}`}>
-        {["Cabinetry & Casework", "Retail Fixtures"].includes(activeProject.title) && <img src={activeProject.cover} alt="" aria-hidden="true" className="gallery-hero__backdrop" />}
+      <section className={`gallery-hero ${activeProject.title === "Cabinetry & Casework" ? "gallery-hero--cabinetry" : ""}`}>
+        {activeProject.title === "Cabinetry & Casework" && <img src={activeProject.cover} alt="" aria-hidden="true" className="gallery-hero__backdrop" />}
         <img src={activeProject.cover} alt={activeProject.alt} className="gallery-hero__image" />
         <div className="gallery-hero__veil" />
         <div className="gallery-hero__content">

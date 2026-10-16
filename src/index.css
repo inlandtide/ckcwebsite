@@ -405,9 +405,6 @@ h1 em, h2 em { color: var(--copper); font-style: italic; font-weight: 500; }
 .gallery-hero--cabinetry .gallery-hero__backdrop { position: absolute; inset: -2rem; width: calc(100% + 4rem); height: calc(100% + 4rem); object-fit: cover; filter: blur(18px) saturate(.55) contrast(1.08) brightness(.42); transform: scale(1.04); animation: none; }
 .gallery-hero--cabinetry .gallery-hero__image { z-index: 1; transform: scale(.91); filter: saturate(.7) contrast(1.05) brightness(.72); animation: none; }
 .gallery-hero--cabinetry:hover .gallery-hero__image { transform: scale(.93); }
-.gallery-hero--retail .gallery-hero__backdrop { position: absolute; inset: -2rem; width: calc(100% + 4rem); height: calc(100% + 4rem); object-fit: cover; filter: blur(18px) saturate(.52) contrast(1.08) brightness(.42); transform: scale(1.04); animation: none; }
-.gallery-hero--retail .gallery-hero__image { z-index: 1; object-fit: contain; transform: scale(.88); filter: saturate(.8) contrast(1.04) brightness(.74); animation: none; }
-.gallery-hero--retail:hover .gallery-hero__image { transform: scale(.9); }
 .gallery-hero__veil { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(28,28,17,.9) 0%, rgba(28,28,17,.55) 42%, rgba(28,28,17,.05) 80%); }
 .gallery-hero__content { position: relative; z-index: 1; display: flex; flex-direction: column; align-items: flex-start; justify-content: end; height: 100%; padding: clamp(4rem, 9vw, 9rem) clamp(1.25rem, 8vw, 9rem); }
 .gallery-hero h1 { margin: 1.3rem 0 0; font-family: "Cormorant Garamond", Georgia, serif; font-size: clamp(5rem, 10vw, 10.5rem); font-weight: 600; letter-spacing: -.075em; line-height: .7; }
