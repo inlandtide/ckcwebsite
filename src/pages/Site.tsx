@@ -733,7 +733,6 @@ function ServiceDetailPage({ slug }: { slug: string }) {
       <SectionRule />
 
       <section className="service-page-next section-shell section-shell--olive">
-        <Eyebrow>Explore more</Eyebrow>
         <div><p>Next service</p><Link href={`/services/${nextService.slug}`}>{nextService.title}<ArrowRight aria-hidden="true" /></Link><Link href="/services" className="text-link">All services <ArrowUpRight aria-hidden="true" /></Link></div>
       </section>
     </Layout>
