@@ -64,6 +64,7 @@ const assets = {
   stLouisChildrensAquariumOne: "/media/st-louis-childrens-aquarium-01_ec89b304.webp",
   stLouisChildrensAquariumTwo: "/media/st-louis-childrens-aquarium-02_514fdafb.jpg",
   stLouisChildrensAquariumThree: "/media/st-louis-childrens-aquarium-03_0ab769ca.webp",
+  healthcareHero: "/media/st-louis-childrens-aquarium-hero-wide_7d820437.webp",
   healthcareReceptionOne: "/media/healthcare-reception-01_6123ae47.webp",
   healthcareReceptionTwo: "/media/healthcare-reception-02_aa8ea161.webp",
   energizerInteriorOne: "/media/energizer-interior-01_86e380b2.jpg",
@@ -168,8 +169,8 @@ const galleryProjects: GalleryProject[] = [
   },
   {
     title: "Healthcare",
-    cover: assets.healthcareReceptionOne,
-    alt: "Healthcare reception desk with custom curved solid-surface top and light wood casework.",
+    cover: assets.healthcareHero,
+    alt: "St. Louis Children’s Hospital aquarium feature with curved custom casework and glass partition.",
     images: [
       { src: assets.healthcareThree, alt: "DePaul hospital lobby with custom curved wood wall panels and architectural millwork.", label: "Healthcare", shape: "gallery-item--wide" },
       { src: assets.healthcareOne, alt: "Hospital skylight lobby with custom wall paneling and seating details.", label: "Healthcare", shape: "" },
