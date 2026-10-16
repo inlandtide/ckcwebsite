@@ -283,8 +283,8 @@ const serviceCatalog: ServiceDefinition[] = [
     cardCopy: "Cabinetry, built-ins, workstations, and storage built around the realities of the project.",
     overview: "Custom cabinetry, storage, workstations, and built-ins that bring material quality and practical order to commercial interiors.",
     scope: ["Custom cabinetry", "Built-ins & storage", "Workstations & support spaces"],
-    image: assets.serviceCasework,
-    alt: "CKC custom cabinetry and architectural woodwork in a commercial interior.",
+    image: assets.cabinetryCaseworkGrayCabinets,
+    alt: "CKC custom upper and lower cabinetry, drawers, sink, and countertop in a commercial workroom.",
   },
   {
     slug: "commercial-fixtures",
@@ -318,8 +318,8 @@ const serviceCatalog: ServiceDefinition[] = [
     cardCopy: "Custom countertops, shaped work surfaces, curved profiles, and one-off components made to carry the detail.",
     overview: "Custom countertops, shaped work surfaces, curved profiles, and one-off components made to carry the material intent through the details.",
     scope: ["Custom countertops", "Curved & specialty profiles", "One-off shaped components"],
-    image: assets.serviceCountertops,
-    alt: "CKC custom curved commercial counter with wood details.",
+    image: assets.healthcareReceptionOne,
+    alt: "CKC curved white solid-surface reception counter and shaped base in a healthcare interior.",
   },
   {
     slug: "custom-finishes-veneer",
@@ -329,8 +329,8 @@ const serviceCatalog: ServiceDefinition[] = [
     cardCopy: "Finish development, veneer selection, and color matching with a close eye on material character.",
     overview: "Thoughtful finish development, veneer selection, and color matching to give commercial woodwork a cohesive and enduring material character.",
     scope: ["Custom finish development", "Veneer selection", "Color & sheen matching"],
-    image: assets.serviceFinishes,
-    alt: "CKC finished wall paneling and millwork in a commercial gathering space.",
+    image: assets.commercialEnvironmentSix,
+    alt: "CKC finished wood wall panels with visible grain and veneer character.",
   },
   {
     slug: "shop-drawings-design-assist",
@@ -340,8 +340,8 @@ const serviceCatalog: ServiceDefinition[] = [
     cardCopy: "Drawing review, material input, and early coordination to turn architectural intent into buildable woodwork.",
     overview: "Drawing review, material input, and early scope coordination that help turn architectural intent into buildable woodwork.",
     scope: ["Shop drawing coordination", "Material review", "Scope & detail alignment"],
-    image: assets.serviceCoordination,
-    alt: "CKC detailed wood millwork in a commercial interior corridor.",
+    image: assets.shopOverview,
+    alt: "CKC production shop with fabricated millwork in progress.",
   },
 ];
 
