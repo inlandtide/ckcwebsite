@@ -54,7 +54,6 @@ const assets = {
   commercialEnvironmentHero: "/media/commercial-environments-hero-original_086df75f.png",
   architecturalWoodworkHero: "/media/energizer-interior-04-hero-wide_fcb40e7c.webp",
   cabinetryCaseworkTwo: "/media/cabinetry-casework-02_9709c7f4.jpg",
-  cabinetryCaseworkFour: "/media/cabinetry-casework-04_875a6ee3.jpg",
   cabinetryCaseworkGrayCabinets: "/media/cabinetry-casework-gray-cabinets_b60518da.jpg",
   cabinetryCaseworkHero: "/media/cabinetry-casework-gallery-hero_1370ce69.jpg",
   cabinetryCaseworkWideHero: "/media/cabinetry-casework-03-hero-wide_37404444.webp",
@@ -223,7 +222,6 @@ const galleryProjects: GalleryProject[] = [
     images: [
       { src: assets.cabinetryCaseworkGrayCabinets, alt: "Custom gray commercial cabinetry and casework with quartz countertops.", label: "Cabinetry & Casework", shape: "gallery-item--wide" },
       { src: assets.cabinetryCaseworkTwo, alt: "Integrated painted casework and built-ins in a hospitality interior.", label: "Cabinetry & Casework", shape: "" },
-      { src: assets.cabinetryCaseworkFour, alt: "Custom wood service counter and integrated cabinetry.", label: "Cabinetry & Casework", shape: "" },
       { src: assets.cabinetryCaseworkLobbyDisplay, alt: "Custom painted cabinetry and display casework in a finished hospitality interior.", label: "Cabinetry & Casework", shape: "gallery-item--wide" },
       { src: assets.enterpriseCenterSuiteOne, alt: "Hospitality suite with custom service counter millwork overlooking the arena.", label: "Cabinetry & Casework", shape: "" },
       { src: assets.enterpriseCenterSuiteTwo, alt: "Hospitality suite with custom cabinetry, bar counter, and service millwork.", label: "Cabinetry & Casework", shape: "gallery-item--wide" },
