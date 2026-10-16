@@ -57,6 +57,7 @@ const assets = {
   cabinetryCaseworkGrayCabinets: "/media/cabinetry-casework-gray-cabinets_b60518da.jpg",
   cabinetryCaseworkHero: "/media/cabinetry-casework-gallery-hero_1370ce69.jpg",
   cabinetryCaseworkWideHero: "/media/cabinetry-casework-03-hero-wide_37404444.webp",
+  cabinetryCaseworkServiceHero: "/media/cabinetry-casework-02-service-hero-wide_a7493f0b.webp",
   cabinetryCaseworkLobbyDisplay: "/media/cabinetry-casework-lobby-display_5907a875.webp",
   homeCabinetryCasework: "/media/kendra-scott-fixture-two_0f8ea988.webp",
   healthcareOne: "/media/healthcare-01_f4299d21.jpg",
@@ -74,7 +75,6 @@ const assets = {
   enterpriseCenterSuiteOne: "/media/enterprise-center-suite-01_b0665fc8.webp",
   enterpriseCenterSuiteTwo: "/media/enterprise-center-suite-02_99958c7c.webp",
   enterpriseCenterSuiteThree: "/media/enterprise-center-suite-03_c4a9df4b.webp",
-  weissmanBoardroom: "/media/weissman-boardroom_af1a041a.jpg",
   awiCertification: "/media/awi-logo-supplied_93b4bf76.png",
   qcpCertification: "/media/qcp-logo-supplied_6c1cefe3.png",
   serviceMillwork: "/media/img-1913_a0d80be8.jpg",
@@ -226,7 +226,6 @@ const galleryProjects: GalleryProject[] = [
       { src: assets.enterpriseCenterSuiteOne, alt: "Hospitality suite with custom service counter millwork overlooking the arena.", label: "Cabinetry & Casework", shape: "" },
       { src: assets.enterpriseCenterSuiteTwo, alt: "Hospitality suite with custom cabinetry, bar counter, and service millwork.", label: "Cabinetry & Casework", shape: "gallery-item--wide" },
       { src: assets.enterpriseCenterSuiteThree, alt: "Hospitality suite with custom bar, wainscoting, and counter details.", label: "Cabinetry & Casework", shape: "" },
-      { src: assets.weissmanBoardroom, alt: "Boardroom with a custom round conference table, wood base detail, and integrated shelving.", label: "Cabinetry & Casework", shape: "gallery-item--wide" },
     ],
   },
   {
@@ -283,6 +282,8 @@ const serviceCatalog: ServiceDefinition[] = [
     scope: ["Custom cabinetry", "Built-ins & storage", "Workstations & support spaces"],
     image: assets.cabinetryCaseworkGrayCabinets,
     alt: "CKC custom upper and lower cabinetry, drawers, sink, and countertop in a commercial workroom.",
+    heroImage: assets.cabinetryCaseworkServiceHero,
+    heroAlt: "Custom painted cabinetry, built-ins, fireplace surround, and display millwork in a finished hospitality interior.",
   },
   {
     slug: "commercial-fixtures",
