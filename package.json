@@ -8,6 +8,7 @@
     "build": "vite build && node scripts/prerender.mjs",
     "preview": "vite preview --host",
     "check": "tsc --noEmit",
+    "test:seo": "node --test scripts/test-seo.mjs",
     "test": "node --test scripts/test-contact-delivery.mjs scripts/test-contact-verification.mjs"
   },
   "dependencies": {
