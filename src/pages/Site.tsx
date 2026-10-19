@@ -1,6 +1,7 @@
 import { type ReactNode, useEffect, useRef, useState } from "react";
 import { Link, useLocation, useSearch } from "wouter";
 import ContactForm from "../components/ContactForm";
+import SiteImage from "../components/SiteImage";
 import {
   ArrowDownRight,
   ArrowLeft,
@@ -458,7 +459,7 @@ function Header() {
     }}>
       <div className="site-header__inner">
         <Link href="/" className="brand-mark" aria-label="CKC Woodworks home">
-          <img src={assets.logoPrimary} alt="CKC Woodworks" />
+          <SiteImage src={assets.logoPrimary} alt="CKC Woodworks" />
         </Link>
         <nav className="desktop-nav" aria-label="Primary navigation">
           {navItems.map(([label, href]) => label === "Services" ? (
@@ -511,11 +512,6 @@ function InquiryBand() {
         <div className="inquiry-band__copy">
           <Eyebrow>Start a project</Eyebrow>
           <h2>The next build<br /><em>starts here.</em></h2>
-          <a className="inquiry-link" href="mailto:info@ckcwoodworks.com?subject=CKC%20Woodworks%20Project%20Inquiry">
-            <span>Start the conversation</span>
-            <strong>info@ckcwoodworks.com</strong>
-            <ArrowUpRight aria-hidden="true" />
-          </a>
         </div>
         <ContactForm variant="dark" formLocation="footer" />
       </div>
@@ -527,17 +523,29 @@ function Footer({ concise = false }: { concise?: boolean }) {
   return (
     <footer className="site-footer">
       <div className="site-footer__top">
-        <img loading="lazy" src={assets.logoInverted} alt="CKC Woodworks" className="footer-logo" />
-        <p>{concise ? "Commercial woodwork, cabinetry, and fabrication." : "Commercial millwork, cabinetry, and custom fabrication for spaces that have to work."}</p>
+        <div className="site-footer__brand">
+          <SiteImage loading="lazy" sizes="(max-width: 640px) 100vw, 50vw" src={assets.logoInverted} alt="CKC Woodworks" className="footer-logo" />
+          <p>{concise ? "Commercial woodwork, cabinetry, and fabrication." : "Commercial millwork, cabinetry, and custom fabrication for spaces that have to work."}</p>
+          <address><a href="https://maps.google.com/?q=1750+Salzman+Ave+St+Louis+MO+63133" target="_blank" rel="noreferrer">1750 Salzman Ave<br />St. Louis, Missouri 63133 <ArrowUpRight aria-hidden="true" /></a><a href="tel:3143838222">314-383-8222</a></address>
+        </div>
+        <nav className="footer-nav" aria-label="Footer pages">
+          <h2 className="footer-heading">Explore CKC</h2>
+          <Link href="/">Home</Link>
+          {navItems.map(([label, href]) => <Link key={href} href={href}>{label}</Link>)}
+        </nav>
+        <nav className="footer-nav" aria-label="Footer services">
+          <h2 className="footer-heading">Our services</h2>
+          {serviceCatalog.map((service) => <Link key={service.slug} href={`/services/${service.slug}`}>{service.title}</Link>)}
+        </nav>
         <a className="footer-residential" href="https://mouldingstl.com/" target="_blank" rel="noreferrer" aria-label="Visit Moulding Saint Louis">
-          <img loading="lazy" src={assets.mouldingStLouisFooterLogo} alt="Moulding Saint Louis" />
+          <SiteImage loading="lazy" sizes="(max-width: 640px) 100vw, 50vw" src={assets.mouldingStLouisFooterLogo} alt="Moulding Saint Louis" />
           <span>Explore our residential division</span>
         </a>
       </div>
       <div className="site-footer__bottom">
         <span>St. Louis, Missouri</span>
         <span>Union shop · AWI &amp; QCP certified</span>
-        <a href="mailto:info@ckcwoodworks.com">info@ckcwoodworks.com</a>
+        <Link href="/contact">Start a project <ArrowUpRight aria-hidden="true" /></Link>
         <button type="button" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>Back to top <ArrowUpRight aria-hidden="true" /></button>
       </div>
     </footer>
@@ -564,7 +572,7 @@ export function HomePage() {
         <span>Proudly union</span><span>St. Louis since 1978</span><span>AWI Standards</span>
       </section>
       <section className="home-hero">
-        <img fetchPriority="high" width={2048} height={1536} src={assets.homeHero} alt="CKC custom architectural woodwork in a bright library interior." className="home-hero__image" />
+        <SiteImage loading="eager" fetchPriority="high" sizes="100vw" width={2048} height={1536} src={assets.homeHero} alt="CKC custom architectural woodwork in a bright library interior." className="home-hero__image" />
         <div className="home-hero__veil" />
         <div className="home-hero__content">
           <Eyebrow>Custom commercial woodwork</Eyebrow>
@@ -584,12 +592,12 @@ export function HomePage() {
           <h2>A sense of <em>place.</em></h2>
         </div>
         <div className="home-work__grid home-work__grid--expanded">
-          <Link href="/gallery?collection=education" className="project-tile project-tile--large" aria-label="View education work"><img loading="lazy" src={assets.micdsLounge} alt="CKC custom wall paneling and wood ceiling in an education lounge." /><div><span>Education</span><span className="project-tile__arrow" aria-hidden="true"><ArrowUpRight /></span></div></Link>
-          <Link href="/gallery?collection=retail-fixtures" className="project-tile" aria-label="View retail fixtures"><img loading="lazy" src={assets.retailFixturesHero} alt="Kendra Scott retail fixture with custom dark wood display cabinetry and integrated glass shelving." /><div><span>Retail Fixtures</span><span className="project-tile__arrow" aria-hidden="true"><ArrowUpRight /></span></div></Link>
-          <Link href="/gallery?collection=cabinetry-casework" className="project-tile" aria-label="View cabinetry and casework"><img loading="lazy" src={assets.homeCabinetryCasework} alt="CKC custom cabinetry and casework in a finished retail interior." /><div><span>Cabinetry &amp; casework</span><span className="project-tile__arrow" aria-hidden="true"><ArrowUpRight /></span></div></Link>
-          <Link href="/gallery?collection=architectural-woodwork" className="project-tile" aria-label="View architectural woodwork"><img loading="lazy" src={assets.commercialEnvironmentHero} alt="CKC architectural woodwork in a finished commercial interior." /><div><span>Architectural woodwork</span><span className="project-tile__arrow" aria-hidden="true"><ArrowUpRight /></span></div></Link>
-          <Link href="/gallery?collection=healthcare" className="project-tile" aria-label="View healthcare work"><img loading="lazy" src={assets.stLouisChildrensAquariumTwo} alt="St. Louis Children’s Hospital curved reception casework framing a finished aquarium feature." /><div><span>Healthcare</span><span className="project-tile__arrow" aria-hidden="true"><ArrowUpRight /></span></div></Link>
-          <Link href="/gallery?collection=education" className="project-tile" aria-label="View additional interior work"><img loading="lazy" src={assets.micdsHallway} alt="CKC wood wall panels and doors in an education hallway." /><div><span>Interiors</span><span className="project-tile__arrow" aria-hidden="true"><ArrowUpRight /></span></div></Link>
+          <Link href="/gallery?collection=education" className="project-tile project-tile--large" aria-label="View education work"><SiteImage loading="lazy" sizes="(max-width: 640px) 100vw, 50vw" src={assets.micdsLounge} alt="CKC custom wall paneling and wood ceiling in an education lounge." /><div><span>Education</span><span className="project-tile__arrow" aria-hidden="true"><ArrowUpRight /></span></div></Link>
+          <Link href="/gallery?collection=retail-fixtures" className="project-tile" aria-label="View retail fixtures"><SiteImage loading="lazy" sizes="(max-width: 640px) 100vw, 50vw" src={assets.retailFixturesHero} alt="Kendra Scott retail fixture with custom dark wood display cabinetry and integrated glass shelving." /><div><span>Retail Fixtures</span><span className="project-tile__arrow" aria-hidden="true"><ArrowUpRight /></span></div></Link>
+          <Link href="/gallery?collection=cabinetry-casework" className="project-tile" aria-label="View cabinetry and casework"><SiteImage loading="lazy" sizes="(max-width: 640px) 100vw, 50vw" src={assets.homeCabinetryCasework} alt="CKC custom cabinetry and casework in a finished retail interior." /><div><span>Cabinetry &amp; casework</span><span className="project-tile__arrow" aria-hidden="true"><ArrowUpRight /></span></div></Link>
+          <Link href="/gallery?collection=architectural-woodwork" className="project-tile" aria-label="View architectural woodwork"><SiteImage loading="lazy" sizes="(max-width: 640px) 100vw, 50vw" src={assets.commercialEnvironmentHero} alt="CKC architectural woodwork in a finished commercial interior." /><div><span>Architectural woodwork</span><span className="project-tile__arrow" aria-hidden="true"><ArrowUpRight /></span></div></Link>
+          <Link href="/gallery?collection=healthcare" className="project-tile" aria-label="View healthcare work"><SiteImage loading="lazy" sizes="(max-width: 640px) 100vw, 50vw" src={assets.stLouisChildrensAquariumTwo} alt="St. Louis Children’s Hospital curved reception casework framing a finished aquarium feature." /><div><span>Healthcare</span><span className="project-tile__arrow" aria-hidden="true"><ArrowUpRight /></span></div></Link>
+          <Link href="/gallery?collection=education" className="project-tile" aria-label="View additional interior work"><SiteImage loading="lazy" sizes="(max-width: 640px) 100vw, 50vw" src={assets.micdsHallway} alt="CKC wood wall panels and doors in an education hallway." /><div><span>Interiors</span><span className="project-tile__arrow" aria-hidden="true"><ArrowUpRight /></span></div></Link>
         </div>
       </section>
       <SectionRule />
@@ -608,8 +616,8 @@ export function HomePage() {
         </div>
         <div className="quality-standards__content">
           <div className="quality-standards__cards">
-            <article><figure><img loading="lazy" src={assets.awiCertification} alt="Architectural Woodwork Institute logo" /></figure><div><h3>AWI Certified</h3></div></article>
-            <article><figure><img loading="lazy" src={assets.qcpCertification} alt="AWI Quality Certification Program logo" /></figure><div><h3>QCP Certified</h3></div></article>
+            <article><figure><SiteImage loading="lazy" sizes="(max-width: 640px) 100vw, 50vw" src={assets.awiCertification} alt="Architectural Woodwork Institute logo" /></figure><div><h3>AWI Certified</h3></div></article>
+            <article><figure><SiteImage loading="lazy" sizes="(max-width: 640px) 100vw, 50vw" src={assets.qcpCertification} alt="AWI Quality Certification Program logo" /></figure><div><h3>QCP Certified</h3></div></article>
           </div>
         </div>
       </section>
@@ -637,7 +645,7 @@ export function AboutPage() {
     <Layout>
       <section className="page-hero page-hero--about">
         <div className="page-hero__copy"><Eyebrow>Crafted in St. Louis</Eyebrow><h1>Built on experience.<br /><em>Made for what’s next.</em></h1><p>CKC is the premier cabinetry and millwork shop in St. Louis—an established commercial partner with more than four decades of practical know-how.</p></div>
-        <figure className="page-hero__image"><img src={assets.shopOverview} alt="Elevated view across the CKC Woodworks production floor in St. Louis." /><figcaption>Inside the CKC shop / St. Louis</figcaption></figure>
+        <figure className="page-hero__image"><SiteImage loading="eager" fetchPriority="high" src={assets.shopOverview} alt="Elevated view across the CKC Woodworks production floor in St. Louis." /><figcaption>Inside the CKC shop / St. Louis</figcaption></figure>
       </section>
       <SectionRule />
 
@@ -658,7 +666,7 @@ export function AboutPage() {
       <SectionRule />
 
       <section className="union-affiliation section-shell">
-        <figure className="union-affiliation__logo"><img src={assets.midAmericaCarpentersLogo} alt="Mid-America Carpenters Regional Council logo." /></figure>
+        <figure className="union-affiliation__logo"><SiteImage src={assets.midAmericaCarpentersLogo} alt="Mid-America Carpenters Regional Council logo." /></figure>
         <div><Eyebrow>Union craftsmanship</Eyebrow><h2>Proudly <em>union.</em></h2></div>
         <p>CKC is a proud Mid-America Carpenters union shop. The Regional Council represents more than 58,000 trained professionals across Missouri and the Midwest.</p>
       </section>
@@ -698,14 +706,14 @@ export function AboutPage() {
       <SectionRule />
 
       <section className="about-image-spread section-shell">
-        <figure className="about-image-spread__feature"><img src={assets.micdsCommons} alt="CKC wood ceiling and wall millwork in an education commons." /></figure>
+        <figure className="about-image-spread__feature"><SiteImage src={assets.micdsCommons} alt="CKC wood ceiling and wall millwork in an education commons." /></figure>
         <div className="about-image-spread__copy"><Eyebrow>What lasts</Eyebrow><p>The best commercial woodwork feels inevitable. It supports the people using a space, carries the architecture forward, and holds up to the real demands of the day.</p><Link href="/services" className="button button--olive">Explore capabilities <ArrowRight aria-hidden="true" /></Link></div>
-        <figure className="about-image-spread__detail"><img src={assets.micdsCorridor} alt="CKC wood millwork detail in a commercial interior corridor." /></figure>
+        <figure className="about-image-spread__detail"><SiteImage src={assets.micdsCorridor} alt="CKC wood millwork detail in a commercial interior corridor." /></figure>
       </section>
       <SectionRule />
 
       <section className="residential-division section-shell" aria-labelledby="residential-division-title">
-        <a className="residential-division__logo" href="https://mouldingstl.com/" target="_blank" rel="noreferrer" aria-label="Visit Moulding Saint Louis"><img src={assets.mouldingStLouisLogo} alt="Moulding Saint Louis — Made in Wood" /><ArrowUpRight aria-hidden="true" /></a>
+        <a className="residential-division__logo" href="https://mouldingstl.com/" target="_blank" rel="noreferrer" aria-label="Visit Moulding Saint Louis"><SiteImage src={assets.mouldingStLouisLogo} alt="Moulding Saint Louis — Made in Wood" /><ArrowUpRight aria-hidden="true" /></a>
         <div><Eyebrow>Meet our residential division</Eyebrow><h2 id="residential-division-title">Moulding<br /><em>Saint Louis.</em></h2></div>
         <div className="residential-division__copy"><p>Explore the residential side of our craft.</p><a className="text-link" href="https://mouldingstl.com/" target="_blank" rel="noreferrer">Visit Moulding Saint Louis <ArrowUpRight aria-hidden="true" /></a></div>
       </section>
@@ -718,7 +726,7 @@ export function CareersPage() {
     <Layout>
       <section className="page-hero page-hero--careers">
         <div className="page-hero__copy"><Eyebrow>Careers at CKC</Eyebrow><h1>Build work<br />that <em>stands up.</em></h1><p>Join a St. Louis commercial woodshop where quality, experience, and a well-made piece still matter.</p></div>
-        <figure className="page-hero__image"><img src={assets.shopProduction} alt="Custom commercial millwork and casework in production at CKC Woodworks." /><figcaption>Inside the CKC shop / St. Louis</figcaption></figure>
+        <figure className="page-hero__image"><SiteImage loading="eager" fetchPriority="high" src={assets.shopProduction} alt="Custom commercial millwork and casework in production at CKC Woodworks." /><figcaption>Inside the CKC shop / St. Louis</figcaption></figure>
       </section>
       <SectionRule />
 
@@ -736,7 +744,7 @@ export function ServicesPage() {
   return (
     <Layout>
       <section className="page-hero page-hero--services">
-        <figure className="page-hero__image"><img src={assets.micdsCommons} alt="CKC architectural wood ceiling and wall millwork in an education commons." /><figcaption>Commercial capability</figcaption></figure>
+        <figure className="page-hero__image"><SiteImage loading="eager" fetchPriority="high" src={assets.micdsCommons} alt="CKC architectural wood ceiling and wall millwork in an education commons." /><figcaption>Commercial capability</figcaption></figure>
         <div className="page-hero__copy"><Eyebrow>Commercial capability</Eyebrow><h1>The right layer.<br /><em>Built the right way.</em></h1><p>CKC combines the material intelligence of a custom woodshop with the rigor of commercial fabrication and finish work.</p></div>
       </section>
       <SectionRule />
@@ -744,7 +752,7 @@ export function ServicesPage() {
       <section className="services-ledger section-shell">
         <Eyebrow>What CKC makes</Eyebrow>
         <div className="services-ledger__grid">
-          {serviceCards.map((service) => <Link href={`/services/${service.slug}`} key={service.slug} className="service-card"><div className="service-card__meta service-card__meta--icon"><ArrowUpRight aria-hidden="true" /></div><h2>{service.title}</h2><p>{service.cardCopy}</p><figure><img src={service.image} alt={service.alt} /></figure></Link>)}
+          {serviceCards.map((service) => <Link href={`/services/${service.slug}`} key={service.slug} className="service-card"><div className="service-card__meta service-card__meta--icon"><ArrowUpRight aria-hidden="true" /></div><h2>{service.title}</h2><p>{service.cardCopy}</p><figure><SiteImage sizes="(max-width: 640px) 100vw, (max-width: 960px) 50vw, 33vw" src={service.image} alt={service.alt} /></figure></Link>)}
           <Link href="/contact" className="service-card service-card--cta"><div className="service-card__meta service-card__meta--icon"><ArrowUpRight aria-hidden="true" /></div><h2>Contact<br /><em>us.</em></h2><p>Have a commercial woodwork scope in mind? Send CKC a note to begin the conversation.</p><span className="service-card__email">info@ckcwoodworks.com</span></Link>
         </div>
       </section>
@@ -772,7 +780,7 @@ function ServiceDetailPage({ slug }: { slug: string }) {
   return (
     <Layout>
       <section className="page-hero page-hero--services service-page-hero">
-        <figure className="page-hero__image"><img src={service.heroImage ?? service.image} alt={service.heroAlt ?? service.alt} /><figcaption>{service.title}</figcaption></figure>
+        <figure className="page-hero__image"><SiteImage loading="eager" fetchPriority="high" src={service.heroImage ?? service.image} alt={service.heroAlt ?? service.alt} /><figcaption>{service.title}</figcaption></figure>
         <div className="page-hero__copy"><Eyebrow>{service.title}</Eyebrow><h1>{service.heroLine}<br /><em>{service.heroAccent}</em></h1><p>{service.cardCopy}</p><Link href="/contact" className="text-link">Discuss this scope <ArrowUpRight aria-hidden="true" /></Link></div>
       </section>
       <SectionRule />
@@ -806,7 +814,7 @@ function LogoWall({ logos, kind }: { logos: Array<LogoPlaceholder | ClientLogo>;
     const isWashuMedicine = isOfficialLogo && logo.name === "Washington University School of Medicine";
     const isHospitalLogo = isOfficialLogo && ["SSM Health Cardinal Glennon Children’s Hospital", "St. Louis Children’s Hospital"].includes(logo.name);
     const retainsLightIconDetail = isOfficialLogo && ["Enterprise Center", "Mercy Hospital", "Washington University School of Medicine"].includes(logo.name);
-    return <article key={logo.name} className={`logo-card ${isOfficialLogo ? "logo-card--official" : `logo-card--${logo.treatment}`} ${isCkcSignoff ? "logo-card--more" : ""} ${isEnterpriseCenter ? "logo-card--enterprise" : ""} ${isWashuMedicine ? "logo-card--washu" : ""} ${isHospitalLogo ? "logo-card--hospital" : ""} ${retainsLightIconDetail ? "logo-card--detail" : ""}`}>{isOfficialLogo ? <><img className="logo-card__image" src={logo.src} alt={isCkcSignoff ? "CKC Woodworks logo" : `${logo.name} logo`} />{isCkcSignoff && <h2>And many<br /><em>more!</em></h2>}</> : <><div className="logo-card__mark">{logo.monogram}</div><h2>{logo.name}</h2></>}</article>;
+    return <article key={logo.name} className={`logo-card ${isOfficialLogo ? "logo-card--official" : `logo-card--${logo.treatment}`} ${isCkcSignoff ? "logo-card--more" : ""} ${isEnterpriseCenter ? "logo-card--enterprise" : ""} ${isWashuMedicine ? "logo-card--washu" : ""} ${isHospitalLogo ? "logo-card--hospital" : ""} ${retainsLightIconDetail ? "logo-card--detail" : ""}`}>{isOfficialLogo ? <><SiteImage className="logo-card__image" src={logo.src} alt={isCkcSignoff ? "CKC Woodworks logo" : `${logo.name} logo`} />{isCkcSignoff && <h2>And many<br /><em>more!</em></h2>}</> : <><div className="logo-card__mark">{logo.monogram}</div><h2>{logo.name}</h2></>}</article>;
   })}</div>;
 }
 
@@ -837,18 +845,16 @@ export function ContactPage() {
   return (
     <Layout>
       <section className="contact-hero">
-        <figure className="contact-hero__image"><img src={assets.micdsLoungeWide} alt="CKC commercial interior woodwork in a gathering space." /><figcaption>CKC Woodworks / St. Louis</figcaption></figure>
+        <figure className="contact-hero__image"><SiteImage loading="eager" fetchPriority="high" src={assets.micdsLoungeWide} alt="CKC commercial interior woodwork in a gathering space." /><figcaption>CKC Woodworks / St. Louis</figcaption></figure>
         <div className="contact-hero__copy">
           <Eyebrow>Start a conversation</Eyebrow>
           <h1>Let’s make<br /><em>something lasting.</em></h1>
           <p>Send the project type, scope, and materials you have in mind. We will be in touch.</p>
-          <a className="contact-hero__email" href="mailto:info@ckcwoodworks.com?subject=CKC%20Woodworks%20Project%20Inquiry">info@ckcwoodworks.com <ArrowUpRight aria-hidden="true" /></a>
           <ContactForm variant="dark" formLocation="contact-page" />
         </div>
       </section>
       <SectionRule />
-      <section className="contact-details section-shell">
-        <Eyebrow>Find CKC</Eyebrow>
+      <section className="contact-details section-shell" aria-label="Contact details">
         <div className="contact-details__grid">
           <article><Mail aria-hidden="true" /><span>Email</span><a href="mailto:info@ckcwoodworks.com">info@ckcwoodworks.com</a></article>
           <article><Phone aria-hidden="true" /><span>Phone</span><a href="tel:3143838222">314-383-8222</a></article>
@@ -900,10 +906,10 @@ export function GalleryPage() {
     setActiveImage(galleryImages[(activeImageIndex + direction + galleryImages.length) % galleryImages.length]);
   }
   return (
-    <Layout showSectionRules={false}>
+    <Layout>
       <section className={`gallery-hero ${activeProject.title === "Cabinetry & Casework" ? "gallery-hero--cabinetry" : ""}`}>
-        {activeProject.title === "Cabinetry & Casework" && <img src={activeProject.cover} alt="" aria-hidden="true" className="gallery-hero__backdrop" />}
-        <img src={activeProject.cover} alt={activeProject.alt} className="gallery-hero__image" />
+        {activeProject.title === "Cabinetry & Casework" && <SiteImage sizes="100vw" src={activeProject.cover} alt="" aria-hidden="true" className="gallery-hero__backdrop" />}
+        <SiteImage loading="eager" fetchPriority="high" sizes="100vw" src={activeProject.cover} alt={activeProject.alt} className="gallery-hero__image" />
         <div className="gallery-hero__veil" />
         <div className="gallery-hero__content">
           <Eyebrow>Project gallery</Eyebrow>
@@ -913,12 +919,12 @@ export function GalleryPage() {
         <div className="gallery-hero__label">CKC portfolio photography</div>
       </section>
       <section className="gallery-project-nav section-shell" aria-label="Select gallery project">
-        {galleryProjects.map((project, index) => <button key={project.title} type="button" className={activeProjectIndex === index ? "is-active" : ""} onClick={() => selectProject(index)} aria-pressed={activeProjectIndex === index}><img src={project.cover} alt="" /><strong>{project.title}</strong><ArrowUpRight aria-hidden="true" /></button>)}
+        {galleryProjects.map((project, index) => <button key={project.title} type="button" className={activeProjectIndex === index ? "is-active" : ""} onClick={() => selectProject(index)} aria-pressed={activeProjectIndex === index}><SiteImage sizes="(max-width: 640px) 96px, 160px" src={project.cover} alt="" /><strong>{project.title}</strong><ArrowUpRight aria-hidden="true" /></button>)}
       </section>
       <section id="gallery-work" className="gallery-grid-section section-shell">
         <div className="gallery-grid-section__heading"><Eyebrow>{activeProject.title}</Eyebrow><span>Project gallery</span></div>
         <div className="gallery-grid">
-          {activeProject.images.map((image) => <button key={image.src} className={`gallery-item ${image.shape}`} type="button" onClick={() => setActiveImage(image)}><img src={image.src} alt={image.alt} /><span>{image.label}</span><Plus aria-hidden="true" /></button>)}
+          {activeProject.images.map((image) => <button key={image.src} className={`gallery-item ${image.shape}`} type="button" onClick={() => setActiveImage(image)}><SiteImage sizes={image.shape.includes("wide") ? "(max-width: 640px) 100vw, 66vw" : "(max-width: 640px) 100vw, 40vw"} src={image.src} alt={image.alt} /><span>{image.label}</span><Plus aria-hidden="true" /></button>)}
         </div>
       </section>
       <section className="gallery-roll section-shell section-shell--olive" aria-labelledby="gallery-roll-title">
