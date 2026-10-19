@@ -18,6 +18,8 @@ pnpm build
 
 The site is configured for Vercel. The build renders all 14 pages to HTML with unique metadata, canonical URLs, Open Graph/Twitter previews, and JSON-LD for the business, website, pages, services, and breadcrumbs. Client navigation updates the same metadata. `vercel.json` serves clean URLs and a real 404 for unknown routes; `public/robots.txt` permits crawling and links to the production sitemap.
 
+Run `pnpm test:seo` after building to check crawlable HTML, sitemap coverage, canonical URLs, structured-data image consistency, sharing-image sizes, and homepage image loading. The alternate `ckc.mouldingstl.com` hostname redirects permanently to the matching production path, preserving query strings. Sharing images use existing page photos with explicit dimensions, formats, and descriptive alternatives. Homepage gallery images load as visitors approach them; the hero is prioritized, and the unchanged Google Fonts stylesheet is discoverable directly in the HTML.
+
 Run `pnpm test` for contact delivery and bot-verification regression tests. `pnpm check` includes the browser code and API handler.
 
 ## Navigation and gallery collections

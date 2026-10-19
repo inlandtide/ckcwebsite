@@ -527,10 +527,10 @@ function Footer({ concise = false }: { concise?: boolean }) {
   return (
     <footer className="site-footer">
       <div className="site-footer__top">
-        <img src={assets.logoInverted} alt="CKC Woodworks" className="footer-logo" />
+        <img loading="lazy" src={assets.logoInverted} alt="CKC Woodworks" className="footer-logo" />
         <p>{concise ? "Commercial woodwork, cabinetry, and fabrication." : "Commercial millwork, cabinetry, and custom fabrication for spaces that have to work."}</p>
         <a className="footer-residential" href="https://mouldingstl.com/" target="_blank" rel="noreferrer" aria-label="Visit Moulding Saint Louis">
-          <img src={assets.mouldingStLouisFooterLogo} alt="Moulding Saint Louis" />
+          <img loading="lazy" src={assets.mouldingStLouisFooterLogo} alt="Moulding Saint Louis" />
           <span>Explore our residential division</span>
         </a>
       </div>
@@ -564,7 +564,7 @@ export function HomePage() {
         <span>Proudly union</span><span>St. Louis since 1978</span><span>AWI Standards</span>
       </section>
       <section className="home-hero">
-        <img src={assets.homeHero} alt="CKC custom architectural woodwork in a bright library interior." className="home-hero__image" />
+        <img fetchPriority="high" width={2048} height={1536} src={assets.homeHero} alt="CKC custom architectural woodwork in a bright library interior." className="home-hero__image" />
         <div className="home-hero__veil" />
         <div className="home-hero__content">
           <Eyebrow>Custom commercial woodwork</Eyebrow>
@@ -584,12 +584,12 @@ export function HomePage() {
           <h2>A sense of <em>place.</em></h2>
         </div>
         <div className="home-work__grid home-work__grid--expanded">
-          <Link href="/gallery?collection=education" className="project-tile project-tile--large" aria-label="View education work"><img src={assets.micdsLounge} alt="CKC custom wall paneling and wood ceiling in an education lounge." /><div><span>Education</span><span className="project-tile__arrow" aria-hidden="true"><ArrowUpRight /></span></div></Link>
-          <Link href="/gallery?collection=retail-fixtures" className="project-tile" aria-label="View retail fixtures"><img src={assets.retailFixturesHero} alt="Kendra Scott retail fixture with custom dark wood display cabinetry and integrated glass shelving." /><div><span>Retail Fixtures</span><span className="project-tile__arrow" aria-hidden="true"><ArrowUpRight /></span></div></Link>
-          <Link href="/gallery?collection=cabinetry-casework" className="project-tile" aria-label="View cabinetry and casework"><img src={assets.homeCabinetryCasework} alt="CKC custom cabinetry and casework in a finished retail interior." /><div><span>Cabinetry &amp; casework</span><span className="project-tile__arrow" aria-hidden="true"><ArrowUpRight /></span></div></Link>
-          <Link href="/gallery?collection=architectural-woodwork" className="project-tile" aria-label="View architectural woodwork"><img src={assets.commercialEnvironmentHero} alt="CKC architectural woodwork in a finished commercial interior." /><div><span>Architectural woodwork</span><span className="project-tile__arrow" aria-hidden="true"><ArrowUpRight /></span></div></Link>
-          <Link href="/gallery?collection=healthcare" className="project-tile" aria-label="View healthcare work"><img src={assets.stLouisChildrensAquariumTwo} alt="St. Louis Children’s Hospital curved reception casework framing a finished aquarium feature." /><div><span>Healthcare</span><span className="project-tile__arrow" aria-hidden="true"><ArrowUpRight /></span></div></Link>
-          <Link href="/gallery?collection=education" className="project-tile" aria-label="View additional interior work"><img src={assets.micdsHallway} alt="CKC wood wall panels and doors in an education hallway." /><div><span>Interiors</span><span className="project-tile__arrow" aria-hidden="true"><ArrowUpRight /></span></div></Link>
+          <Link href="/gallery?collection=education" className="project-tile project-tile--large" aria-label="View education work"><img loading="lazy" src={assets.micdsLounge} alt="CKC custom wall paneling and wood ceiling in an education lounge." /><div><span>Education</span><span className="project-tile__arrow" aria-hidden="true"><ArrowUpRight /></span></div></Link>
+          <Link href="/gallery?collection=retail-fixtures" className="project-tile" aria-label="View retail fixtures"><img loading="lazy" src={assets.retailFixturesHero} alt="Kendra Scott retail fixture with custom dark wood display cabinetry and integrated glass shelving." /><div><span>Retail Fixtures</span><span className="project-tile__arrow" aria-hidden="true"><ArrowUpRight /></span></div></Link>
+          <Link href="/gallery?collection=cabinetry-casework" className="project-tile" aria-label="View cabinetry and casework"><img loading="lazy" src={assets.homeCabinetryCasework} alt="CKC custom cabinetry and casework in a finished retail interior." /><div><span>Cabinetry &amp; casework</span><span className="project-tile__arrow" aria-hidden="true"><ArrowUpRight /></span></div></Link>
+          <Link href="/gallery?collection=architectural-woodwork" className="project-tile" aria-label="View architectural woodwork"><img loading="lazy" src={assets.commercialEnvironmentHero} alt="CKC architectural woodwork in a finished commercial interior." /><div><span>Architectural woodwork</span><span className="project-tile__arrow" aria-hidden="true"><ArrowUpRight /></span></div></Link>
+          <Link href="/gallery?collection=healthcare" className="project-tile" aria-label="View healthcare work"><img loading="lazy" src={assets.stLouisChildrensAquariumTwo} alt="St. Louis Children’s Hospital curved reception casework framing a finished aquarium feature." /><div><span>Healthcare</span><span className="project-tile__arrow" aria-hidden="true"><ArrowUpRight /></span></div></Link>
+          <Link href="/gallery?collection=education" className="project-tile" aria-label="View additional interior work"><img loading="lazy" src={assets.micdsHallway} alt="CKC wood wall panels and doors in an education hallway." /><div><span>Interiors</span><span className="project-tile__arrow" aria-hidden="true"><ArrowUpRight /></span></div></Link>
         </div>
       </section>
       <SectionRule />
@@ -608,8 +608,8 @@ export function HomePage() {
         </div>
         <div className="quality-standards__content">
           <div className="quality-standards__cards">
-            <article><figure><img src={assets.awiCertification} alt="Architectural Woodwork Institute logo" /></figure><div><h3>AWI Certified</h3></div></article>
-            <article><figure><img src={assets.qcpCertification} alt="AWI Quality Certification Program logo" /></figure><div><h3>QCP Certified</h3></div></article>
+            <article><figure><img loading="lazy" src={assets.awiCertification} alt="Architectural Woodwork Institute logo" /></figure><div><h3>AWI Certified</h3></div></article>
+            <article><figure><img loading="lazy" src={assets.qcpCertification} alt="AWI Quality Certification Program logo" /></figure><div><h3>QCP Certified</h3></div></article>
           </div>
         </div>
       </section>

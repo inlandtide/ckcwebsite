@@ -1,5 +1,20 @@
 export const SITE_ORIGIN = "https://ckcwoodworks.com";
 
+// Existing site photos, with verified intrinsic sizes. Sharing metadata should
+// describe the current page and avoid the former 6.9 MB default PNG.
+const seoImages = {
+  home: { path: "/media/ckc-home-hero-micds_045eaf1f.webp", width: 2048, height: 1536, type: "image/webp", alt: "CKC custom architectural woodwork in a bright library interior." },
+  shop: { path: "/media/ckc-shop-overview_7745b818.webp", width: 2048, height: 1536, type: "image/webp", alt: "Overview of the CKC Woodworks production floor in St. Louis." },
+  millwork: { path: "/media/img-1913_a0d80be8.jpg", width: 2200, height: 1650, type: "image/jpeg", alt: "CKC custom wall paneling and wood ceiling in a commercial gathering space." },
+  cabinetry: { path: "/media/cabinetry-casework-02-service-hero-wide_a7493f0b.webp", width: 2560, height: 1440, type: "image/webp", alt: "Custom painted cabinetry, built-ins, fireplace surround, and display millwork in a finished hospitality interior." },
+  fixtures: { path: "/media/kendra-scott-fixture-two-service-hero-wide_33e5ecab.webp", width: 2560, height: 1440, type: "image/webp", alt: "Custom dark-wood retail display fixture with illuminated glass shelving and integrated cabinetry." },
+  cnc: { path: "/media/ckc-cnc-panel-processing-moulding-stl_28b513f9.jpg", width: 2048, height: 1536, type: "image/jpeg", alt: "CKC commercial CNC panel-processing equipment in the St. Louis shop." },
+  countertops: { path: "/media/healthcare-reception-01_6123ae47.webp", width: 2048, height: 1536, type: "image/webp", alt: "CKC curved white solid-surface reception counter and shaped base in a healthcare interior." },
+  finishing: { path: "/media/finishing-craftsman-varnishing-wood_d0e8658e.webp", width: 2048, height: 1516, type: "image/webp", alt: "Craftsman applying a clear wood finish with a brush in a workshop." },
+  production: { path: "/media/ckc-shop-production_0345d4ba.webp", width: 2048, height: 1536, type: "image/webp", alt: "Custom commercial millwork and casework in production at CKC Woodworks." },
+  contact: { path: "/media/img-1912_c7d20516.jpg", width: 2200, height: 1650, type: "image/jpeg", alt: "CKC commercial interior woodwork in a gathering space." },
+} as const;
+
 type PageMetadata = {
   path: string;
   name: string;
@@ -7,7 +22,7 @@ type PageMetadata = {
   description: string;
   type?: "AboutPage" | "ContactPage" | "CollectionPage";
   service?: string;
-  image?: string;
+  image?: keyof typeof seoImages;
 };
 
 // All business details and service descriptions come from the visible site.
@@ -24,6 +39,7 @@ export const seoPages: PageMetadata[] = [
     title: "About Our St. Louis Commercial Woodshop | CKC Woodworks",
     description: "Meet CKC Woodworks, a St. Louis commercial woodshop bringing more than four decades of experience to architectural millwork, cabinetry, and custom fabrication.",
     type: "AboutPage",
+    image: "shop",
   },
   {
     path: "/services",
@@ -38,7 +54,7 @@ export const seoPages: PageMetadata[] = [
     title: "Architectural Millwork in St. Louis | CKC Woodworks",
     description: "Custom feature walls, panels, screens, and architectural wood elements for commercial spaces, fabricated by CKC Woodworks in St. Louis.",
     service: "Feature walls, panels, screens, and wood elements that set the character of a room.",
-    image: "/media/img-1913_a0d80be8.jpg",
+    image: "millwork",
   },
   {
     path: "/services/custom-cabinetry-casework",
@@ -46,7 +62,7 @@ export const seoPages: PageMetadata[] = [
     title: "Commercial Cabinetry & Casework in St. Louis | CKC Woodworks",
     description: "Custom commercial cabinetry, built-ins, workstations, and storage built around the needs of your project by CKC Woodworks in St. Louis.",
     service: "Cabinetry, built-ins, workstations, and storage built around the realities of the project.",
-    image: "/media/img-1870_2e2a4583.jpg",
+    image: "cabinetry",
   },
   {
     path: "/services/commercial-fixtures",
@@ -54,7 +70,7 @@ export const seoPages: PageMetadata[] = [
     title: "Custom Commercial & Retail Fixtures | CKC Woodworks St. Louis",
     description: "CKC Woodworks fabricates custom service counters, retail displays, branded fixtures, and purpose-built commercial elements in St. Louis.",
     service: "Service counters, retail displays, branded fixtures, and purpose-built point-of-use elements.",
-    image: "/media/project-p-105926_873b0560.jpg",
+    image: "fixtures",
   },
   {
     path: "/services/cnc-machining",
@@ -62,7 +78,7 @@ export const seoPages: PageMetadata[] = [
     title: "CNC Machining & Panel Processing in St. Louis | CKC Woodworks",
     description: "CNC-cut panels, components, and repeatable parts made for exact geometry and efficient custom fabrication at CKC Woodworks in St. Louis.",
     service: "CNC-cut panels, components, and repeatable parts made for exact geometry and efficient custom fabrication.",
-    image: "/media/ckc-cnc-panel-processing-moulding-stl_28b513f9.jpg",
+    image: "cnc",
   },
   {
     path: "/services/countertops-specialty-shapes",
@@ -70,15 +86,15 @@ export const seoPages: PageMetadata[] = [
     title: "Custom Countertops & Specialty Shapes | CKC Woodworks St. Louis",
     description: "Custom countertops, shaped work surfaces, curved profiles, and one-off components for commercial projects from CKC Woodworks in St. Louis.",
     service: "Custom countertops, shaped work surfaces, curved profiles, and one-off components made to carry the detail.",
-    image: "/media/project-p-105939_be470785.jpg",
+    image: "countertops",
   },
   {
     path: "/services/custom-finishes-veneer",
-    name: "Custom finishes & veneer",
-    title: "Custom Wood Finishes & Veneer | CKC Woodworks St. Louis",
-    description: "Finish development, veneer selection, and color matching for commercial woodwork, with careful attention to material character at CKC Woodworks.",
-    service: "Finish development, veneer selection, and color matching with a close eye on material character.",
-    image: "/media/img-1912_c7d20516.jpg",
+    name: "Finishing",
+    title: "Wood Finishing & Color Matching in St. Louis | CKC Woodworks",
+    description: "Stain development, color matching, and protective wood finishes for commercial millwork, with careful attention to material character at CKC Woodworks in St. Louis.",
+    service: "Stain development, color matching, and protective finishes with a close eye on wood character.",
+    image: "finishing",
   },
   {
     path: "/services/shop-drawings-design-assist",
@@ -86,7 +102,7 @@ export const seoPages: PageMetadata[] = [
     title: "Millwork Shop Drawings & Design Assist | CKC Woodworks",
     description: "Drawing review, material input, and early project coordination to turn architectural intent into buildable commercial woodwork with CKC Woodworks.",
     service: "Drawing review, material input, and early coordination to turn architectural intent into buildable woodwork.",
-    image: "/media/img-1872_b8f2b558.jpg",
+    image: "shop",
   },
   {
     path: "/portfolio",
@@ -107,7 +123,7 @@ export const seoPages: PageMetadata[] = [
     name: "Careers",
     title: "Woodshop & Cabinet Maker Careers in St. Louis | CKC Woodworks",
     description: "Explore the Bench Hand / Cabinet Maker opportunity at CKC Woodworks, a St. Louis shop producing custom commercial cabinetry, casework, and millwork.",
-    image: "/media/ckc-shop-production_0345d4ba.webp",
+    image: "production",
   },
   {
     path: "/contact",
@@ -115,13 +131,26 @@ export const seoPages: PageMetadata[] = [
     title: "Contact CKC Woodworks | St. Louis Commercial Millwork",
     description: "Discuss your commercial millwork, cabinetry, or fabrication project with CKC Woodworks in St. Louis. Call 314-383-8222 or send a project inquiry.",
     type: "ContactPage",
+    image: "contact",
   },
 ];
 
 const businessId = `${SITE_ORIGIN}/#business`;
 const websiteId = `${SITE_ORIGIN}/#website`;
-const defaultImage = "/media/micds-commons-people-removed_7b3a9bf7.png";
 const absoluteUrl = (path: string) => `${SITE_ORIGIN}${path}`;
+const pageImage = (page: PageMetadata) => seoImages[page.image ?? "home"];
+const imageObject = (page: PageMetadata) => {
+  const image = pageImage(page);
+  return {
+    "@type": "ImageObject",
+    url: absoluteUrl(image.path),
+    contentUrl: absoluteUrl(image.path),
+    width: image.width,
+    height: image.height,
+    encodingFormat: image.type,
+    caption: image.alt,
+  };
+};
 
 export function normalizePath(location: string) {
   return location.split(/[?#]/, 1)[0].replace(/\/+$/, "") || "/";
@@ -140,7 +169,7 @@ export function structuredData(page: PageMetadata) {
     name: "CKC Woodworks",
     url: `${SITE_ORIGIN}/`,
     logo: absoluteUrl("/media/ckc-horizontal-primary-aged-copper-transparent_1567f15b.svg"),
-    image: absoluteUrl(defaultImage),
+    image: imageObject(seoPages[0]),
     description: "Commercial millwork, cabinetry, and custom fabrication for spaces that have to work.",
     telephone: "+1-314-383-8222",
     email: "info@ckcwoodworks.com",
@@ -189,7 +218,7 @@ export function structuredData(page: PageMetadata) {
       isPartOf: { "@id": websiteId },
       about: { "@id": businessId },
       ...(page.service ? { mainEntity: { "@id": `${url}#service` } } : {}),
-      primaryImageOfPage: { "@type": "ImageObject", url: absoluteUrl(page.image ?? defaultImage) },
+      primaryImageOfPage: imageObject(page),
       ...(crumbs.length > 1 ? { breadcrumb: { "@id": breadcrumbId } } : {}),
       inLanguage: "en-US",
     },
@@ -212,6 +241,7 @@ export function structuredData(page: PageMetadata) {
     url,
     name: page.name,
     description: page.service,
+    image: imageObject(page),
     provider: { "@id": businessId },
     mainEntityOfPage: { "@id": `${url}#webpage` },
   });
@@ -231,7 +261,8 @@ export function renderSeoHead(location: string) {
   if (!page) return '<title data-seo>Page Not Found | CKC Woodworks</title>\n<meta data-seo name="robots" content="noindex, follow" />';
 
   const url = absoluteUrl(page.path);
-  const image = absoluteUrl(page.image ?? defaultImage);
+  const image = pageImage(page);
+  const imageUrl = absoluteUrl(image.path);
   const meta = (name: string, content: string, property = false) => `<meta data-seo ${property ? "property" : "name"}="${name}" content="${escapeAttribute(content)}" />`;
   return [
     `<title data-seo>${escapeAttribute(page.title)}</title>`,
@@ -244,13 +275,16 @@ export function renderSeoHead(location: string) {
     meta("og:title", page.title, true),
     meta("og:description", page.description, true),
     meta("og:url", url, true),
-    meta("og:image", image, true),
-    meta("og:image:alt", "Commercial woodwork by CKC Woodworks in St. Louis", true),
+    meta("og:image", imageUrl, true),
+    meta("og:image:type", image.type, true),
+    meta("og:image:width", String(image.width), true),
+    meta("og:image:height", String(image.height), true),
+    meta("og:image:alt", image.alt, true),
     meta("twitter:card", "summary_large_image"),
     meta("twitter:title", page.title),
     meta("twitter:description", page.description),
-    meta("twitter:image", image),
-    meta("twitter:image:alt", "Commercial woodwork by CKC Woodworks in St. Louis"),
+    meta("twitter:image", imageUrl),
+    meta("twitter:image:alt", image.alt),
     `<script data-seo type="application/ld+json">${JSON.stringify(structuredData(page)).replace(/</g, "\\u003c")}</script>`,
   ].join("\n    ");
 }
