@@ -1,0 +1,56 @@
+{
+  "source": "Google Fonts CSS API, existing site font request; Latin subset, unmodified WOFF2 files",
+  "retrieved": "2026-10-19",
+  "fonts": [
+    {
+      "family": "Cormorant Garamond",
+      "style": "italic",
+      "weights": [
+        500,
+        600
+      ],
+      "url": "https://fonts.gstatic.com/s/cormorantgaramond/v21/co3ZmX5slCNuHLi8bLeY9MK7whWMhyjYrEtImSo.woff2",
+      "file": "cormorant-garamond-italic-latin-6f2f5c3b1a.woff2",
+      "sha256": "6f2f5c3b1abc3d0bb035a927f66a90ca873f94fc31c4966c8d024142c2036e55",
+      "bytes": 39260
+    },
+    {
+      "family": "Cormorant Garamond",
+      "style": "normal",
+      "weights": [
+        500,
+        600,
+        700
+      ],
+      "url": "https://fonts.gstatic.com/s/cormorantgaramond/v21/co3bmX5slCNuHLi8bLeY9MK7whWMhyjYqXtK.woff2",
+      "file": "cormorant-garamond-normal-latin-d80df8ff5a.woff2",
+      "sha256": "d80df8ff5aecd299a61549f9e29ab1ed0b9b05f4ea71d50fe978e07d5240b235",
+      "bytes": 37640
+    },
+    {
+      "family": "Source Sans 3",
+      "style": "italic",
+      "weights": [
+        400
+      ],
+      "url": "https://fonts.gstatic.com/s/sourcesans3/v20/nwpDtKy2OAdR1K-IwhWudF-R3woAa8opPOrG97lwqLlOxCkSmg.woff2",
+      "file": "source-sans-3-italic-latin-3c230c0342.woff2",
+      "sha256": "3c230c03425a2866e4b57954f3173fc149dba2634e9ee32c681b41d96c7f06fe",
+      "bytes": 15808
+    },
+    {
+      "family": "Source Sans 3",
+      "style": "normal",
+      "weights": [
+        400,
+        500,
+        600,
+        700
+      ],
+      "url": "https://fonts.gstatic.com/s/sourcesans3/v20/nwpStKy2OAdR1K-IwhWudF-R3w8aZQ.woff2",
+      "file": "source-sans-3-normal-latin-19143dca07.woff2",
+      "sha256": "19143dca075972bc84e3fd9eab7416dd40cc565dccb2435a044bdfabe060c7d5",
+      "bytes": 28872
+    }
+  ]
+}

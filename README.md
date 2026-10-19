@@ -18,7 +18,7 @@ pnpm build
 
 The site is configured for Vercel. The build renders all 14 pages to HTML with unique metadata, canonical URLs, Open Graph/Twitter previews, and JSON-LD for the business, website, pages, services, and breadcrumbs. Client navigation updates the same metadata. `vercel.json` serves clean URLs and a real 404 for unknown routes; `public/robots.txt` permits crawling and links to the production sitemap.
 
-Run `pnpm test:seo` after building to check crawlable HTML, sitemap coverage, canonical URLs, structured-data image consistency, sharing-image sizes, and homepage image loading. The alternate `ckc.mouldingstl.com` hostname redirects permanently to the matching production path, preserving query strings. Sharing images use existing page photos with explicit dimensions, formats, and descriptive alternatives. Homepage gallery images load as visitors approach them; the hero is prioritized, and the unchanged Google Fonts stylesheet is discoverable directly in the HTML.
+Run `pnpm test:seo` after building to check crawlable HTML, sitemap coverage, canonical URLs, structured-data image consistency, sharing-image sizes, and homepage image loading. The alternate `ckc.mouldingstl.com` hostname redirects permanently to the matching production path, preserving query strings. Sharing images use existing page photos with explicit dimensions, formats, and descriptive alternatives. Homepage gallery images load as visitors approach them, and the hero is prioritized. The existing Cormorant Garamond and Source Sans 3 fonts are self-hosted as unmodified Latin WOFF2 subsets, with licenses and source hashes in public/fonts. Critical font files are preloaded; no Google Fonts request is needed.
 
 Run `pnpm test` for contact delivery and bot-verification regression tests. `pnpm check` includes the browser code and API handler.
 
@@ -43,3 +43,9 @@ Notifications go to `tim@inlandtide.com` and `ryan@inlandtide.com`, with the vis
 The existing CKC GA4 property `G-WLYT8DJC9P` is restored on the production domain. Google Analytics handles initial page views and its configured History API measurement; no contact field values are sent to Analytics.
 
 Favicons derive from the existing CKC brand artwork. Official vector portfolio-logo sources are recorded in `public/media/portfolio-logo-sources.json`; monochrome display is applied by CSS.
+
+## Responsive photos and shared footer
+
+`pnpm images` generates WebP delivery variants (320–1920px, without enlarging or cropping) from the photo assets declared in `Site.tsx`. `dev`, `build`, and `check` run this step automatically. Generated files and the client manifest are ignored by Git and regenerated in the Vercel build. Sharp is pinned in the lockfile. `SiteImage` supplies `srcset`, contextual `sizes`, intrinsic dimensions, and lazy loading; page heroes remain eager. Original source photos, logos, and full-resolution lightbox images are preserved. Generated photo URLs include a content/configuration hash, and fonts include their source hash; both receive immutable caching.
+
+The footer provides page and service navigation, the business address, phone, and the existing residential-division link. Shared and contact-page form callouts no longer show raw email links; the contact details cards retain email beside phone and address. The contact cards span their section, and the gallery uses the shared copper divider above the inquiry form.

@@ -88,11 +88,29 @@ test("homepage prioritizes the hero and defers gallery downloads; fonts are disc
   const hero = images.find((image) => image.includes('class="home-hero__image"'));
   assert.match(hero, /fetchPriority="high"/);
   assert.ok(!hero.includes('loading="lazy"'));
-  assert.match(html, /rel="preload" as="image" href="\/media\/ckc-home-hero/);
+  assert.match(html, /rel="preload" as="image" imageSrcSet="\/media\/responsive\/ckc-home-hero/);
   for (const image of images.filter((image) => !image.includes('alt="CKC Woodworks"') && image !== hero)) {
     assert.match(image, /loading="lazy"/);
   }
   assert.ok(!html.includes('rel="preload" as="image" href="/media/commercial-environments-hero-original'));
-  assert.match(html, /rel="preconnect" href="https:\/\/fonts.gstatic.com" crossorigin/);
-  assert.match(html, /rel="stylesheet" href="https:\/\/fonts.googleapis.com\/css2\?/);
+  assert.match(html, /rel="preload" href="\/fonts\/source-sans-3-normal-[^"]+" as="font"/);
+  assert.ok(!html.includes("fonts.googleapis.com"));
+  assert.ok(!html.includes("fonts.gstatic.com"));
+});
+
+test("responsive variants preserve photo proportions and offer small mobile downloads", async () => {
+  const { default: sharp } = await import("sharp");
+  const manifest = JSON.parse(await readFile("src/lib/generated-images.json", "utf8"));
+  for (const [source, photo] of Object.entries(manifest)) {
+    assert.ok(!/logo|certification/i.test(source), source);
+    for (const variant of photo.variants) {
+      const metadata = await sharp(`dist${variant.src}`).metadata();
+      assert.equal(metadata.format, "webp");
+      assert.equal(metadata.width, variant.width);
+      assert.ok(Math.abs(metadata.height - variant.width * photo.height / photo.width) <= 1, source);
+      assert.ok(metadata.width <= photo.width, source);
+    }
+  }
+  const largePng = manifest["/media/commercial-environments-hero-original_086df75f.png"];
+  assert.ok(largePng.variants.find((variant) => variant.width === 640).bytes < 100_000);
 });
