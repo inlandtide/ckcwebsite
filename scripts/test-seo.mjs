@@ -114,3 +114,54 @@ test("responsive variants preserve photo proportions and offer small mobile down
   const largePng = manifest["/media/commercial-environments-hero-original_086df75f.png"];
   assert.ok(largePng.variants.find((variant) => variant.width === 640).bytes < 100_000);
 });
+
+
+test("people structured data describes the existing About team only", async () => {
+  const html = await readPage("/about");
+  const nodes = graph(html);
+  const people = nodes.filter((node) => node["@type"] === "Person");
+  const team = html.match(/<section class="team-section[\s\S]*?<\/section><\/div><\/section>/)?.[0];
+  assert.ok(team, "The visible team section must exist");
+  assert.equal(people.length, (team.match(/class="team-card"/g) ?? []).length);
+  assert.equal(new Set(people.map((person) => person["@id"])).size, people.length);
+  for (const person of people) {
+    assert.ok(team.includes(person.name), person.name);
+    assert.ok(team.includes(person.jobTitle), person.name);
+    assert.equal(person.worksFor["@id"], `${SITE_ORIGIN}/#business`);
+  }
+  for (const page of seoPages.filter((page) => page.path !== "/about")) {
+    assert.ok(!graph(await readPage(page.path)).some((node) => node["@type"] === "Person"));
+  }
+});
+
+test("every rendered image has dimensions matching its original asset or responsive photo", async () => {
+  const { default: sharp } = await import("sharp");
+  const cache = new Map();
+  for (const page of seoPages) {
+    const html = await readPage(page.path);
+    for (const [image] of html.matchAll(/<img\b[^>]*>/g)) {
+      const src = image.match(/\bsrc="([^"]+)"/)[1];
+      const width = Number(image.match(/\bwidth="([^"]+)"/)?.[1]);
+      const height = Number(image.match(/\bheight="([^"]+)"/)?.[1]);
+      assert.ok(width > 0 && height > 0, `${page.path}: ${src}`);
+      if (!cache.has(src)) cache.set(src, await sharp(`dist${src}`).metadata());
+      const actual = cache.get(src);
+      assert.ok(Math.abs(width / height - actual.width / actual.height) < .01, src);
+    }
+  }
+});
+
+test("AI directory links resolve to canonical pages and sitemap dates match tracked updates", async () => {
+  const llms = await readFile("dist/llms.txt", "utf8");
+  assert.ok(llms.startsWith("# CKC Woodworks\n\n> "));
+  const links = [...llms.matchAll(/^- \[[^\]]+\]\((https:[^)]+)\): /gm)].map((match) => match[1]);
+  assert.deepEqual(links.toSorted(), seoPages.map((page) => SITE_ORIGIN + page.path).toSorted());
+  const sitemap = await readFile("dist/sitemap.xml", "utf8");
+  assert.equal(sitemap.trim(), (await readFile("public/sitemap.xml", "utf8")).replace(/\r\n/g, "\n").trim());
+  for (const page of seoPages) {
+    assert.match(page.lastModified, /^\d{4}-\d{2}-\d{2}$/);
+    assert.ok(Date.parse(page.lastModified) <= Date.now());
+    assert.ok(sitemap.includes(`<loc>${SITE_ORIGIN}${page.path}</loc><lastmod>${page.lastModified}</lastmod>`));
+    assert.ok((await readPage(page.path)).includes(`rel="describedby" href="${SITE_ORIGIN}/llms.txt"`));
+  }
+});
