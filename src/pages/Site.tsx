@@ -1,5 +1,5 @@
-import { type ReactNode, useEffect, useState } from "react";
-import { Link, useLocation } from "wouter";
+import { type ReactNode, useEffect, useRef, useState } from "react";
+import { Link, useLocation, useSearch } from "wouter";
 import ContactForm from "../components/ContactForm";
 import {
   ArrowDownRight,
@@ -395,25 +395,77 @@ function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [servicesMenuOpen, setServicesMenuOpen] = useState(false);
   const [location] = useLocation();
+  const search = useSearch();
+  const headerRef = useRef<HTMLElement>(null);
+  const desktopServicesRef = useRef<HTMLDivElement>(null);
+  const mobileServicesRef = useRef<HTMLDivElement>(null);
+  const servicesTriggerRef = useRef<HTMLButtonElement | null>(null);
+  const menuToggleRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     setMenuOpen(false);
     setServicesMenuOpen(false);
-  }, [location]);
+  }, [location, search]);
+
+  useEffect(() => {
+    if (!menuOpen && !servicesMenuOpen) return;
+
+    function dismissOutside(event: Event) {
+      const target = event.target;
+      if (!(target instanceof Node)) return;
+      // Let mobile links activate before collapsing this in-flow submenu;
+      // closing on pointerdown/focus would move the link before its click.
+      if (menuOpen && headerRef.current?.contains(target)) return;
+      if (!desktopServicesRef.current?.contains(target) && !mobileServicesRef.current?.contains(target)) {
+        setServicesMenuOpen(false);
+      }
+      if (!headerRef.current?.contains(target)) setMenuOpen(false);
+    }
+
+    function handleEscape(event: KeyboardEvent) {
+      if (event.key !== "Escape") return;
+      event.preventDefault();
+      if (servicesMenuOpen) {
+        setServicesMenuOpen(false);
+        servicesTriggerRef.current?.focus();
+      } else {
+        setMenuOpen(false);
+        menuToggleRef.current?.focus();
+      }
+    }
+
+    document.addEventListener("pointerdown", dismissOutside);
+    document.addEventListener("focusin", dismissOutside);
+    document.addEventListener("keydown", handleEscape);
+    return () => {
+      document.removeEventListener("pointerdown", dismissOutside);
+      document.removeEventListener("focusin", dismissOutside);
+      document.removeEventListener("keydown", handleEscape);
+    };
+  }, [menuOpen, servicesMenuOpen]);
+
+  function toggleServices(trigger: HTMLButtonElement) {
+    servicesTriggerRef.current = trigger;
+    setServicesMenuOpen((open) => !open);
+  }
 
   return (
-    <header className="site-header">
+    <header className="site-header" ref={headerRef} onClick={(event) => {
+      if (event.target instanceof Element && event.target.closest("a")) {
+        setMenuOpen(false);
+        setServicesMenuOpen(false);
+      }
+    }}>
       <div className="site-header__inner">
         <Link href="/" className="brand-mark" aria-label="CKC Woodworks home">
           <img src={assets.logoPrimary} alt="CKC Woodworks" />
         </Link>
         <nav className="desktop-nav" aria-label="Primary navigation">
           {navItems.map(([label, href]) => label === "Services" ? (
-            <div className="services-nav" key={href}>
-              <Link href={href} className={location.startsWith("/services") ? "is-active" : ""}>Services</Link>
-              <button type="button" className="services-nav__toggle" aria-label="Toggle Services menu" aria-expanded={servicesMenuOpen} onClick={() => setServicesMenuOpen((open) => !open)}><ChevronDown aria-hidden="true" /></button>
+            <div className="services-nav" key={href} ref={desktopServicesRef}>
+              <button type="button" className={`services-nav__toggle ${location.startsWith("/services") ? "is-active" : ""}`} aria-expanded={servicesMenuOpen} aria-controls="desktop-services-menu" onClick={(event) => toggleServices(event.currentTarget)}>Services <ChevronDown aria-hidden="true" /></button>
               {servicesMenuOpen && (
-                <div className="services-nav__menu" aria-label="Services navigation">
+                <div id="desktop-services-menu" className="services-nav__menu" aria-label="Services navigation">
                   <Link href="/services" className="services-nav__all">All services <ArrowUpRight aria-hidden="true" /></Link>
                   <div className="services-nav__list">
                     {serviceCatalog.map((service) => <Link href={`/services/${service.slug}`} key={service.slug}>{service.title}</Link>)}
@@ -426,17 +478,20 @@ function Header() {
         <Link href="/contact" className="header-cta">
           Start a project <ArrowUpRight aria-hidden="true" />
         </Link>
-        <button className="menu-button" type="button" aria-label="Open navigation" aria-expanded={menuOpen} onClick={() => setMenuOpen((open) => !open)}>
+        <button className="menu-button" type="button" ref={menuToggleRef} aria-label={menuOpen ? "Close navigation" : "Open navigation"} aria-expanded={menuOpen} aria-controls="mobile-navigation" onClick={() => {
+          setMenuOpen((open) => !open);
+          setServicesMenuOpen(false);
+        }}>
           {menuOpen ? <X aria-hidden="true" /> : <Menu aria-hidden="true" />}
         </button>
       </div>
       {menuOpen && (
-        <nav className="mobile-nav" aria-label="Mobile navigation">
+        <nav id="mobile-navigation" className="mobile-nav" aria-label="Mobile navigation">
           <Link href="/">Home</Link>
           {navItems.map(([label, href]) => label === "Services" ? (
-            <div className="mobile-services" key={href}>
-              <button type="button" className="mobile-services__toggle" aria-expanded={servicesMenuOpen} onClick={() => setServicesMenuOpen((open) => !open)}>Services <ChevronDown aria-hidden="true" /></button>
-              {servicesMenuOpen && <div className="mobile-services__links">
+            <div className="mobile-services" key={href} ref={mobileServicesRef}>
+              <button type="button" className="mobile-services__toggle" aria-expanded={servicesMenuOpen} aria-controls="mobile-services-menu" onClick={(event) => toggleServices(event.currentTarget)}>Services <ChevronDown aria-hidden="true" /></button>
+              {servicesMenuOpen && <div id="mobile-services-menu" className="mobile-services__links">
                 <Link href="/services" className="mobile-services__all">All services <ArrowUpRight aria-hidden="true" /></Link>
                 {serviceCatalog.map((service) => <Link href={`/services/${service.slug}`} key={service.slug}>{service.title}</Link>)}
               </div>}
@@ -529,12 +584,12 @@ export function HomePage() {
           <h2>A sense of <em>place.</em></h2>
         </div>
         <div className="home-work__grid home-work__grid--expanded">
-          <article className="project-tile project-tile--large"><img src={assets.micdsLounge} alt="CKC custom wall paneling and wood ceiling in an education lounge." /><div><span>Education</span><Link href="/gallery" aria-label="View education work"><ArrowUpRight aria-hidden="true" /></Link></div></article>
-          <article className="project-tile"><img src={assets.enterpriseCenterSuiteTwo} alt="Enterprise Center suite with custom hospitality millwork and service counter details." /><div><span>Luxury Suites</span><Link href="/gallery" aria-label="View luxury suites work"><ArrowUpRight aria-hidden="true" /></Link></div></article>
-          <article className="project-tile"><img src={assets.homeCabinetryCasework} alt="CKC custom cabinetry and casework in a finished retail interior." /><div><span>Cabinetry &amp; casework</span><Link href="/gallery" aria-label="View cabinetry and casework"><ArrowUpRight aria-hidden="true" /></Link></div></article>
-          <article className="project-tile"><img src={assets.commercialEnvironmentHero} alt="CKC architectural woodwork in a finished commercial interior." /><div><span>Architectural woodwork</span><Link href="/gallery" aria-label="View architectural woodwork"><ArrowUpRight aria-hidden="true" /></Link></div></article>
-          <article className="project-tile"><img src={assets.stLouisChildrensAquariumTwo} alt="St. Louis Children’s Hospital curved reception casework framing a finished aquarium feature." /><div><span>Healthcare</span><Link href="/gallery" aria-label="View healthcare work"><ArrowUpRight aria-hidden="true" /></Link></div></article>
-          <article className="project-tile"><img src={assets.micdsHallway} alt="CKC wood wall panels and doors in an education hallway." /><div><span>Interiors</span><Link href="/gallery" aria-label="View additional interior work"><ArrowUpRight aria-hidden="true" /></Link></div></article>
+          <Link href="/gallery?collection=education" className="project-tile project-tile--large" aria-label="View education work"><img src={assets.micdsLounge} alt="CKC custom wall paneling and wood ceiling in an education lounge." /><div><span>Education</span><span className="project-tile__arrow" aria-hidden="true"><ArrowUpRight /></span></div></Link>
+          <Link href="/gallery?collection=retail-fixtures" className="project-tile" aria-label="View retail fixtures"><img src={assets.retailFixturesHero} alt="Kendra Scott retail fixture with custom dark wood display cabinetry and integrated glass shelving." /><div><span>Retail Fixtures</span><span className="project-tile__arrow" aria-hidden="true"><ArrowUpRight /></span></div></Link>
+          <Link href="/gallery?collection=cabinetry-casework" className="project-tile" aria-label="View cabinetry and casework"><img src={assets.homeCabinetryCasework} alt="CKC custom cabinetry and casework in a finished retail interior." /><div><span>Cabinetry &amp; casework</span><span className="project-tile__arrow" aria-hidden="true"><ArrowUpRight /></span></div></Link>
+          <Link href="/gallery?collection=architectural-woodwork" className="project-tile" aria-label="View architectural woodwork"><img src={assets.commercialEnvironmentHero} alt="CKC architectural woodwork in a finished commercial interior." /><div><span>Architectural woodwork</span><span className="project-tile__arrow" aria-hidden="true"><ArrowUpRight /></span></div></Link>
+          <Link href="/gallery?collection=healthcare" className="project-tile" aria-label="View healthcare work"><img src={assets.stLouisChildrensAquariumTwo} alt="St. Louis Children’s Hospital curved reception casework framing a finished aquarium feature." /><div><span>Healthcare</span><span className="project-tile__arrow" aria-hidden="true"><ArrowUpRight /></span></div></Link>
+          <Link href="/gallery?collection=education" className="project-tile" aria-label="View additional interior work"><img src={assets.micdsHallway} alt="CKC wood wall panels and doors in an education hallway." /><div><span>Interiors</span><span className="project-tile__arrow" aria-hidden="true"><ArrowUpRight /></span></div></Link>
         </div>
       </section>
       <SectionRule />
@@ -804,26 +859,37 @@ export function ContactPage() {
   );
 }
 
-function galleryProjectIndexFromLocation(location: string) {
-  const query = typeof window === "undefined"
-    ? location.split("?", 2)[1]?.split("#", 1)[0] ?? ""
-    : window.location.search.slice(1);
-  const collection = new URLSearchParams(query).get("collection");
-  const index = galleryProjects.findIndex((project) => project.title.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "") === collection);
+function galleryCollectionSlug(title: string) {
+  return title.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+}
+
+function galleryProjectIndexFromSearch(search: string) {
+  const collection = new URLSearchParams(search).get("collection");
+  const index = galleryProjects.findIndex((project) => galleryCollectionSlug(project.title) === collection);
   return index === -1 ? 0 : index;
 }
 
 export function GalleryPage() {
-  const [location] = useLocation();
-  const [activeProjectIndex, setActiveProjectIndex] = useState(0);
+  const [, navigate] = useLocation();
+  const search = useSearch();
+  const [hydrated, setHydrated] = useState(false);
   const [activeImage, setActiveImage] = useState<GalleryImage | null>(null);
+  // Static HTML uses the default collection. Read the URL after hydration so
+  // bookmarked collections hydrate cleanly, then follow every query/history change.
+  useEffect(() => { setHydrated(true); }, []);
   useEffect(() => {
-    setActiveProjectIndex(galleryProjectIndexFromLocation(location));
-  }, [location]);
+    setActiveImage(null);
+  }, [search]);
+  const activeProjectIndex = hydrated ? galleryProjectIndexFromSearch(search) : 0;
   const activeProject = galleryProjects[activeProjectIndex];
   function selectProject(index: number, returnToWork = false) {
-    setActiveProjectIndex(index);
     setActiveImage(null);
+    const nextSearch = new URLSearchParams(search);
+    const collection = galleryCollectionSlug(galleryProjects[index].title);
+    if (nextSearch.get("collection") !== collection) {
+      nextSearch.set("collection", collection);
+      navigate(`/gallery?${nextSearch.toString()}`);
+    }
     if (returnToWork) {
       requestAnimationFrame(() => document.getElementById("gallery-work")?.scrollIntoView({ behavior: "smooth", block: "start" }));
     }

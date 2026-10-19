@@ -81,20 +81,37 @@ export default function ContactForm({ variant = "light", formLocation = "website
     const form = event.currentTarget;
     const values = new FormData(form);
     const field = (name: string) => String(values.get(name) || "").trim();
+    const controller = new AbortController();
+    let requestTimer: ReturnType<typeof setTimeout> | undefined;
     try {
-      const response = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name: field("name"), email: field("email"), phone: field("phone"), message: field("message"), website: field("website"),
-          attribution: { ...(visit.current || visitAttribution()), submissionPage: window.location.pathname, formLocation },
+      // Bound the whole fetch, including BotID's wait for a browser challenge.
+      const response = await Promise.race([
+        new Promise<Response>((_, reject) => {
+          requestTimer = setTimeout(() => {
+            controller.abort();
+            reject(new DOMException("Request timed out", "TimeoutError"));
+          }, 45000);
         }),
-        keepalive: true,
-        signal: AbortSignal.timeout(45000),
-      });
-      const receipt: unknown = await response.json();
+        fetch("/api/contact", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            name: field("name"), email: field("email"), phone: field("phone"), message: field("message"), website: field("website"),
+            attribution: { ...(visit.current || visitAttribution()), submissionPage: window.location.pathname, formLocation },
+          }),
+          keepalive: true,
+          signal: controller.signal,
+        }),
+      ]);
+      if (response.status === 429) {
+        throw new Error("We’ve received several requests. Please wait a few minutes and try again, or call 314-383-8222.");
+      }
+      const receipt: unknown = await response.json().catch(() => null);
       if (!response.ok || !receipt || typeof receipt !== "object" || !("success" in receipt) || receipt.success !== true) {
-        const message = receipt && typeof receipt === "object" && "error" in receipt && typeof receipt.error === "string" ? receipt.error : "We couldn’t confirm your request. Please try again or call 314-383-8222.";
+        const fallback = response.status === 403
+          ? "We couldn’t verify your request. Please refresh the page and try again, or call 314-383-8222."
+          : "We couldn’t confirm your request. Please try again or call 314-383-8222.";
+        const message = receipt && typeof receipt === "object" && "error" in receipt && typeof receipt.error === "string" ? receipt.error : fallback;
         throw new Error(message);
       }
       form.reset();
@@ -103,6 +120,7 @@ export default function ContactForm({ variant = "light", formLocation = "website
       setError(failure instanceof Error && failure.name === "Error" ? failure.message : "We couldn’t confirm your request. Please check your connection and try again, or call 314-383-8222.");
       setState("error");
     } finally {
+      clearTimeout(requestTimer);
       submitting.current = false;
     }
   }

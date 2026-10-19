@@ -24,6 +24,7 @@ function setup({ email = async () => true, sheet = async () => true } = {}) {
     end(value) { this.body = JSON.parse(value); events.push(["response", this.statusCode]); },
   };
   const handler = createContactHandler({
+    verifyRequest: async () => "human",
     sendNotification: async (...args) => { events.push(["email", ...args]); return email(...args); },
     saveToSheets: async (...args) => { events.push(["sheet", ...args]); return sheet(...args); },
     waitUntil(promise) { events.push(["waitUntil"]); background.push(promise); },
@@ -37,6 +38,7 @@ test("accepts email before acknowledging, then starts Sheets after the response 
   const sheet = deferred();
   const app = setup({ email: () => email.promise, sheet: () => sheet.promise });
   const request = app.handler(app.req, app.res);
+  await Promise.resolve();
   assert.deepEqual(app.events.map(([type]) => type), ["email"]);
   assert.equal(app.res.body, undefined);
   email.resolve(true);
