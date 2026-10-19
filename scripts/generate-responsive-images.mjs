@@ -12,6 +12,13 @@ const photos = [...new Set([...assets.matchAll(/\s+(\w+): "(\/media\/[^"\n]+\.(?
 const directory = "public/media/responsive";
 await mkdir(directory, { recursive: true });
 const manifest = {};
+const dimensions = {};
+const localImages = [...new Set([...source.matchAll(/"(\/media\/[^"\n]+\.(?:jpg|jpeg|png|webp|svg))"/g)].map((match) => match[1]))];
+for (const path of localImages) {
+  const metadata = await sharp(`public${path}`).metadata();
+  if (!metadata.width || !metadata.height) throw new Error(`Missing image dimensions: ${path}`);
+  dimensions[path] = { width: metadata.width, height: metadata.height };
+}
 for (const path of photos) {
   const bytes = await readFile(`public${path}`);
   const hash = createHash("sha256").update(bytes).update("webp-q82-v1").digest("hex").slice(0, 10);
@@ -34,4 +41,5 @@ for (const path of photos) {
   manifest[path] = { width: originalWidth, height: originalHeight, variants };
 }
 await writeFile("src/lib/generated-images.json", JSON.stringify(manifest));
+await writeFile("src/lib/generated-image-dimensions.json", JSON.stringify(dimensions));
 console.log(`Generated responsive WebP variants for ${photos.length} existing photos.`);

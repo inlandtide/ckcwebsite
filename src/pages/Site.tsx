@@ -2,6 +2,7 @@ import { type ReactNode, useEffect, useRef, useState } from "react";
 import { Link, useLocation, useSearch } from "wouter";
 import ContactForm from "../components/ContactForm";
 import SiteImage from "../components/SiteImage";
+import { teamGroups } from "../lib/team";
 import {
   ArrowDownRight,
   ArrowLeft,
@@ -253,11 +254,6 @@ type ServiceDefinition = {
   heroAlt?: string;
 };
 
-type TeamMember = {
-  name: string;
-  role: string;
-};
-
 const serviceCatalog: ServiceDefinition[] = [
   {
     slug: "architectural-millwork",
@@ -341,33 +337,6 @@ const serviceCatalog: ServiceDefinition[] = [
     scope: ["Shop drawing coordination", "Material review", "Scope & detail alignment"],
     image: assets.shopOverview,
     alt: "CKC production shop with fabricated millwork in progress.",
-  },
-];
-
-const teamGroups: Array<{ title: string; members: TeamMember[] }> = [
-  {
-    title: "Leadership",
-    members: [
-      { name: "Nancy Blaha", role: "President" },
-      { name: "Tim Hebel", role: "CFO" },
-      { name: "Ryan Hall", role: "CRO" },
-      { name: "Dan Stampfl", role: "Plant Manager" },
-      { name: "Jason Pennington", role: "Sr. CNC Programmer" },
-    ],
-  },
-  {
-    title: "Project management",
-    members: [
-      { name: "John Ruengert", role: "Sr. Project Manager" },
-      { name: "Josh Lanfersieck", role: "Project Manager" },
-    ],
-  },
-  {
-    title: "Estimating & production",
-    members: [
-      { name: "JB Higginbotham", role: "Lead Estimator" },
-      { name: "Tyler Hampton", role: "Estimator" },
-    ],
   },
 ];
 
@@ -940,7 +909,7 @@ export function GalleryPage() {
         <div className="lightbox" role="dialog" aria-modal="true" aria-label={activeImage.label}>
           <button type="button" className="lightbox__close" onClick={() => setActiveImage(null)} aria-label="Close image"><X aria-hidden="true" /></button>
           <button type="button" className="lightbox__previous" onClick={() => moveImage(-1)} aria-label="Previous image"><ArrowLeft aria-hidden="true" /></button>
-          <figure><img src={activeImage.src} alt={activeImage.alt} /><figcaption>{activeImage.label}</figcaption></figure>
+          <figure><SiteImage original loading="eager" src={activeImage.src} alt={activeImage.alt} /><figcaption>{activeImage.label}</figcaption></figure>
           <button type="button" className="lightbox__next" onClick={() => moveImage(1)} aria-label="Next image"><ArrowRight aria-hidden="true" /></button>
         </div>
       )}

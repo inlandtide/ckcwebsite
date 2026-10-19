@@ -1,3 +1,5 @@
+import { teamGroups } from "./team";
+
 export const SITE_ORIGIN = "https://ckcwoodworks.com";
 
 // Existing site photos, with verified intrinsic sizes. Sharing metadata should
@@ -17,6 +19,7 @@ const seoImages = {
 
 type PageMetadata = {
   path: string;
+  lastModified: string;
   name: string;
   title: string;
   description: string;
@@ -26,15 +29,19 @@ type PageMetadata = {
 };
 
 // All business details and service descriptions come from the visible site.
+// lastModified records a material content/metadata update, never the build time.
+// Initial dates reflect the shared footer/contact update in commit 055deb9.
 export const seoPages: PageMetadata[] = [
   {
     path: "/",
+    lastModified: "2026-10-19",
     name: "Home",
-    title: "Commercial Millwork & Custom Cabinetry in St. Louis | CKC Woodworks",
+    title: "St. Louis Commercial Millwork & Cabinetry | CKC Woodworks",
     description: "CKC Woodworks builds commercial millwork, custom cabinetry, casework, and fixtures in St. Louis, with more than 40 years of commercial experience.",
   },
   {
     path: "/about",
+    lastModified: "2026-10-19",
     name: "About CKC",
     title: "About Our St. Louis Commercial Woodshop | CKC Woodworks",
     description: "Meet CKC Woodworks, a St. Louis commercial woodshop bringing more than four decades of experience to architectural millwork, cabinetry, and custom fabrication.",
@@ -43,6 +50,7 @@ export const seoPages: PageMetadata[] = [
   },
   {
     path: "/services",
+    lastModified: "2026-10-19",
     name: "Services",
     title: "Commercial Millwork & Fabrication Services | CKC Woodworks",
     description: "Explore CKC's St. Louis commercial woodwork capabilities, from architectural millwork and casework to CNC machining, custom finishes, and shop drawings.",
@@ -50,6 +58,7 @@ export const seoPages: PageMetadata[] = [
   },
   {
     path: "/services/architectural-millwork",
+    lastModified: "2026-10-19",
     name: "Architectural millwork",
     title: "Architectural Millwork in St. Louis | CKC Woodworks",
     description: "Custom feature walls, panels, screens, and architectural wood elements for commercial spaces, fabricated by CKC Woodworks in St. Louis.",
@@ -58,6 +67,7 @@ export const seoPages: PageMetadata[] = [
   },
   {
     path: "/services/custom-cabinetry-casework",
+    lastModified: "2026-10-19",
     name: "Custom cabinetry & casework",
     title: "Commercial Cabinetry & Casework in St. Louis | CKC Woodworks",
     description: "Custom commercial cabinetry, built-ins, workstations, and storage built around the needs of your project by CKC Woodworks in St. Louis.",
@@ -66,38 +76,43 @@ export const seoPages: PageMetadata[] = [
   },
   {
     path: "/services/commercial-fixtures",
+    lastModified: "2026-10-19",
     name: "Commercial fixtures",
-    title: "Custom Commercial & Retail Fixtures | CKC Woodworks St. Louis",
+    title: "Commercial & Retail Fixtures in St. Louis | CKC Woodworks",
     description: "CKC Woodworks fabricates custom service counters, retail displays, branded fixtures, and purpose-built commercial elements in St. Louis.",
     service: "Service counters, retail displays, branded fixtures, and purpose-built point-of-use elements.",
     image: "fixtures",
   },
   {
     path: "/services/cnc-machining",
+    lastModified: "2026-10-19",
     name: "CNC machining",
-    title: "CNC Machining & Panel Processing in St. Louis | CKC Woodworks",
+    title: "CNC Machining & Panel Processing | CKC Woodworks St. Louis",
     description: "CNC-cut panels, components, and repeatable parts made for exact geometry and efficient custom fabrication at CKC Woodworks in St. Louis.",
     service: "CNC-cut panels, components, and repeatable parts made for exact geometry and efficient custom fabrication.",
     image: "cnc",
   },
   {
     path: "/services/countertops-specialty-shapes",
+    lastModified: "2026-10-19",
     name: "Countertops & specialty shapes",
-    title: "Custom Countertops & Specialty Shapes | CKC Woodworks St. Louis",
+    title: "Custom Countertops & Specialty Shapes | CKC Woodworks",
     description: "Custom countertops, shaped work surfaces, curved profiles, and one-off components for commercial projects from CKC Woodworks in St. Louis.",
     service: "Custom countertops, shaped work surfaces, curved profiles, and one-off components made to carry the detail.",
     image: "countertops",
   },
   {
     path: "/services/custom-finishes-veneer",
+    lastModified: "2026-10-19",
     name: "Finishing",
     title: "Wood Finishing & Color Matching in St. Louis | CKC Woodworks",
-    description: "Stain development, color matching, and protective wood finishes for commercial millwork, with careful attention to material character at CKC Woodworks in St. Louis.",
+    description: "Stain development, color matching, and protective finishes for commercial millwork at CKC Woodworks in St. Louis, with care for wood character.",
     service: "Stain development, color matching, and protective finishes with a close eye on wood character.",
     image: "finishing",
   },
   {
     path: "/services/shop-drawings-design-assist",
+    lastModified: "2026-10-19",
     name: "Shop drawings & design assist",
     title: "Millwork Shop Drawings & Design Assist | CKC Woodworks",
     description: "Drawing review, material input, and early project coordination to turn architectural intent into buildable commercial woodwork with CKC Woodworks.",
@@ -106,6 +121,7 @@ export const seoPages: PageMetadata[] = [
   },
   {
     path: "/portfolio",
+    lastModified: "2026-10-19",
     name: "Client portfolio",
     title: "Commercial Millwork Client Portfolio | CKC Woodworks",
     description: "Explore CKC Woodworks' client portfolio across healthcare, education, retail, and commercial environments in St. Louis and beyond.",
@@ -113,20 +129,23 @@ export const seoPages: PageMetadata[] = [
   },
   {
     path: "/gallery",
+    lastModified: "2026-10-19",
     name: "Project gallery",
-    title: "Commercial Millwork & Cabinetry Project Gallery | CKC Woodworks",
+    title: "Millwork & Cabinetry Project Gallery | CKC Woodworks",
     description: "View selected CKC Woodworks projects: healthcare, retail fixtures, education, architectural woodwork, custom cabinetry, casework, and shop fabrication.",
     type: "CollectionPage",
   },
   {
     path: "/careers",
+    lastModified: "2026-10-19",
     name: "Careers",
-    title: "Woodshop & Cabinet Maker Careers in St. Louis | CKC Woodworks",
+    title: "Cabinet Maker & Woodshop Careers | CKC Woodworks St. Louis",
     description: "Explore the Bench Hand / Cabinet Maker opportunity at CKC Woodworks, a St. Louis shop producing custom commercial cabinetry, casework, and millwork.",
     image: "production",
   },
   {
     path: "/contact",
+    lastModified: "2026-10-19",
     name: "Contact",
     title: "Contact CKC Woodworks | St. Louis Commercial Millwork",
     description: "Discuss your commercial millwork, cabinetry, or fabrication project with CKC Woodworks in St. Louis. Call 314-383-8222 or send a project inquiry.",
@@ -224,6 +243,19 @@ export function structuredData(page: PageMetadata) {
     },
   ];
 
+  if (page.path === "/about") {
+    const people = teamGroups.flatMap((group) => group.members).map((member) => ({
+      "@type": "Person",
+      "@id": `${SITE_ORIGIN}/about#person-${member.name.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`,
+      name: member.name,
+      jobTitle: member.role,
+      worksFor: { "@id": businessId },
+    }));
+    const webpage = graph.find((node) => node["@id"] === `${url}#webpage`)!;
+    webpage.mentions = people.map((person) => ({ "@id": person["@id"] }));
+    graph.push(...people);
+  }
+
   if (crumbs.length > 1) graph.push({
       "@type": "BreadcrumbList",
       "@id": breadcrumbId,
@@ -269,6 +301,7 @@ export function renderSeoHead(location: string) {
     meta("description", page.description),
     meta("robots", "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"),
     `<link data-seo rel="canonical" href="${url}" />`,
+    `<link data-seo rel="describedby" href="${SITE_ORIGIN}/llms.txt" type="text/plain" />`,
     meta("og:type", "website", true),
     meta("og:locale", "en_US", true),
     meta("og:site_name", "CKC Woodworks", true),

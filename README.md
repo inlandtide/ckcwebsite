@@ -49,3 +49,13 @@ Favicons derive from the existing CKC brand artwork. Official vector portfolio-l
 `pnpm images` generates WebP delivery variants (320–1920px, without enlarging or cropping) from the photo assets declared in `Site.tsx`. `dev`, `build`, and `check` run this step automatically. Generated files and the client manifest are ignored by Git and regenerated in the Vercel build. Sharp is pinned in the lockfile. `SiteImage` supplies `srcset`, contextual `sizes`, intrinsic dimensions, and lazy loading; page heroes remain eager. Original source photos, logos, and full-resolution lightbox images are preserved. Generated photo URLs include a content/configuration hash, and fonts include their source hash; both receive immutable caching.
 
 The footer provides page and service navigation, the business address, phone, and the existing residential-division link. Shared and contact-page form callouts no longer show raw email links; the contact details cards retain email beside phone and address. The contact cards span their section, and the gallery uses the shared copper divider above the inquiry form.
+
+## Technical SEO maintenance
+
+The build generates `/llms.txt` from the same page descriptions and canonical URLs used by the site. It is a compact directory of existing content, not a crawler permission file. Valid pages link to it through `rel="describedby"`.
+
+`seoPages[].lastModified` records the last material content or metadata change. Update it only when that page changes meaningfully, and keep `public/sitemap.xml` in sync for development. The initial dates reflect the shared footer/contact update in commit `055deb9` on October 19, 2026; builds do not refresh them automatically.
+
+The About page and its Person structured data share `src/lib/team.ts`, so names and roles stay consistent. Only people already visible on About are described. Add business `sameAs` links only after confirming the exact CKC profile; do not substitute Moulding Saint Louis or similarly named companies.
+
+`pnpm images` also reads intrinsic dimensions for all local images referenced in `Site.tsx`. Logos are delivered unchanged with width/height attributes. The lightbox retains its original full-resolution image URLs.

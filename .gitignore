@@ -8,3 +8,4 @@ dist/
 # Generated during pnpm images / pnpm build
 public/media/responsive/
 src/lib/generated-images.json
+src/lib/generated-image-dimensions.json

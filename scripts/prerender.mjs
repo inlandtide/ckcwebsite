@@ -23,9 +23,30 @@ try {
   }
 
   const sitemap = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
-    + seoPages.map((page) => `  <url><loc>${SITE_ORIGIN}${page.path}</loc></url>`).join("\n")
+    + seoPages.map((page) => `  <url><loc>${SITE_ORIGIN}${page.path}</loc><lastmod>${page.lastModified}</lastmod></url>`).join("\n")
     + "\n</urlset>\n";
   await writeFile(resolve("dist/sitemap.xml"), sitemap);
+  const pageLink = (page) => `- [${page.name}](${SITE_ORIGIN}${page.path}): ${page.description}`;
+  const llms = [
+    "# CKC Woodworks",
+    "",
+    `> ${seoPages[0].description}`,
+    "",
+    "## Company and contact",
+    ...seoPages.filter((page) => ["/", "/about", "/contact"].includes(page.path)).map(pageLink),
+    "",
+    "## Commercial woodwork services",
+    ...seoPages.filter((page) => page.path === "/services" || page.service).map(pageLink),
+    "",
+    "## Project examples",
+    ...seoPages.filter((page) => ["/portfolio", "/gallery"].includes(page.path)).map(pageLink),
+    "",
+    "## Optional",
+    ...seoPages.filter((page) => page.path === "/careers").map(pageLink),
+    "",
+  ].join("\n");
+  await writeFile(resolve("dist/llms.txt"), llms);
+
   console.log(`Prerendered ${seoPages.length} indexable pages and a noindex 404 page.`);
 } finally {
   await server.close();
