@@ -9,6 +9,7 @@ export interface ContactLead {
 }
 
 export type ContactRequest = IncomingMessage & { body?: unknown };
+export type ContactVerification = "human" | "bot" | "unavailable";
 export type Delivery = {
   sendNotification: (lead: ContactLead, reference: string, sheetsFailed?: boolean) => Promise<boolean>;
   saveToSheets: (lead: ContactLead, reference: string) => Promise<boolean>;
@@ -16,6 +17,7 @@ export type Delivery = {
 
 export function createContactDelivery(options?: { fetch?: typeof fetch; env?: NodeJS.ProcessEnv; logger?: Pick<Console, "info" | "error"> }): Delivery;
 export function createContactHandler(options: Delivery & {
+  verifyRequest: (req: ContactRequest, reference: string) => Promise<ContactVerification>;
   waitUntil: (promise: Promise<unknown>) => unknown;
   logger?: Pick<Console, "info" | "error">;
   newReference?: () => string;

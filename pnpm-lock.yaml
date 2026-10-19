@@ -11,6 +11,9 @@ importers:
       '@vercel/functions':
         specifier: ^3.10.1
         version: 3.10.1
+      botid:
+        specifier: ^1.5.11
+        version: 1.5.11(react@19.3.1)
       clsx:
         specifier: ^2.1.1
         version: 2.1.1
@@ -513,6 +516,17 @@ packages:
     resolution: {integrity: sha512-br0LOmjJqr6Rt4AEkadbcNf67Zpo7EPwKsWbjnRrJIa1QYFHQBqM4C7F2WTbV8ahTEcg1Eo+Y0aWjjORInYFyA==}
     engines: {node: '>=6.0.0'}
     hasBin: true
+
+  botid@1.5.11:
+    resolution: {integrity: sha512-KOO1A3+/vFVJk5aFoG3sNwiogKFPVR+x4aw4gQ1b2e0XoE+i5xp48/EZn+WqR07jRHeDGwHWQUOtV5WVm7xiww==}
+    peerDependencies:
+      next: '*'
+      react: ^18.0.0 || ^19.0.0
+    peerDependenciesMeta:
+      next:
+        optional: true
+      react:
+        optional: true
 
   browserslist@4.29.3:
     resolution: {integrity: sha512-1R4kiYKXGViqEN0CnoDrXc1StD9niAwu+j2dukWzrD4bJgsD4lDmEp0CRbc6E/vYJIfTHwPmwyaKtVSudICdPA==}
@@ -1160,6 +1174,10 @@ snapshots:
       - supports-color
 
   baseline-browser-mapping@2.11.28: {}
+
+  botid@1.5.11(react@19.3.1):
+    optionalDependencies:
+      react: 19.3.1
 
   browserslist@4.29.3:
     dependencies:
