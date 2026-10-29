@@ -2,6 +2,7 @@ import { type ReactNode, useEffect, useRef, useState } from "react";
 import { Link, useLocation, useSearch } from "wouter";
 import ContactForm from "../components/ContactForm";
 import SiteImage from "../components/SiteImage";
+import GalleryHeroImage from "../components/GalleryHeroImage";
 import { teamGroups } from "../lib/team";
 import {
   ArrowDownRight,
@@ -876,9 +877,10 @@ export function GalleryPage() {
   }
   return (
     <Layout>
-      <section className={`gallery-hero ${activeProject.title === "Cabinetry & Casework" ? "gallery-hero--cabinetry" : ""}`}>
-        {activeProject.title === "Cabinetry & Casework" && <SiteImage sizes="100vw" src={activeProject.cover} alt="" aria-hidden="true" className="gallery-hero__backdrop" />}
-        <SiteImage loading="eager" fetchPriority="high" sizes="100vw" src={activeProject.cover} alt={activeProject.alt} className="gallery-hero__image" />
+      <section className="gallery-hero">
+        <GalleryHeroImage src={activeProject.cover} alt={activeProject.alt}
+          fallbackSrc={activeProject.images.find((image) => image.src !== activeProject.cover)?.src ?? activeProject.cover}
+          framed={activeProject.title === "Cabinetry & Casework"} />
         <div className="gallery-hero__veil" />
         <div className="gallery-hero__content">
           <Eyebrow>Project gallery</Eyebrow>

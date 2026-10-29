@@ -46,6 +46,8 @@ Favicons derive from the existing CKC brand artwork. Official vector portfolio-l
 
 ## Responsive photos and shared footer
 
+Gallery hero photos are staged in a separate image element and decoded before replacing the last good photo. Failed responsive requests retry the original photo, then another photo from the same collection; if all fail, the previous photo stays visible with a retry button. Category changes cancel stale decode results. Keep this behavior when editing gallery image styles or navigation.
+
 `pnpm images` generates WebP delivery variants (320–1920px, without enlarging or cropping) from the photo assets declared in `Site.tsx`. `dev`, `build`, and `check` run this step automatically. Generated files and the client manifest are ignored by Git and regenerated in the Vercel build. Sharp is pinned in the lockfile. `SiteImage` supplies `srcset`, contextual `sizes`, intrinsic dimensions, and lazy loading; page heroes remain eager. Original source photos, logos, and full-resolution lightbox images are preserved. Generated photo URLs include a content/configuration hash, and fonts include their source hash; both receive immutable caching.
 
 The footer provides page and service navigation, the business address, phone, and the existing residential-division link. Shared and contact-page form callouts no longer show raw email links; the contact details cards retain email beside phone and address. The contact cards span their section, and the gallery uses the shared copper divider above the inquiry form.
