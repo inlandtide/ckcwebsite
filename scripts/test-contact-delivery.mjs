@@ -192,6 +192,7 @@ test("Sheets payload preserves the receiver schema and converts formula-like val
   assert.equal(data.message, "'  +SUM(1,2)");
   assert.equal(data.campaign, "'=unsafe()");
   assert.equal(data.leadSource, "CKC Woodworks Website");
+  assert.equal(data.submissionId, "reference", "receiver requires a stable submission identity");
   assert.equal(data.landingPage, "https://ckcwoodworks.com/");
   assert.ok(request.options.signal instanceof AbortSignal);
 });
