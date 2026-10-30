@@ -14,7 +14,7 @@ function deferred() {
   return { promise, resolve };
 }
 
-function setup({ email = async () => true, sheet = async () => true } = {}) {
+function setup({ email = async () => true, crm = async () => true } = {}) {
   const events = [];
   const background = [];
   const req = { method: "POST", headers: { host: "ckcwoodworks.com", origin: "https://ckcwoodworks.com", "content-type": "application/json" }, body: structuredClone(valid) };
@@ -26,17 +26,17 @@ function setup({ email = async () => true, sheet = async () => true } = {}) {
   const handler = createContactHandler({
     verifyRequest: async () => "human",
     sendNotification: async (...args) => { events.push(["email", ...args]); return email(...args); },
-    saveToSheets: async (...args) => { events.push(["sheet", ...args]); return sheet(...args); },
+    saveToCRM: async (...args) => { events.push(["crm", ...args]); return crm(...args); },
     waitUntil(promise) { events.push(["waitUntil"]); background.push(promise); },
     logger, newReference: () => "test-reference",
   });
   return { handler, req, res, events, background };
 }
 
-test("accepts email before acknowledging, then starts Sheets after the response without waiting for it", async () => {
+test("accepts email before acknowledging, then starts CRM after the response without waiting for it", async () => {
   const email = deferred();
-  const sheet = deferred();
-  const app = setup({ email: () => email.promise, sheet: () => sheet.promise });
+  const crm = deferred();
+  const app = setup({ email: () => email.promise, crm: () => crm.promise });
   const request = app.handler(app.req, app.res);
   await Promise.resolve();
   assert.deepEqual(app.events.map(([type]) => type), ["email"]);
@@ -45,45 +45,45 @@ test("accepts email before acknowledging, then starts Sheets after the response 
   await request;
   assert.equal(app.res.statusCode, 200);
   assert.deepEqual(app.res.body, { success: true });
-  assert.deepEqual(app.events.map(([type]) => type), ["email", "waitUntil", "response", "sheet"]);
+  assert.deepEqual(app.events.map(([type]) => type), ["email", "waitUntil", "response", "crm"]);
   let finished = false;
   app.background[0].then(() => { finished = true; });
   await Promise.resolve();
-  assert.equal(finished, false, "slow Sheets must be independent of the completed response");
-  sheet.resolve(true);
+  assert.equal(finished, false, "slow CRM must be independent of the completed response");
+  crm.resolve(true);
   await Promise.all(app.background);
-  assert.equal(app.events.filter(([type]) => type === "sheet").length, 1);
+  assert.equal(app.events.filter(([type]) => type === "crm").length, 1);
 });
 
-test("a missing Sheets receipt alerts the team once and never blindly appends a duplicate", async () => {
-  const app = setup({ sheet: async () => false });
+test("a missing CRM receipt alerts the team once and never blindly appends a duplicate", async () => {
+  const app = setup({ crm: async () => false });
   await app.handler(app.req, app.res);
   await Promise.all(app.background);
   assert.deepEqual(app.res.body, { success: true });
-  assert.deepEqual(app.events.map(([type]) => type), ["email", "waitUntil", "response", "sheet", "email"]);
+  assert.deepEqual(app.events.map(([type]) => type), ["email", "waitUntil", "response", "crm", "email"]);
   const emails = app.events.filter(([type]) => type === "email");
   assert.equal(emails[1][3], true);
   assert.equal(emails[0][2], emails[1][2], "warning keeps the original reference");
 });
 
 test("an email outage acknowledges only after confirmed backup, then retries the same notification", async () => {
-  const sheet = deferred();
-  const sheetStarted = deferred();
-  const app = setup({ email: async () => false, sheet: () => { sheetStarted.resolve(); return sheet.promise; } });
+  const crm = deferred();
+  const crmStarted = deferred();
+  const app = setup({ email: async () => false, crm: () => { crmStarted.resolve(); return crm.promise; } });
   const request = app.handler(app.req, app.res);
-  await sheetStarted.promise;
-  assert.deepEqual(app.events.map(([type]) => type), ["email", "sheet"]);
+  await crmStarted.promise;
+  assert.deepEqual(app.events.map(([type]) => type), ["email", "crm"]);
   assert.equal(app.res.body, undefined);
-  sheet.resolve(true);
+  crm.resolve(true);
   await request;
   await Promise.all(app.background);
   assert.deepEqual(app.res.body, { success: true });
-  assert.deepEqual(app.events.map(([type]) => type), ["email", "sheet", "waitUntil", "response", "email"]);
+  assert.deepEqual(app.events.map(([type]) => type), ["email", "crm", "waitUntil", "response", "email"]);
   assert.equal(app.events[0][2], app.events[4][2]);
 });
 
 test("when neither system confirms receipt, returns an actionable 503 and does not claim success", async () => {
-  const app = setup({ email: async () => false, sheet: async () => false });
+  const app = setup({ email: async () => false, crm: async () => false });
   await app.handler(app.req, app.res);
   assert.equal(app.res.statusCode, 503);
   assert.match(app.res.body.error, /314-383-8222/);
@@ -157,7 +157,7 @@ test("labels CKC inquiries and strips arbitrary URL query strings and external l
   assert.equal(external.events[0][1].attribution.referringSite, "");
 });
 
-function deliveryWith(fetcher, env = { RESEND_API: "mock-key", GOOGLE_SHEETS_WEBAPP_URL: "https://sheets.example.test" }) {
+function deliveryWith(fetcher, env = { RESEND_API: "mock-key", CRM_INGEST_SECRET: "mock-crm-key" }) {
   return createContactDelivery({ fetch: fetcher, env, logger });
 }
 
@@ -181,19 +181,20 @@ test("email retains configured recipients and reply-to, escapes user HTML, and s
   assert.ok(sent.every(({ options }) => options.signal instanceof AbortSignal));
 });
 
-test("Sheets payload preserves the receiver schema and converts formula-like values to cell text", async () => {
+test("CRM stores original field text, authenticates server delivery and requires a durable receipt", async () => {
   let request;
-  const delivery = deliveryWith(async (url, options) => { request = { url, options }; return Response.json({ status: "success" }); });
-  assert.equal(await delivery.saveToSheets({ ...lead, name: "=HYPERLINK(\"bad\")", message: "  +SUM(1,2)" }, "reference"), true);
+  const delivery = deliveryWith(async (url, options) => { request = { url, options }; return Response.json({ status: "success", integration: "crm_intake_v1", id: "crm-record" }); });
+  assert.equal(await delivery.saveToCRM({ ...lead, name: "=HYPERLINK(\"bad\")", message: "  +SUM(1,2)" }, "reference"), true);
   const data = JSON.parse(request.options.body);
-  assert.equal(request.url, "https://sheets.example.test");
-  assert.equal(data.name, "'=HYPERLINK(\"bad\")");
-  assert.equal(data.phone, "'+13145550100");
-  assert.equal(data.message, "'  +SUM(1,2)");
-  assert.equal(data.campaign, "'=unsafe()");
-  assert.equal(data.leadSource, "CKC Woodworks Website");
-  assert.equal(data.submissionId, "reference", "receiver requires a stable submission identity");
-  assert.equal(data.landingPage, "https://ckcwoodworks.com/");
+  assert.equal(request.url, "https://crm.ckcwoodworks.com/api/intake/website_ckc");
+  assert.equal(request.options.headers['x-crm-key'], "mock-crm-key");
+  assert.equal(data.name, "=HYPERLINK(\"bad\")");
+  assert.equal(data.phone, "+13145550100");
+  assert.equal(data.message, "  +SUM(1,2)");
+  assert.equal(data.campaign, "=unsafe()");
+  assert.equal(data.sourceLabel, "CKC Woodworks Website");
+  assert.equal(data.externalId, "reference", "receiver requires a stable submission identity");
+  assert.equal(data.attribution.landingPage, "https://ckcwoodworks.com/");
   assert.ok(request.options.signal instanceof AbortSignal);
 });
 
@@ -201,7 +202,7 @@ test("HTTP 200 without the expected receipts cannot be mistaken for confirmed de
   for (const result of [() => Response.json({ error: "no receipt" }), () => new Response("<html>Login</html>"), () => Response.json({ id: "", status: "error" }), () => Response.json({ id: "bad", status: "success" }, { status: 500 })]) {
     const delivery = deliveryWith(async () => result());
     assert.equal(await delivery.sendNotification(lead, "reference"), false);
-    assert.equal(await delivery.saveToSheets(lead, "reference"), false);
+    assert.equal(await delivery.saveToCRM(lead, "reference"), false);
   }
 });
 
@@ -210,9 +211,21 @@ test("missing configuration and network errors fail closed without leaking perso
   const log = { info: (...args) => logs.push(args), error: (...args) => logs.push(args) };
   const missing = createContactDelivery({ env: {}, fetch: async () => { throw new Error("Must not fetch"); }, logger: log });
   assert.equal(await missing.sendNotification(lead, "reference"), false);
-  assert.equal(await missing.saveToSheets(lead, "reference"), false);
-  const outage = createContactDelivery({ env: { RESEND_API: "secret-key", GOOGLE_SHEETS_WEBAPP_URL: "https://sheets.example.test" }, fetch: async () => { throw new Error("Timeout"); }, logger: log });
+  assert.equal(await missing.saveToCRM(lead, "reference"), false);
+  const outage = createContactDelivery({ env: { RESEND_API: "secret-key", CRM_INGEST_SECRET: "mock-crm-key" }, fetch: async () => { throw new Error("Timeout"); }, logger: log });
   assert.equal(await outage.sendNotification(lead, "reference"), false);
-  assert.equal(await outage.saveToSheets(lead, "reference"), false);
+  assert.equal(await outage.saveToCRM(lead, "reference"), false);
   assert.doesNotMatch(JSON.stringify(logs), /test@example.com|Test <Lead>|secret-key|Example inquiry/);
+});
+
+test('CRM retries a lost acknowledgement with one stable payload and refuses permanent failures',async()=>{
+ const sent=[];const d=deliveryWith(async(url,init)=>{sent.push(init);if(sent.length===1)throw Error('lost response');return Response.json({status:'success',integration:'crm_intake_v1',id:'one-record'})});
+ assert.equal(await d.saveToCRM(lead,'ref'),true);assert.equal(sent.length,2);assert.equal(sent[0].body,sent[1].body);
+ let calls=0;const bad=deliveryWith(async()=>{calls++;return Response.json({error:'unauthorized'},{status:401})});
+ assert.equal(await bad.saveToCRM(lead,'ref'),false);assert.equal(calls,1);
+});
+test('A retry preserves the submitted reference for both email and CRM',async()=>{
+ const app=setup();app.req.body.submissionId='6e55b54c-59f0-4c47-9caa-a5f0be14fd13';
+ await app.handler(app.req,app.res);await Promise.all(app.background);
+ assert.ok(app.events.filter(e=>['email','crm'].includes(e[0])).every(e=>e[2]===app.req.body.submissionId));
 });

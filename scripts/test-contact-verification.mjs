@@ -28,14 +28,14 @@ function setup(verifyRequest) {
   const handler = createContactHandler({
     verifyRequest,
     sendNotification: async () => { events.push("email"); return true; },
-    saveToSheets: async () => { events.push("sheet"); return true; },
+    saveToCRM: async () => { events.push("crm"); return true; },
     waitUntil(promise) { events.push("waitUntil"); background.push(promise); },
     logger, newReference: () => "test-verification-reference",
   });
   return { handler, req, res, events, background, logs, logger };
 }
 
-test("a human verdict is required before email, response, and background Sheets in that order", async () => {
+test("a human verdict is required before email, response, and background CRM in that order", async () => {
   const verdict = deferred();
   const app = setup(async () => { app.events.push("verification"); return verdict.promise; });
   const pending = app.handler(app.req, app.res);
@@ -45,7 +45,7 @@ test("a human verdict is required before email, response, and background Sheets 
   await pending;
   await Promise.all(app.background);
   assert.equal(app.res.statusCode, 200);
-  assert.deepEqual(app.events, ["verification", "email", "waitUntil", "response", "sheet"]);
+  assert.deepEqual(app.events, ["verification", "email", "waitUntil", "response", "crm"]);
 });
 
 test("bot, missing dependency, unknown verdict, and verification exception never touch either delivery system", async () => {
@@ -99,7 +99,7 @@ test("adapter forces Basic, passes request headers to the SDK, and accepts only 
   }
 });
 
-test("missing browser challenge is classified by the SDK and its bot verdict blocks mail and Sheets", async () => {
+test("missing browser challenge is classified by the SDK and its bot verdict blocks mail and CRM", async () => {
   let calls = 0;
   const verify = createContactVerification({
     checkBotId: async ({ advancedOptions }) => {

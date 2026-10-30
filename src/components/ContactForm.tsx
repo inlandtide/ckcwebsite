@@ -62,6 +62,7 @@ export default function ContactForm({ variant = "light", formLocation = "website
   const [state, setState] = useState<"idle" | "submitting" | "success" | "error">("idle");
   const [error, setError] = useState("");
   const submitting = useRef(false);
+  const delivery = useRef<{ content: string; id: string; attribution: Attribution & { submissionPage: string; formLocation: string } } | null>(null);
   const visit = useRef<Attribution | null>(null);
   const confirmation = useRef<HTMLDivElement>(null);
   const errorNotice = useRef<HTMLParagraphElement>(null);
@@ -80,6 +81,8 @@ export default function ContactForm({ variant = "light", formLocation = "website
     setError("");
     const form = event.currentTarget;
     const values = new FormData(form);
+    const content = JSON.stringify(['name', 'email', 'phone', 'message'].map(name => values.get(name)));
+    if (delivery.current?.content !== content) delivery.current = { content, id: crypto.randomUUID(), attribution: { ...(visit.current || visitAttribution()), submissionPage: window.location.pathname, formLocation } };
     const field = (name: string) => String(values.get(name) || "").trim();
     const controller = new AbortController();
     let requestTimer: ReturnType<typeof setTimeout> | undefined;
@@ -96,8 +99,8 @@ export default function ContactForm({ variant = "light", formLocation = "website
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
-            name: field("name"), email: field("email"), phone: field("phone"), message: field("message"), website: field("website"),
-            attribution: { ...(visit.current || visitAttribution()), submissionPage: window.location.pathname, formLocation },
+            submissionId: delivery.current.id, name: field("name"), email: field("email"), phone: field("phone"), message: field("message"), website: field("website"),
+            attribution: delivery.current.attribution,
           }),
           keepalive: true,
           signal: controller.signal,
@@ -115,6 +118,7 @@ export default function ContactForm({ variant = "light", formLocation = "website
         throw new Error(message);
       }
       form.reset();
+      delivery.current = null;
       setState("success");
     } catch (failure) {
       setError(failure instanceof Error && failure.name === "Error" ? failure.message : "We couldn’t confirm your request. Please check your connection and try again, or call 314-383-8222.");
