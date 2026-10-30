@@ -9,3 +9,5 @@ dist/
 public/media/responsive/
 src/lib/generated-images.json
 src/lib/generated-image-dimensions.json
+
+.vercel
