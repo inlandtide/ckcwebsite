@@ -71,6 +71,7 @@ const assets = {
   healthcareHero: "/media/st-louis-childrens-aquarium-hero-wide-people-removed_ab24df45.webp",
   healthcareReceptionOne: "/media/healthcare-reception-01_6123ae47.webp",
   healthcareReceptionTwo: "/media/healthcare-reception-02_aa8ea161.webp",
+  educationCorridorCropped: "/media/healthcare-corridor-floor-cropped_12e55cff.webp",
   energizerInteriorOne: "/media/energizer-interior-01_86e380b2.jpg",
   energizerInteriorTwo: "/media/energizer-interior-02_590c937b.jpg",
   energizerInteriorThree: "/media/energizer-interior-03_cfc294dd.jpg",
@@ -168,7 +169,7 @@ const galleryProjects: GalleryProject[] = [
       { src: assets.micdsCorridor, alt: "Custom millwork in an interior corridor.", label: "Education", shape: "" },
       { src: assets.micdsHallway, alt: "Wood wall panels and doors in an education hallway.", label: "Education", shape: "gallery-item--wide" },
       { src: assets.micdsLounge, alt: "Custom wall paneling and wood ceiling in an education lounge.", label: "Education", shape: "" },
-      { src: assets.micdsBench, alt: "CKC detailed wood millwork in an interior corridor.", label: "Education", shape: "gallery-item--wide" },
+      { src: assets.educationCorridorCropped, alt: "Education corridor with a custom wood archway, paneled bench seating, and built-in cubbies.", label: "Education", shape: "gallery-item--wide" },
     ],
   },
   {
