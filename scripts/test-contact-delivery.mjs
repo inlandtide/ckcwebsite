@@ -229,3 +229,22 @@ test('A retry preserves the submitted reference for both email and CRM',async()=
  await app.handler(app.req,app.res);await Promise.all(app.background);
  assert.ok(app.events.filter(e=>['email','crm'].includes(e[0])).every(e=>e[2]===app.req.body.submissionId));
 });
+test('Profile-aware mail accepts a durable CRM receipt with full inquiry, without a second send', async()=>{
+ const sent=[];const d=deliveryWith(async(url,init)=>{sent.push({url,...init});return {ok:true,status:200,json:async()=>({accepted:true,integration:'crm_notification_preferences_v1'})}}, {RESEND_API:'test',CRM_INGEST_SECRET:'mock-crm-key',CRM_NOTIFICATION_PREFERENCES:'true'});
+ assert.equal(await d.sendNotification(lead,'profile-ref'),true);assert.equal(sent.length,1);
+ assert.ok(sent[0].url.endsWith('/notify'));assert.equal(sent[0].headers['x-crm-key'],'mock-crm-key');
+ const body=JSON.parse(sent[0].body);assert.equal(body.lead.message,lead.message);assert.equal(body.mail.reply_to,lead.email);assert.equal(body.lead.externalId,'profile-ref');
+});
+test('Emergency mail after a lost broker receipt keeps per-recipient payload and provider identities stable',async()=>{
+ const sent=[];const d=deliveryWith(async(url,init)=>{sent.push({url,...init});if(url.endsWith('/notify'))throw Error('lost acknowledgement');return {ok:true,status:200,json:async()=>({id:'receipt'})}}, {RESEND_API:'test',CRM_INGEST_SECRET:'mock-crm-key',CRM_NOTIFICATION_PREFERENCES:'true'});
+ assert.equal(await d.sendNotification(lead,'same-ref'),true);assert.equal(await d.sendNotification(lead,'same-ref'),true);
+ const mail=sent.filter(s=>s.url.includes('api.resend.com'));assert.equal(mail.length,4);
+ assert.equal(mail[0].body,mail[2].body);assert.equal(mail[0].headers['Idempotency-Key'],mail[2].headers['Idempotency-Key']);assert.notEqual(mail[0].headers['Idempotency-Key'],mail[1].headers['Idempotency-Key']);
+ const broker=JSON.parse(sent[0].body);for(const m of mail){const p=JSON.parse(m.body);assert.equal(p.to.length,1);assert.deepEqual(p,{...broker.mail,to:p.to,text:broker.mail.text||lead.message});assert.match(m.headers['Idempotency-Key'],/^ckc-crm-[a-f0-9]{64}$/);}
+});
+test('A broker identity conflict never falls back to a changed email; unconfirmed emergency delivery fails',async()=>{
+ for(const status of [409,503]){
+ let direct=0;const d=deliveryWith(async(url)=>{if(url.endsWith('/notify'))return{ok:false,status,json:async()=>({})};direct++;return{ok:false,status:500,json:async()=>({})}}, {RESEND_API:'test',CRM_INGEST_SECRET:'mock-crm-key',CRM_NOTIFICATION_PREFERENCES:'true'});
+ assert.equal(await d.sendNotification(lead,'ref'),false);assert.equal(direct,status===409?0:2);
+ }
+});
