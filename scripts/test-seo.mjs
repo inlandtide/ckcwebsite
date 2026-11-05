@@ -88,6 +88,7 @@ test("homepage prioritizes the hero and defers gallery downloads; fonts are disc
   const hero = images.find((image) => image.includes('class="home-hero__image"'));
   assert.match(hero, /fetchPriority="high"/);
   assert.ok(!hero.includes('loading="lazy"'));
+  assert.match(hero, /sizes="100vw"/);
   assert.match(html, /rel="preload" as="image" imageSrcSet="\/media\/responsive\/ckc-home-hero/);
   for (const image of images.filter((image) => !image.includes('alt="CKC Woodworks"') && image !== hero)) {
     assert.match(image, /loading="lazy"/);
@@ -113,6 +114,23 @@ test("responsive variants preserve photo proportions and offer small mobile down
   }
   const largePng = manifest["/media/commercial-environments-hero-original_086df75f.png"];
   assert.ok(largePng.variants.find((variant) => variant.width === 640).bytes < 100_000);
+
+  // The reviewed portrait thumbnail required roughly 650px on a mobile DPR
+  // screen, previously forcing a 960px download. Preserve quality while
+  // offering an intermediate candidate with a materially smaller transfer.
+  const lounge = manifest["/media/img-1911_ff0eed24.jpg"];
+  const mobile = lounge.variants.find((variant) => variant.width === 768);
+  const previous = lounge.variants.find((variant) => variant.width === 960);
+  assert.ok(mobile.bytes < previous.bytes * .8, "The mobile thumbnail should save at least 20% without lowering encoding quality");
+
+  for (const page of seoPages) {
+    const html = await readPage(page.path);
+    for (const [image] of html.matchAll(/<img\b[^>]*>/g)) {
+      if (!image.includes('/media/responsive/')) continue;
+      if (image.includes('loading="lazy"')) assert.match(image, /sizes="auto, /, page.path);
+      else assert.ok(!image.includes('sizes="auto'), page.path);
+    }
+  }
 });
 
 
