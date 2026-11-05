@@ -61,3 +61,9 @@ The build generates `/llms.txt` from the same page descriptions and canonical UR
 The About page and its Person structured data share `src/lib/team.ts`, so names and roles stay consistent. Only people already visible on About are described. Add business `sameAs` links only after confirming the exact CKC profile; do not substitute Moulding Saint Louis or similarly named companies.
 
 `pnpm images` also reads intrinsic dimensions for all local images referenced in `Site.tsx`. Logos are delivered unchanged with width/height attributes. The lightbox retains its original full-resolution image URLs.
+
+### November 4, 2026: technical performance follow-up
+
+The SEO review found oversized project thumbnails on mobile and narrow desktop cards. Responsive delivery now includes 480px, 768px, and 1280px candidates in addition to the existing widths, at the same WebP quality and proportions. Lazy photos use `sizes="auto, …"` so supporting browsers select from the actual layout width; existing explicit sizes remain as the fallback. Eager heroes retain explicit sizes and high-priority loading. No copy, layout, palette, address, source artwork, lightbox originals, analytics, or contact-delivery behavior changed.
+
+The homepage hero was already present in prerendered HTML, eager, and high-priority. Its reported render delay needs to be remeasured after deployment; the thumbnail fix is not a claim that every part of the lab LCP result has been resolved. Validate using `pnpm check`, `pnpm build`, `pnpm test:seo`, and `pnpm test`, then compare mobile/desktop pages and the live performance report. No persistent data or reporting/backup schema changes are involved.

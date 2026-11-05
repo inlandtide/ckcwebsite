@@ -16,7 +16,13 @@ export default function SiteImage({ src, alt, sizes = "(max-width: 1050px) 100vw
     return <img width={size?.width} height={size?.height} {...props} src={src} alt={alt} loading={loading} data-original-size="" />;
   }
   const fallback = photo.variants.find((variant) => variant.width >= 960) ?? photo.variants[photo.variants.length - 1];
+  const imageLoading = loading ?? "lazy";
+  // Lazy photos have a layout by the time they are needed. Let supporting
+  // browsers use that width instead of overestimating a narrow card as half
+  // the viewport; retain the supplied sizes for older browsers. Eager heroes
+  // keep explicit sizes so their high-priority preload matches the image.
+  const imageSizes = imageLoading === "lazy" ? `auto, ${sizes}` : sizes;
   return <img {...props} src={fallback.src} alt={alt} width={photo.width} height={photo.height}
     srcSet={photo.variants.map((variant) => `${variant.src} ${variant.width}w`).join(", ")}
-    sizes={sizes} loading={loading ?? "lazy"} />;
+    sizes={imageSizes} loading={imageLoading} />;
 }

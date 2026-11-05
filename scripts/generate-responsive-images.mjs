@@ -26,7 +26,10 @@ for (const path of photos) {
   const metadata = await sharp(bytes).metadata();
   const originalWidth = metadata.autoOrient?.width ?? metadata.width;
   const originalHeight = metadata.autoOrient?.height ?? metadata.height;
-  const widths = [...new Set([320, 640, 960, 1440, 1920].map((width) => Math.min(width, originalWidth)))];
+  // Fill the large gaps between candidates so small cards and high-density
+  // phones do not have to download the next much larger image. Keep the same
+  // encoding quality, source proportions, and URLs for existing widths.
+  const widths = [...new Set([320, 480, 640, 768, 960, 1280, 1440, 1920].map((width) => Math.min(width, originalWidth)))];
   const variants = [];
   for (const width of widths) {
     const file = `${name}-${hash}-${width}.webp`;
